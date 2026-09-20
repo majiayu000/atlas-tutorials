@@ -1,0 +1,1958 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Atlas 教程全集</title>
+<meta name="description" content="48 篇 Atlas 多模态 Agent 中文教程：接入、生图、视频、声音、后处理、自动化与排错。">
+<meta name="theme-color" content="#112d26">
+<meta property="og:title" content="Atlas 教程全集">
+<meta property="og:description" content="48 篇完整中文教程，覆盖 CLI / Skill / MCP / API。">
+<meta property="og:type" content="website"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+</style></head><body><button class="mobile-toggle">目录</button><aside><div class="brand"><strong>ATLAS</strong><small>多模态 Agent · 教程全集</small></div><div class="search-box"><input id="search" aria-label="搜索教程全文" placeholder="搜索场景、命令、排错…"></div><div id="count">48 篇完整教程 · 支持全文检索</div><nav><a class="home-link" href="#home">使用说明与离线演练</a><div class="nav-group"><h3>首次接入</h3><a class="lesson-link" data-target="doc-tutorials--01-agent-setup-md" href="#doc-tutorials--01-agent-setup-md"><span>01</span>把 Atlas 接入你的 Agent，配置过程不产生生成费用</a><a class="lesson-link" data-target="doc-tutorials--02-first-image-md" href="#doc-tutorials--02-first-image-md"><span>02</span>从零生成第一张图片：保存任务回执和真实文件</a><a class="lesson-link" data-target="doc-tutorials--03-local-mcp-md" href="#doc-tutorials--03-local-mcp-md"><span>03</span>本地 MCP 接入：先发现工具，再预览付费请求</a><a class="lesson-link" data-target="doc-tutorials--04-model-selection-md" href="#doc-tutorials--04-model-selection-md"><span>04</span>面对一大串模型，怎样按输入和用途选择</a><a class="lesson-link" data-target="doc-tutorials--05-schema-preview-cost-md" href="#doc-tutorials--05-schema-preview-cost-md"><span>05</span>看懂 schema、--explain、dry_run 与费用估算</a><a class="lesson-link" data-target="doc-tutorials--06-upgrade-check-md" href="#doc-tutorials--06-upgrade-check-md"><span>06</span>升级 Atlas 后，怎样检查旧教程还能不能用</a></div><div class="nav-group"><h3>开发者日常素材</h3><a class="lesson-link" data-target="doc-tutorials--07-website-assets-md" href="#doc-tutorials--07-website-assets-md"><span>07</span>给新网站制作 Hero、功能插图和移动端素材</a><a class="lesson-link" data-target="doc-tutorials--08-article-og-md" href="#doc-tutorials--08-article-og-md"><span>08</span>给技术文章制作封面与 Open Graph 配图</a><a class="lesson-link" data-target="doc-tutorials--09-github-launch-md" href="#doc-tutorials--09-github-launch-md"><span>09</span>给 GitHub 项目制作 README 横幅和发布配图</a><a class="lesson-link" data-target="doc-tutorials--10-onboarding-md" href="#doc-tutorials--10-onboarding-md"><span>10</span>给应用制作一套 onboarding 插图</a><a class="lesson-link" data-target="doc-tutorials--11-real-screenshot-md" href="#doc-tutorials--11-real-screenshot-md"><span>11</span>把真实产品截图装进宣传场景，不重画界面</a><a class="lesson-link" data-target="doc-tutorials--12-brand-brief-md" href="#doc-tutorials--12-brand-brief-md"><span>12</span>把品牌色、字体与参考图整理成可复用创作 brief</a></div><div class="nav-group"><h3>电商与品牌图片</h3><a class="lesson-link" data-target="doc-tutorials--13-product-reference-edit-md" href="#doc-tutorials--13-product-reference-edit-md"><span>13</span>用产品参考图更换场景，同时检查包装与 logo</a><a class="lesson-link" data-target="doc-tutorials--14-controlled-variants-md" href="#doc-tutorials--14-controlled-variants-md"><span>14</span>同一件产品生成三种背景，做受控变体</a><a class="lesson-link" data-target="doc-tutorials--15-product-detail-md" href="#doc-tutorials--15-product-detail-md"><span>15</span>把产品卖点做成一套详情页图片</a><a class="lesson-link" data-target="doc-tutorials--16-multi-size-md" href="#doc-tutorials--16-multi-size-md"><span>16</span>一套素材输出不同渠道尺寸，不拉伸原图</a><a class="lesson-link" data-target="doc-tutorials--17-blind-ad-selection-md" href="#doc-tutorials--17-blind-ad-selection-md"><span>17</span>生成三张候选广告图，做人工盲选</a><a class="lesson-link" data-target="doc-tutorials--18-sku-batch-md" href="#doc-tutorials--18-sku-batch-md"><span>18</span>从 SKU 表批量生成素材，逐条记录状态</a></div><div class="nav-group"><h3>视频创作</h3><a class="lesson-link" data-target="doc-tutorials--19-image-to-video-md" href="#doc-tutorials--19-image-to-video-md"><span>19</span>让一张参考图动起来：提交、续查与视频验收</a><a class="lesson-link" data-target="doc-tutorials--20-complete-ad-md" href="#doc-tutorials--20-complete-ad-md"><span>20</span>把三段产品镜头剪成一条完整短广告</a><a class="lesson-link" data-target="doc-tutorials--21-character-continuity-md" href="#doc-tutorials--21-character-continuity-md"><span>21</span>用角色参考制作多镜头视频并检查一致性</a><a class="lesson-link" data-target="doc-tutorials--22-native-audio-voiceover-md" href="#doc-tutorials--22-native-audio-voiceover-md"><span>22</span>原生音频与后期配音，怎样选择和对齐</a><a class="lesson-link" data-target="doc-tutorials--23-first-last-frame-md" href="#doc-tutorials--23-first-last-frame-md"><span>23</span>用首尾帧控制镜头，识别模型的能力边界</a><a class="lesson-link" data-target="doc-tutorials--24-video-extension-md" href="#doc-tutorials--24-video-extension-md"><span>24</span>延长已有视频：接缝、动作和声音怎样检查</a></div><div class="nav-group"><h3>声音与本地化</h3><a class="lesson-link" data-target="doc-tutorials--25-voiceover-md" href="#doc-tutorials--25-voiceover-md"><span>25</span>把脚本生成配音，检查数字、专有名词与停顿</a><a class="lesson-link" data-target="doc-tutorials--26-transcript-subtitles-md" href="#doc-tutorials--26-transcript-subtitles-md"><span>26</span>从录音得到转写和字幕，检查时间轴</a><a class="lesson-link" data-target="doc-tutorials--27-localization-md" href="#doc-tutorials--27-localization-md"><span>27</span>给同一条视频制作多语言版本</a><a class="lesson-link" data-target="doc-tutorials--28-authorized-avatar-md" href="#doc-tutorials--28-authorized-avatar-md"><span>28</span>用获授权肖像与声音制作讲解视频</a><a class="lesson-link" data-target="doc-tutorials--29-background-music-md" href="#doc-tutorials--29-background-music-md"><span>29</span>为产品演示制作背景音乐与声音层次</a><a class="lesson-link" data-target="doc-tutorials--30-long-recording-md" href="#doc-tutorials--30-long-recording-md"><span>30</span>处理长录音：分段、合并与专有名词校正</a></div><div class="nav-group"><h3>后处理与交付</h3><a class="lesson-link" data-target="doc-tutorials--31-video-upscale-md" href="#doc-tutorials--31-video-upscale-md"><span>31</span>把视频做超分，并保存前后对照和质量记录</a><a class="lesson-link" data-target="doc-tutorials--32-photo-restoration-md" href="#doc-tutorials--32-photo-restoration-md"><span>32</span>修复旧照片，区分细节恢复和生成式改写</a><a class="lesson-link" data-target="doc-tutorials--33-vertical-reframe-md" href="#doc-tutorials--33-vertical-reframe-md"><span>33</span>把横版视频重构为竖版，保留主体与字幕</a><a class="lesson-link" data-target="doc-tutorials--34-subtitles-logo-outro-md" href="#doc-tutorials--34-subtitles-logo-outro-md"><span>34</span>给生成视频加字幕、logo 与片尾</a><a class="lesson-link" data-target="doc-tutorials--35-delivery-audit-md" href="#doc-tutorials--35-delivery-audit-md"><span>35</span>交付前检查容器、分辨率、帧率、时长和音轨</a><a class="lesson-link" data-target="doc-tutorials--36-3d-delivery-md" href="#doc-tutorials--36-3d-delivery-md"><span>36</span>图片生成 3D 资产后，怎样检查与导出</a></div><div class="nav-group"><h3>自动化与集成</h3><a class="lesson-link" data-target="doc-tutorials--37-python-cli-md" href="#doc-tutorials--37-python-cli-md"><span>37</span>用 Python 调用 CLI，持久保存每次任务回执</a><a class="lesson-link" data-target="doc-tutorials--38-node-api-md" href="#doc-tutorials--38-node-api-md"><span>38</span>把媒体生成功能接进 Node.js 项目</a><a class="lesson-link" data-target="doc-tutorials--39-github-actions-md" href="#doc-tutorials--39-github-actions-md"><span>39</span>在 GitHub Actions 中生成发布素材</a><a class="lesson-link" data-target="doc-tutorials--40-n8n-md" href="#doc-tutorials--40-n8n-md"><span>40</span>把 n8n 接成内容生产流程</a><a class="lesson-link" data-target="doc-tutorials--41-comfyui-md" href="#doc-tutorials--41-comfyui-md"><span>41</span>把 Atlas 生成素材接入 ComfyUI</a><a class="lesson-link" data-target="doc-tutorials--42-polling-webhook-md" href="#doc-tutorials--42-polling-webhook-md"><span>42</span>轮询与 webhook：怎样可靠等待生成结果</a></div><div class="nav-group"><h3>恢复、质量与贡献</h3><a class="lesson-link" data-target="doc-tutorials--43-recover-job-md" href="#doc-tutorials--43-recover-job-md"><span>43</span>等待超时或下载失败后，继续原任务</a><a class="lesson-link" data-target="doc-tutorials--44-missing-file-md" href="#doc-tutorials--44-missing-file-md"><span>44</span>API 显示成功，为什么本地还是没有文件</a><a class="lesson-link" data-target="doc-tutorials--45-unknown-submission-md" href="#doc-tutorials--45-unknown-submission-md"><span>45</span>提交超时且没有任务 ID，怎样核对而不重扣费</a><a class="lesson-link" data-target="doc-tutorials--46-model-evaluation-md" href="#doc-tutorials--46-model-evaluation-md"><span>46</span>给同一任务比较多个模型：预算、盲评与重复样本</a><a class="lesson-link" data-target="doc-tutorials--47-budget-approval-md" href="#doc-tutorials--47-budget-approval-md"><span>47</span>给自动化任务建立预算与审批边界</a><a class="lesson-link" data-target="doc-tutorials--48-author-skill-md" href="#doc-tutorials--48-author-skill-md"><span>48</span>把自己的工作流写成 Skill，并提交复现测试</a></div></nav></aside><main><header><span>从接入到成片，从脚本到生态</span><span class="badge">离线可读 · 2026.09.20</span></header><article id="home" ><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="README.md">Markdown 源文件 ↗</a></div><h1>Atlas 多模态 Agent 教程全集</h1>
+<p><strong>48 篇中文完整教程 · 可编辑 Markdown · CLI / Skill / MCP / API · 离线脚本与集成样例</strong></p>
+<p>这是上一版“48 个选题＋6 篇正文”的完整扩展：原六篇已统一修订，其余 42 篇全部写成正文。内容从首次接入、网站与产品素材，一直覆盖声音、本地化、后处理、自动化、恢复、评测与 Skill 贡献。模型相关操作先核实当前能力，不以虚构命令填补功能缺口。</p>
+<p><strong>直接阅读：</strong> 双击解压目录中的 <a href="index.html">index.html</a>，可按类别和全文搜索，点击代码块旁按钮复制。无需启动服务器、联网或安装文档站。也可以从 <a href="#doc-CATALOG-md">完整目录</a> 阅读 Markdown。</p>
+<h2>先分清完成范围</h2>
+<p>本包完成了全部教程正文、配套教学脚本、配置/工作流示例、离线测试与打包。没有使用你的 API key、登录账户、执行付费模型生成、向客户素材发起上传，也没有修改 GitHub 仓库。n8n、ComfyUI、MCP 宿主和 GitHub Actions 的真实连接未代你联调。</p>
+<p>真实输出质量、模型权限、价格与宿主兼容性要在当前环境检查。目录里出现模型占位或 <code>assets/</code> 自备文件，是执行配置边界，不是省略教程正文。集成 JSON 可以编辑与导入检查，但不能宣传成已在线认证的现成服务。</p>
+<h2>建议的三条阅读路线</h2>
+<table>
+<thead>
+<tr>
+<th>使用目标</th>
+<th>阅读顺序</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第一次用 Agent 做图和视频</td>
+<td>01 → 02 → 04 → 05 → 13 → 19 → 43</td>
+</tr>
+<tr>
+<td>为项目交付一套素材或成片</td>
+<td>07 / 08 / 09 → 12 → 16 → 20 → 25 → 26 → 34 → 35</td>
+</tr>
+<tr>
+<td>做可靠自动化与生态贡献</td>
+<td>18 → 37 / 38 → 39 / 40 / 41 → 42 → 44 → 45 → 46 → 47 → 48</td>
+</tr>
+</tbody>
+</table>
+<p>所有命令从解压包根目录执行。Shell 使用 Bash；Python 工具采用标准库，要求 Python 3.10+；Node 示例推荐仍受维护且兼容的 Node 22+；本地媒体处理需要可用的 ffmpeg/ffprobe。脚本不会自动安装软件，包内不分发字体。</p>
+<h2>无账户的离线演练</h2>
+<p>先运行不发网络请求的单元测试：</p>
+<pre><code class="language-bash">python3 -m unittest discover -s tests -v
+node --test tests/node-client.test.mjs
+</code></pre>
+<p>机器安装 FFmpeg 后，再执行本地媒体 smoke 测试。输出目录必须尚不存在；再次测试换新目录，不删除任何真实任务记录来重试：</p>
+<pre><code class="language-bash">python3 tests/run_smoke.py --out tutorial-output/offline-smoke-01
+</code></pre>
+<p>测试会合成图案视频和音调，验证图片适配、截图合成、视频规范化/拼接、字幕、混音、全片解码、对比预览、录音切片、盲评打包和文件清单。合成音调没有人声，示例字幕不是识别结果，这些文件不能作为 Atlas 模型能力样片。</p>
+<p>本次实测日志已放在 <a href="#doc-verification--REPORT-md">verification/</a>。完整输出媒体不会重复随包分发；可以运行上述脚本在自己的机器复现，预留的测试输入小样放在 verification/offline-fixtures/。</p>
+<h2>目录用途</h2>
+<table>
+<thead>
+<tr>
+<th>目录 / 文件</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tutorials/</code></td>
+<td>48 篇完整中文教程</td>
+</tr>
+<tr>
+<td><code>scripts/</code></td>
+<td>10 个 Python 辅助工具，默认不执行付费生成；run_job 的 submit 需显式放行</td>
+</tr>
+<tr>
+<td><code>examples/node/</code></td>
+<td>Node REST 客户端，无第三方 SDK、无自动付费 POST 重试</td>
+</tr>
+<tr>
+<td><code>examples/workflows/</code></td>
+<td>n8n、ComfyUI 与手动 CI 教学配置；缺省不带凭据</td>
+</tr>
+<tr>
+<td><code>examples/briefs/</code>、<code>config/</code>、<code>subtitles/</code></td>
+<td>可编辑需求、配置、时间戳与审批记录示例</td>
+</tr>
+<tr>
+<td><code>examples/layouts/</code></td>
+<td>本地 HTML 标题卡，使用你自己的图片和系统字体</td>
+</tr>
+<tr>
+<td><code>examples/skills/</code></td>
+<td>产品广告 Skill、reference 与六个评测用例</td>
+</tr>
+<tr>
+<td><code>common/</code>、<code>templates/</code></td>
+<td>统一执行约定、交付检查和教程模板</td>
+</tr>
+<tr>
+<td><code>tests/</code>、<code>verification/</code></td>
+<td>可复跑测试、实测记录和验证边界</td>
+</tr>
+<tr>
+<td><code>SOURCES.md</code>、<code>PUBLISHING.md</code></td>
+<td>来源版本、发布复现检查</td>
+</tr>
+<tr>
+<td><code>SHA256SUMS.txt</code></td>
+<td>包内文件摘要；校验文件自身不列入</td>
+</tr>
+</tbody>
+</table>
+<h2>接真实账户之前</h2>
+<p>先读 <a href="#doc-common--EXECUTION-md">执行约定</a>。保留现有账户，不把 key 粘贴到公开文档或 Agent 对话；上传与生成分别确认范围。复制配置后填入实时发现的模型与参数，执行只读预览并取得可靠的费用认知。</p>
+<p><code>run_job.py --approve</code> 表示调用者放行一次提交，不是服务端硬预算。原任务超时继续查询原 ID，提交结果不确定时保留 unknown，不自动重交。客户端只记录观察，文件还要解码和人工验收。</p>
+<h2>作为仓库或文档站发布</h2>
+<p>教程 Markdown 可以按目录直接加入你的文档仓库，保持相对路径。不要把本地 <code>assets/</code>、<code>tutorial-output/</code>、真实回执、凭据或客户图片一并公开。集成到现有站点后按 <a href="#doc-PUBLISHING-md">发布清单</a> 检查导航、复制代码、能力版本和真实样例。</p>
+<p>本包没有代你创建 GitHub commit 或发布线上网站。教程及原创代码为本次交付内容；上游工作流结构的许可证和归属见 <a href="#doc-third-party--README-md">第三方说明</a>，生成素材的使用范围仍需按实际来源与授权确认。</p>
+</article><article id="doc-tutorials--01-agent-setup-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/01-agent-setup.md">Markdown 源文件 ↗</a></div><h1>01｜把 Atlas 接入你的 Agent，先不花钱生成</h1>
+<p>你已经有自己的 Agent，希望它能调用 Atlas。第一步只验证三件事：终端能找到 CLI，当前登录状态清楚，Agent 能读到 Atlas 的操作指南。完成配置不需要先生成一张测试图片。</p>
+<p>本文适合本地有终端能力的 Agent。没有终端访问能力的网页宿主，不能照搬这条路径。MCP 用户参见 <a href="#doc-tutorials--03-local-mcp-md">03</a>，不必同时安装两条执行路线。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>先确认安装</h2>
+<p>已有 Atlas 时先检查，不要覆盖现有配置：</p>
+<pre><code class="language-bash">atlas version --json
+atlas --help
+</code></pre>
+<p>没有安装且已有 Node.js/npm 的环境，可以采用公开包：</p>
+<pre><code class="language-bash">npm install -g atlascloud-cli
+atlas version --json
+</code></pre>
+<p>没有 npm 的环境，使用公开 CLI 仓库给出的系统安装器；不要为了一个安装步骤下载来历不明的脚本。安装成功后如果 Agent 仍报告找不到命令，确认 Agent 启动时使用的 PATH，并重新启动对应进程。</p>
+<h2>检查认证，不要把密钥贴给 Agent</h2>
+<pre><code class="language-bash">atlas auth status --json
+</code></pre>
+<p>这里检查的是本地认证状态。<code>logged_in</code> 表示本地访问令牌尚未过期，不保证某个供应商模型一定接受调用。遇到 <code>not_logged_in</code>、<code>expired</code> 或 <code>refresh_required</code>，按当前 CLI 提示完成登录：</p>
+<pre><code class="language-bash">atlas auth login
+</code></pre>
+<p>保留用户原有的账户和环境。不要因为供应商错误，替用户切换开发环境、其他账户或认证方式。需要诊断时使用：</p>
+<pre><code class="language-bash">atlas doctor --json
+</code></pre>
+<p>诊断结果也可能包含账户或机器信息。发布 issue 前只保留解决问题所需的字段，不上传密钥或完整凭据文件。</p>
+<h2>安装一个适合当前宿主的 Skill 入口</h2>
+<p>只选当前 Agent 对应的一条：</p>
+<pre><code class="language-bash">atlas skills install --agent claude
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-bash">atlas skills install --agent codex
+</code></pre>
+<p>项目级目录可以显式指定，路径须与你的宿主实际配置相符：</p>
+<pre><code class="language-bash">atlas skills install --dir .claude/skills
+</code></pre>
+<p>这只是将 Atlas 入口写到相应的 Skill 目录，不会自动替其他客户端完成 MCP 配置。出现已有文件冲突时先看差异，不要删除别人的 Skill。随后启动新会话，再验证：</p>
+<pre><code class="language-bash">atlas skills read atlas --raw
+</code></pre>
+<p>如果当前二进制没有这些命令，按自己的安装渠道更新，再重新检查；不要把教程中的命令名改成猜测的近义词。</p>
+<h2>发给 Agent 的第一句话</h2>
+<blockquote>
+<p>请检查我的 Atlas 是否可以使用。先确认 CLI 版本、当前本地认证状态和 Atlas Skill 是否可读；需要登录时由我完成授权。保留我的账户与环境，不读取或显示令牌，不上传文件，不调用付费模型。最后告诉我已验证的部分和仍未验证的部分。</p>
+</blockquote>
+<h2>怎样算完成</h2>
+<p>能够确认版本；本地认证状态清楚；Skill 正文可读；Agent 能解释下一次任务会先查询模型能力。到这里仍然没有证明任何模型成功生成过内容，这很正常。下一篇再完成第一张图片。</p>
+<p>常见误区是把“Skill 已安装”“CLI 已登录”“模型可用”当成同一个状态。记录三者，可以少走很多排错弯路。</p>
+<p>运行路径、授权与状态约定见 <a href="#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><article id="doc-tutorials--02-first-image-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/02-first-image.md">Markdown 源文件 ↗</a></div><h1>02｜生成第一张图片，同时保存任务回执</h1>
+<p>本教程的目标是一张实际可打开的图片，以及能再次查询它的任务 ID。演示主题是网站的抽象配图，不使用参考文件，也不要求模型生成标题文字。</p>
+<p>准备好 Atlas CLI、可用账户和 Python 3.9+。从本教程包根目录执行 Bash 示例。所有模型 ID 必须从当前目录复制；本教程不预设某个旧 ID 永久可用。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>给 Agent 的任务说明</h2>
+<blockquote>
+<p>用 Atlas 为一个开发者工具网站生成一张抽象配图，画面有清楚的主体与留白，不包含文字和 logo。先查询支持文本生成图片的模型，给出一个选择及依据，核对参数并估价。只预览，不提交，等我确认后生成一张。保存原任务 ID，交付时给出真实文件；等待超时不要重新生成。</p>
+</blockquote>
+<h2>手动执行：先选模型</h2>
+<pre><code class="language-bash">set -euo pipefail
+atlas version --json
+atlas auth status --json
+atlas models list --type image --json
+</code></pre>
+<p>选择支持文本生成图片的模型，确认所需参数。不要选择必须带参考图的编辑模型：</p>
+<pre><code class="language-bash">MODEL='替换为当前可用的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas skills read atlas/references/image.md --raw
+</code></pre>
+<p>如果 schema 需要 prompt 以外的字段，应先补齐。例子里的主题没有尺寸硬约束，可以使用该模型的默认尺寸；需要具体画幅时，再按模型实际支持的字段和取值填写。</p>
+<h2>预览与估价使用同一组输入</h2>
+<pre><code class="language-bash">PROMPT='Abstract visual for a developer tool website. One clear sculptural subject, soft studio lighting, ample clean negative space. No text, no letters, no logos.'
+INPUT=(-p &quot;$PROMPT&quot;)
+
+# 有其他必填字段时，先按真实 schema 加入 INPUT，再执行下面两条。
+# 例如语法是 INPUT+=(--param &quot;字段名=实际值&quot;)，不要原样使用这个占位表达。
+atlas generate image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --explain --json
+atlas generate cost image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --json
+</code></pre>
+<p>检查预览里的模型、输入与默认值。估价失败或价格不明确时，不要拿零费用代替未知；先说明不确定性。本文把“确认后执行一张”作为示范授权边界，它不是服务端硬额度设置。</p>
+<h2>用户确认后，提交一次并保留回执</h2>
+<p>下方会产生真实模型调用费用。先确认数量与配置符合授权，再执行。目录只在第一次创建；出现异常后不要从创建新目录开始重新跑一遍。</p>
+<pre><code class="language-bash">mkdir -p tutorial-output
+RUN_DIR=$(mktemp -d './tutorial-output/image-XXXXXX')
+printf '%s\n' &quot;$MODEL&quot; &gt; &quot;$RUN_DIR/model.txt&quot;
+printf '%s\n' &quot;$PROMPT&quot; &gt; &quot;$RUN_DIR/prompt.txt&quot;
+printf '本次记录目录：%s\n' &quot;$RUN_DIR&quot;
+
+if [ -e &quot;$RUN_DIR/submit.json&quot; ]; then
+  printf '%s\n' '已有提交记录，请查询原任务，不要再次提交。' &gt;&amp;2
+  exit 1
+fi
+
+if ! atlas generate image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --no-wait --json &gt; &quot;$RUN_DIR/submit.json&quot;; then
+  printf '%s\n' '提交返回异常。保留回执，先核对是否受理，不要自动重试生成。' &gt;&amp;2
+  exit 1
+fi
+
+PREDICTION_ID=$(python3 scripts/receipt_id.py &quot;$RUN_DIR/submit.json&quot;)
+printf '%s\n' &quot;$PREDICTION_ID&quot; &gt; &quot;$RUN_DIR/prediction-id.txt&quot;
+printf '任务 ID：%s\n' &quot;$PREDICTION_ID&quot;
+</code></pre>
+<p>辅助脚本只从已知 CLI 字段读取 ID；不把状态为 processing 的任务当成完成，也不会自行发网络请求。空回执、损坏 JSON 或缺少 ID 都需要核对，不能证明请求没有受理。上面的本地文件检查也不是跨进程幂等保证。</p>
+<h2>等待和交付</h2>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json &gt; &quot;$RUN_DIR/result.json&quot;
+</code></pre>
+<p><code>10m</code> 是这次本地等待的上限，不是视频或图片预计完成时间。等待返回后同时看命令退出状态和 JSON 中的 prediction 状态。结果处于处理中时，继续查询同一个 ID。</p>
+<p>完成后检查 <code>outputs</code> 与 <code>saved_files</code>。未指定输出路径时，让 CLI 使用实际媒体类型选择扩展名；不要看到 URL 末尾就猜本地文件名。打开 <code>saved_files</code> 中的真实路径，确认文件非空并检查画面。不具备图片查看能力时，应明确“只验证了文件，未做视觉检查”。</p>
+<p>最终交付说明至少写清：模型 ID、任务 ID、生成状态、真实文件路径、画面是否已经人工或视觉检查。远程完成但没有本地文件时，进入 <a href="#doc-tutorials--43-recover-job-md">43 恢复教程</a>。</p>
+<h2>不要把日志与素材混进公开仓库</h2>
+<p>建议将生成目录加入项目已有的 <code>.gitignore</code>。不要覆盖整个文件，只追加所需规则。prompt、文件路径、输出 URL 和模型回执也可能包含业务信息，应与密钥一样谨慎审查后再分享。</p>
+<p>运行路径、授权与状态约定见 <a href="#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><article id="doc-tutorials--03-local-mcp-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/03-local-mcp.md">Markdown 源文件 ↗</a></div><h1>03｜本地 MCP 接入：先看工具和请求，再生成</h1>
+<p>本教程使用公开 <code>atlascloud-mcp</code> 包的本地 stdio 路线。它与 CLI 源码里的实验性 <code>atlas-mcp</code> 二进制、插件里的远程 OAuth 服务不是同一条安装路径。只需要本地 MCP 时，不必再为它编译 Go 源码。</p>
+<p>准备一个能启动本地 MCP 进程的宿主、该包所需 Node.js 环境，以及自己的 Atlas API key。包 README 当前写 Node.js &gt;=18；正式发布教程时仍要核对当前包 engines 和团队支持的 Node.js 版本，不要据此建议使用已停止维护的旧版本。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>先决定密钥放在哪里</h2>
+<p>不要把真实 API key 写进教程、公共配置、截图或 Agent 对话。使用宿主提供的密钥配置，或让从终端启动的宿主继承环境变量。下面是在 Bash 中输入环境变量的一种方式，不会把密钥正文写进这条 Shell 命令：</p>
+<pre><code class="language-bash">read -r -s -p 'Atlas API key: ' ATLASCLOUD_API_KEY
+printf '\n'
+export ATLASCLOUD_API_KEY
+</code></pre>
+<p>这不是系统密钥链，环境变量仍可能被有权限的进程访问。GUI 中启动的宿主也未必继承你刚刚设置的终端环境；连接失败时应核对进程实际获取密钥的方式，不要不停创建新 key。</p>
+<h2>配置服务进程</h2>
+<p>对于使用 <code>mcpServers</code> 配置结构、并能让子进程继承所需环境变量的宿主，服务声明的形态如下：</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;atlascloud&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;atlascloud-mcp&quot;]
+    }
+  }
+}
+</code></pre>
+<p>将这段合并进宿主的配置，不要覆盖原有其他 MCP。它没有包含密钥：你必须通过宿主支持的安全方式提供 <code>ATLASCLOUD_API_KEY</code>。如果宿主使用不同结构，按它的实际格式填写同一进程命令，不能直接复制整段。</p>
+<p>团队部署应在联调通过后固定已验证的 npm 包版本，避免每次连接都依赖浮动版本；记录版本，但不要凭空填一个版本号。</p>
+<h2>第一条消息只做发现</h2>
+<blockquote>
+<p>检查已连接的 atlascloud MCP。先列出实际可用的工具，再查询文本生成图片的模型，并读取一个候选模型的参数 schema。不要调用聊天模型，不上传文件，不生成媒体，不更换我的账户或凭据。</p>
+</blockquote>
+<p>期望看到可调用的模型发现与详情工具，例如 <code>atlas_list_models</code> 和 <code>atlas_get_model_info</code>。必须以当前连接返回的工具 schema 为准，不能因为 README 出现过一个名字，就假定当前服务一定提供它。</p>
+<h2>第二条消息只预览</h2>
+<blockquote>
+<p>按刚才选定的文本生图模型，准备一张无文字的抽象网站配图。使用生成工具的 dry_run 预览完整请求，不提交。解释模型、必填参数和默认值；如果没有可靠价格信息，明确说估价仍未知。</p>
+</blockquote>
+<p>在实际工具 schema 确认存在这些字段后，图像生成请求形态可以是：</p>
+<pre><code class="language-json">{
+  &quot;model&quot;: &quot;替换为已查询的真实模型ID&quot;,
+  &quot;params&quot;: {
+    &quot;prompt&quot;: &quot;An abstract visual for a developer tool website, no text.&quot;
+  },
+  &quot;dry_run&quot;: true
+}
+</code></pre>
+<p>这只是调用结构示意，<code>params</code> 必须补上该模型当前必填项。<code>dry_run</code> 的作用是展示将提交的请求，不代表返回了可锁定的价格。公开实现存在 schema 无法取得时跳过验证的路径，因此还需确认该模型的完整 schema 确实取得，不能把 dry_run 当成无条件严格校验。已有参考文件的任务也不要在“只预览”的要求下偷偷调用上传工具。</p>
+<h2>用户授权后生成一张</h2>
+<p>再次确认模型、数量、费用认知与输入未变，随后提交一次。保存实际返回的 prediction ID，后续通过 <code>atlas_get_prediction</code> 查询它。不要假设 MCP 返回的字段与 CLI 一样，也不要因为一次工具调用等待结束就再提交。</p>
+<p>媒体结果通常包含远程链接。宿主能够下载时，保存并检查实际文件；不能下载时交付真实链接并说明未保存本地文件。这个 MCP 的上传工具在文档中用于临时素材，不是长期资产托管。</p>
+<h2>怎样算连接成功</h2>
+<p>成功启动服务只是第一步。应依次证明：工具可发现，模型 schema 可读取，dry_run 没有提交任务，经授权的生成能查回结果。不要以“配置文件没有报错”代替这四项检查。</p>
+<p>本地 stdio 服务不能直接靠粘贴一个 URL 接入网页宿主。需要远程 MCP 时应使用对应的公开接入文档，本篇不猜测服务地址或 OAuth 配置。</p>
+<p>运行路径、授权与状态约定见 <a href="#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><article id="doc-tutorials--04-model-selection-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/04-model-selection.md">Markdown 源文件 ↗</a></div><h1>04｜面对一大串模型，怎样按输入和用途选择</h1>
+<p>选择模型先看手里的输入和要交付的东西。一个图片编辑任务即使提示词很短，也不能用只接收文本的模型代替；一个需要透明背景的图标，也不能因为模型画得好看就忽略 alpha 通道。</p>
+<p>本次练习为开发者网站制作配图。交付物是一个候选表和一份明确的选择记录；在本篇结束前不产生生成费用。复制 <code>examples/config/model-selection.json</code> 作为决策记录。</p>
+<h2>先把需求分成硬约束和偏好</h2>
+<p>硬约束决定是否可用：输入是文本还是参考图，输出文件类型，允许上传的内容，必须保留什么，输出尺寸能否用于页面。偏好只用于可用模型之间选择：画风、速度、费用、可控性。把“最好”“便宜”换成可解释条件，例如“只需要网页背景，先做一张草稿，不要求图片里写中文”。</p>
+<h2>查询能力，不先提交试试看</h2>
+<pre><code class="language-bash">atlas models list --type image --json
+atlas models search 'image' --json
+MODEL='替换为目录中的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+</code></pre>
+<p>对每个候选记录：是否需要参考图、参数是单图还是数组、输出数量、尺寸选项、可用的报价方法。搜索关键词只帮助发现，不代表搜到的第一个模型就匹配需求。用户点名的模型优先保留，发现能力不符后说明冲突，请用户决定调整要求还是换模型。</p>
+<h2>做一个有排除理由的候选表</h2>
+<table>
+<thead>
+<tr>
+<th>候选</th>
+<th>本次输入兼容</th>
+<th>硬约束通过</th>
+<th>价格信息</th>
+<th>决策</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>从目录复制 A</td>
+<td>文本可用</td>
+<td>需核对尺寸</td>
+<td>估价后填写</td>
+<td>可进入预览</td>
+</tr>
+<tr>
+<td>从目录复制 B</td>
+<td>必须参考图</td>
+<td>本次不通过</td>
+<td>不再查询</td>
+<td>排除</td>
+</tr>
+<tr>
+<td>从目录复制 C</td>
+<td>文本可用</td>
+<td>输出类型待确认</td>
+<td>未知</td>
+<td>暂停选择</td>
+</tr>
+</tbody>
+</table>
+<p>这里的 A/B/C 是教学标签，不能当真实模型 ID 使用。缺失值写“未知”，不要填 0。模型数量多时先按模态和输入能力缩小范围，详细读取两三个候选的 schema 即可。</p>
+<h2>用最小样本检验选择</h2>
+<p>选定后按教程 02 预览和估价，获得授权后生成一张。用实际文件检查构图、留白、缩放可读性。第一张满足要求就停止；失败时记录原因，再判断是提示词、参数还是模型能力问题。不要用一次样本宣称某个模型在所有任务上更好。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 为这个网站选择一个文本生成图片的模型。先列出输入兼容、画幅、数量和费用认知，不生成内容。最多深入比较三个候选，解释排除理由；模型价格未知时保留未知。选定后等我批准一张样图。</p>
+</blockquote>
+<h2>完成与复用</h2>
+<p>完成的选择记录应能让另一位同事说明“为什么选它、为什么没选另外两个、哪些能力尚未验证”。保留真实模型 ID、schema 核对时间、请求预览与样本评价；只复用选择方法，不把某个模型写成永久默认冠军。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--05-schema-preview-cost-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/05-schema-preview-cost.md">Markdown 源文件 ↗</a></div><h1>05｜看懂 schema、--explain、dry_run 与费用估算</h1>
+<p>“这个请求长什么样”“参数是否符合模型”“大概要花多少钱”是三个问题。本篇用同一组文本生图输入，把它们分别查清。最终交付三份记录：schema、请求预览、费用信息；不提交生成。</p>
+<h2>读取模型参数</h2>
+<pre><code class="language-bash">mkdir -p tutorial-output/schema-lab
+MODEL='替换为已经发现的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json &gt; tutorial-output/schema-lab/model.json
+</code></pre>
+<p>查看 required、字段类型、枚举、上下界和默认值。<code>&quot;false&quot;</code> 与 <code>false</code> 不同，图片数组与单一 URL 不同，视频的时长单位也必须确认。不要仅凭字段名字猜测取值。将已确认的模型输入保存为自己的 <code>params.json</code>；本包 <code>examples/config/image.json</code> 的 params 只是教学起点。</p>
+<h2>用同一输入做预览和估价</h2>
+<pre><code class="language-bash">PARAMS='./tutorial-output/schema-lab/params.json'
+test -s &quot;$PARAMS&quot;
+atlas generate image &quot;$MODEL&quot; --params-json &quot;@$PARAMS&quot; --explain --json \
+  &gt; tutorial-output/schema-lab/preview.json
+atlas generate cost image &quot;$MODEL&quot; --params-json &quot;@$PARAMS&quot; --json \
+  &gt; tutorial-output/schema-lab/cost.json
+</code></pre>
+<p><code>params.json</code> 内只放模型参数，不放 <code>model</code>、凭据或整份 MCP 工具调用。预览后检查 CLI 是否进行了字段映射、采用了哪些默认值。估价和后续执行必须使用同样的模型、尺寸、数量和时长；修改其中任一项后重新估价。</p>
+<h2>MCP 的对应做法</h2>
+<p>发现当前生成工具的 schema，确认存在 <code>dry_run</code>，然后用 <code>model</code>、<code>params</code>、<code>dry_run: true</code> 调用。工具返回“预览成功”不代表锁价。本次读取的独立 MCP 实现还允许在取不到模型 schema 时跳过部分验证；遇到这种情况，应停止并补齐 schema，不能把工具返回成功当成必填项全部通过。</p>
+<h2>本地参考素材的特殊情况</h2>
+<p>CLI 的预览不上传文件，费用命令也不会为了估价先上传。报价必须要已有 URL 时，先得到用户对上传的授权，再使用该 URL；或者明确指出报价不完整。省略必需参考图得到的文本生图报价，不是原编辑任务的准确报价。</p>
+<h2>刻意制造一个无费用错误</h2>
+<p>从真实枚举里选一个不合法值，或把已知数字字段改成对象，只运行预览，观察是否在提交前得到错误。然后恢复原参数。不要为了测试错误使用真实付费提交，也不要把完整 schema 复制进模型输入。完成后保存错误样例，以后升级时复测。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>检查这份 Atlas 请求。先读取实际模型 schema，对 required、类型、枚举、数量和参考图字段逐项核对。只做 explain 或 dry_run，并单独解释估价；缺少 schema 或价格就报告未知，不上传、不生成、不自动改模型。</p>
+</blockquote>
+<h2>验收与排错</h2>
+<p>能够指出一个参数错误发生在哪一层，并明确“本次未提交”。JSON 语法错误先修语法；模型不接受字段先查 schema；报价服务不可用不代表免费。如果计划改变，把旧预览保留为历史记录，不悄悄覆盖已批准的请求。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S3、S6</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--06-upgrade-check-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/06-upgrade-check.md">Markdown 源文件 ↗</a></div><h1>06｜升级 Atlas 后，怎样检查旧教程还能不能用</h1>
+<p>升级后最危险的现象是命令仍能执行，但默认参数或结果结构改变。本篇建立一个无需生成的兼容检查，再把有费用的回归测试留给明确批准的测试账户。</p>
+<h2>升级前保存一个基线</h2>
+<pre><code class="language-bash">mkdir -p tutorial-output/compat-before
+atlas version --json &gt; tutorial-output/compat-before/version.json
+atlas --help &gt; tutorial-output/compat-before/help.txt
+atlas skills read atlas --raw &gt; tutorial-output/compat-before/skill.md
+atlas generate image --help &gt; tutorial-output/compat-before/image-help.txt
+</code></pre>
+<p>基线还应记录安装渠道、操作系统、宿主与 MCP 包版本，以及当前工作流的配置摘要。不要把 auth 凭据目录打包。项目使用的模型 schema 另存快照，但价格仍需要执行时刷新。</p>
+<h2>按原渠道升级</h2>
+<p>npm 安装由 npm 管理，Homebrew 由 Homebrew 管理，原生安装由其支持的更新机制管理。不要同时装几份不同来源的 <code>atlas</code> 再猜正在执行哪份。用 <code>command -v atlas</code> 查看实际入口；PATH 中旧目录排在前面时，升级可能根本没有影响当前进程。</p>
+<p>升级后在 <code>compat-after</code> 保存相同四份文件。团队自动化应锁定经过自己验证的版本，不在计费任务执行中自动追浮动最新版。</p>
+<h2>分四层对照</h2>
+<p>第一层看命令是否存在；第二层看当前 <code>skills read</code> 的操作说明；第三层用原参数运行 <code>--explain</code>，检查字段、类型和默认值；第四层用已存在的任务 ID 查询结果，观察 JSON 字段。第四层是只读核对，不能为了方便重新生成一批旧任务。</p>
+<pre><code class="language-bash">diff -u tutorial-output/compat-before/help.txt tutorial-output/compat-after/help.txt || true
+python3 -m unittest discover -s tests -v
+</code></pre>
+<p><code>diff</code> 的非零返回通常表示存在差异，不等于升级失败。离线测试也只验证本包脚本，不证明当前 Atlas 模型服务可用。遇到 <code>id</code>/<code>prediction_id</code> 差异应修适配器与测试，不让 Agent 从任意 JSON 中猜 ID。</p>
+<h2>再进行小规模在线回归</h2>
+<p>由操作者批准一个低风险任务，固定输入与交付规格，记录价格、模型和返回状态。检查参考素材是否真的使用、文件是否保存、下载失败能否仅恢复下载。不要要求生成字节完全相同，除非模型服务明确提供相应确定性保证。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>帮我核对 Atlas 升级兼容性。保留原账户与环境，只检查版本、命令、内置指南、请求预览和已有任务状态，不创建新的付费任务。把破坏性变化与新增能力分开，给出需要修改的文件和测试项。</p>
+</blockquote>
+<h2>通过与回退</h2>
+<p>能够解释旧流程在哪个版本上通过，哪些字段需要适配。回退客户端不能自动回退服务端模型 schema；一个旧二进制也可能无法继续使用已变更或下线的模型。故障任务仍使用原 ID 查证，勿因回退操作再次计费。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--07-website-assets-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/07-website-assets.md">Markdown 源文件 ↗</a></div><h1>07｜给新网站制作 Hero、功能插图和移动端素材</h1>
+<p>本次给一个已经有页面结构的网站制作三项素材：桌面 Hero、移动端 Hero、一张功能插图。真正的交付是文件能放进页面且不挡文字，不能只交一张孤立的漂亮图。</p>
+<h2>从页面槽位开始</h2>
+<p>打开 <code>examples/briefs/asset-slots.json</code>，把宽高和标题区域改成你的实际设计。示例的 1600×900、900×1200 和 640×480 是练习尺寸，不是某个平台的规定。查看桌面与手机断点，确认图片是 cover、contain 还是背景图；这会影响画面能被裁掉的区域。</p>
+<h2>先建立一个视觉母版</h2>
+<p>为虚构开发者工具设计“单一抽象主体、克制材质、统一光线、无文字”的方向。按教程 02 只生成一张参考图，经审核后再做其他素材。移动端可以沿用风格，却常需要单独构图；不要把横版中心裁一下就当作手机版完成。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 为现有网站补齐 Hero 和功能插图。先读取我给的页面截图与素材槽位，只生成视觉素材，不修改产品界面或虚构功能。桌面左侧要留标题区，手机上方留文案区。先给一张母版及费用认知，批准后再做另外两项；真实文字由网页渲染。</p>
+</blockquote>
+<h2>生成与后处理</h2>
+<p>按照当前 schema 选择接近目标的画幅，保留母版、提示词与模型记录。精确输出尺寸可在本地完成：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/hero-source.png \
+  --output tutorial-output/site/hero-desktop.png --width 1600 --height 900 --mode cover
+python3 scripts/media_ops.py fit-image --inputs assets/feature-source.png \
+  --output tutorial-output/site/feature-a.png --width 640 --height 480 --mode contain
+</code></pre>
+<p>第一条可能裁切，第二条可能补白。源图不足以容纳主体和标题时回到构图，不靠拉伸解决。源文件必须由你提供；这些命令不会生成缺失图片。</p>
+<h2>放进页面验证</h2>
+<p>在真实组件里替换图片，分别看桌面、手机、深色/浅色背景。标题不能与主体重叠；按钮应可读；图片加载前后不要造成明显布局跳动。记录导出像素和展示尺寸，压缩后检查边缘、渐变与透明背景；压缩大小上限由项目实际性能目标决定。</p>
+<h2>验收与恢复</h2>
+<p>交付三张文件、每张用途、裁切方式、替代文本建议和素材清单。某张需要返工只改对应项，不重新生成整套。字体或标题错误在页面里修，图片里出现多余字母则修画面。完成后可用 manifest.py 对交付目录生成摘要。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--08-article-og-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/08-article-og.md">Markdown 源文件 ↗</a></div><h1>08｜给技术文章制作封面与 Open Graph 配图</h1>
+<p>为一篇技术文章制作封面与 Open Graph 图片，先把“文章讲了什么”提炼成视觉关系。不要让图像模型发明跑分、论文结论或作者头像。交付包含无字底图和最终带标题版本，方便改标题时复用。</p>
+<h2>提炼一个画面任务</h2>
+<p>假设文章主题是“任务中断后如何恢复”，可以画未完成的工作区和被保留的进度；不需要把整篇文字贴到图上。主标题控制为一行或两行，数字与技术名词由作者确认。示例采用 1200×630 作为项目自定输出尺寸；平台预览会改变，发布前用目标平台实际预览核对。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>先读我提供的文章正文，提炼一个不夸大结论的视觉主题。用 Atlas 做无文字封面底图，给标题留足空间；标题由排版工具添加，技术名词按原文。先展示方案和费用认知，批准后生成一张。再输出我们选定的 1200×630 版本，不上传文章中未授权的客户信息。</p>
+</blockquote>
+<h2>制作底图与标题层</h2>
+<p>按教程 02 生成底图，将构图中的留白与标题摆放联系起来。保存最终接受的原图，再做精确画幅：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/article-background.png \
+  --output tutorial-output/article/og-background.png --width 1200 --height 630 --mode cover
+</code></pre>
+<p>在你已有的设计工具里放标题、作者署名与项目标识；或使用包内 <code>examples/layouts/title-card.html</code>，替换本地图片及文本，在浏览器里检查固定尺寸后导出元素截图。排版模板不包含字体文件，使用你有权使用的本地字体。没有浏览器导出工具时，可以在设计软件中按同样槽位排版。</p>
+<h2>检查缩略图而不是只看大图</h2>
+<p>把最终图缩到信息流中的实际显示大小，确认标题、主体、留白仍清楚。中文易错字、缩写和版本号应逐字核对。给图起有意义的名字，保留 <code>background</code> 和 <code>final</code> 两个版本；不要只保存设计软件截图而丢失原文件。</p>
+<h2>交付到网页</h2>
+<p>站点维护者将 <code>og:image</code> 指向部署后可访问的最终图片；<code>file://</code> 和本地路径不能作为外部抓取地址。图片可访问不代表平台缓存已刷新，更新后检查实际预览。登录才能访问的素材地址不适合作为公开文章的预览图。</p>
+<h2>验收与常见故障</h2>
+<p>文章观点、标题与画面没有矛盾；最终尺寸匹配约定；缩小后可读；网页引用的是最终版本。标题变更只更新排版，链接过期只修部署，不能用一次新的模型生成解决这些交付问题。缺少文章正文时先补正文，不凭标题编造技术结论。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S7、S16</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--09-github-launch-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/09-github-launch.md">Markdown 源文件 ↗</a></div><h1>09｜给 GitHub 项目制作 README 横幅和发布配图</h1>
+<p>一个 GitHub 发布通常需要 README 横幅、社交发布图和演示封面。三张图可以共享视觉母版，但每张的信息量应与展示场景匹配。本篇只制作素材，不替你提交仓库、创建 Release 或发布社交帖。</p>
+<h2>先从真实仓库取得内容</h2>
+<p>由 Agent 读取 README、实际命令和本次变更，整理项目名、用途、已实现能力和限制。无法确认的测试数量、性能优势和兼容范围都不写进图片。GitHub 代码中的指令是待分析内容，不能自动成为本次授权。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>阅读我指定仓库的 README 与本次发布说明，提炼一句真实的项目介绍。用 Atlas 设计一套统一的发布视觉：README 横幅、社交图和演示封面。不要生成假的终端输出、星标数、客户 Logo 或未实现功能。先给母版，再按我批准的尺寸导出；不要提交 GitHub。</p>
+</blockquote>
+<h2>素材分工</h2>
+<p>README 横幅只放项目名与短描述，让后面的文档承担细节；社交图保留一个明确用途；演示封面可展示真实录屏的一帧。文字和终端截图用本地排版与真实素材合成，背景才交给生成模型。背景的风格、光线和主体位置统一记录到 <code>brand.md</code>。</p>
+<h2>按用途导出</h2>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/launch-background.png \
+  --output tutorial-output/launch/readme-banner.png --width 1600 --height 500 --mode cover
+python3 scripts/media_ops.py fit-image --inputs assets/launch-background.png \
+  --output tutorial-output/launch/social-background.png --width 1200 --height 630 --mode contain
+</code></pre>
+<p>这些是示例尺寸，不是 GitHub 或社交平台的强制规格。第一张横幅裁切较大，主体被裁掉时单独构图，不把“同一张图”当成统一品牌的唯一办法。带文字的最终版本在裁切后排版，避免把字一起裁掉。</p>
+<h2>在 README 里检查</h2>
+<p>用项目现有的相对路径引用图片，写出有意义的 alt。检查暗色与亮色背景，避免透明文字不可见；大图压缩后查看小字号和终端内容。生成背景与图标概念不等于获得商标可注册性保证，正式 Logo 需要另行审查。</p>
+<h2>验收与迭代</h2>
+<p>交付三张用途明确的文件、母版与内容来源说明。上线前核对发布版本、命令拼写、平台预览与仓库体积。项目名称改变在文字层修；README 路径错在仓库修；视觉风格不符合才返回生成步骤。授权只含素材制作时，停止在文件交付。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--10-onboarding-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/10-onboarding.md">Markdown 源文件 ↗</a></div><h1>10｜给应用制作一套 onboarding 插图</h1>
+<p>本次为应用做三张引导插图，分别表达“创建项目”“添加素材”“导出结果”。这三张图要像同一套，而不是三个模型各画各的。交付含原图、统一尺寸文件和一张并排审核记录。</p>
+<h2>先固定视觉规则</h2>
+<p>确定背景、线条或材质、视角、主角、阴影方向、构图密度与留白区。每个页面只有一个主动作。不要用图像模型画真实按钮文字或完整交互截图，引导标题应由应用组件渲染。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 为应用做三张 onboarding 插图：创建项目、添加素材、导出结果。使用同一风格、同一角色和统一留白，不绘制真实按钮或文字。先制作第一张作为母版，等我认可后用它指导另外两张。逐张检查角色外形、视角、配色和内容，不因其中一张失败重做整套。</p>
+</blockquote>
+<h2>从母版走到系列</h2>
+<p>第一张只做风格决定，不急于批量。批准后保存母版和提示词的固定部分。后两张仅改变主动作。模型支持参考图时按实际 schema 附母版；不支持时明确采用文本风格约束，承认一致性需要更严格的人工检查。不同画面使用同一个 seed 并不自动获得同一角色。</p>
+<h2>导出统一尺寸</h2>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/onboarding-01.png \
+  --output tutorial-output/onboarding/01.png --width 900 --height 900 --mode contain
+python3 scripts/media_ops.py fit-image --inputs assets/onboarding-02.png \
+  --output tutorial-output/onboarding/02.png --width 900 --height 900 --mode contain
+python3 scripts/media_ops.py fit-image --inputs assets/onboarding-03.png \
+  --output tutorial-output/onboarding/03.png --width 900 --height 900 --mode contain
+</code></pre>
+<p>这组尺寸仅用于练习。图片若需要透明背景，先确认真实 alpha，不能把白底看成透明；本包 contain 会补白，不适合假装输出透明图。需要 alpha 的项目选择支持透明的来源或单独抠图工作流。</p>
+<h2>在真实页面验收</h2>
+<p>并排看三张图的主体大小与视觉重量，再逐页检查小屏幕、动态字体和不同语言。插图不能承担唯一的操作说明，页面标题应独立清楚。用不认识应用的同事测试其是否能解释每张图表达的动作。</p>
+<h2>故障与交付</h2>
+<p>某张角色换了衣服或材质跑偏，只重做该张并继续引用母版。留白不够可调整页面或图像构图，不能缩小标题到无法阅读。交付文件与固定风格规则一起保存，以后新增第四张时有可复用依据。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--11-real-screenshot-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/11-real-screenshot.md">Markdown 源文件 ↗</a></div><h1>11｜把真实产品截图装进宣传场景，不重画界面</h1>
+<p>本篇制作一张产品宣传图：生成简洁背景，再把真实产品截图放进去。界面数据、按钮和功能来自实际软件，模型只负责背景氛围。最终交付包含原始截图标识与合成图，便于审核哪些部分是真实界面。</p>
+<h2>先清理截图里的信息</h2>
+<p>在你有权操作的演示账户里取得截图，移除客户姓名、API key、订单和其他敏感信息。必须保留的界面内容由产品负责人确认。不要让模型“修复”页面里的乱码，它可能同时改掉功能与状态。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 生成一张适合放产品截图的简洁宣传背景。不要生成界面本身，不改变我提供的真实截图，也不添加未实现的功能。背景中间留一个水平矩形区域；生成后在本地把截图按比例合成进去。上传只包含我批准的背景参考，产品截图默认不上传。</p>
+</blockquote>
+<h2>准备背景和截图</h2>
+<p>选择无文字、视角近似正面的背景。背景是 1600×900 时，可把截图放在 x=180、y=150、宽1240、高600的示例区域。截图与区域画幅不一致时等比缩放补边，不把文字拉扁。需要透视效果的场景在设计工具里手工设置四角并审核，本脚本不进行透视变换。</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py overlay-image \
+  --inputs assets/scene-1600x900.png assets/screenshot.png \
+  --box 180,150,1240,600 --output tutorial-output/promo/composite.png
+</code></pre>
+<p>overlay-image 先确认矩形在背景范围内，再等比缩放截图并补白。它不会补全截图缺失的文字，也不会访问 Atlas。为完全保留每个像素，使用与截图原生尺寸匹配的展示区域，并接受背景尺寸据此调整。</p>
+<h2>怎样检查没有误导</h2>
+<p>把合成图与原截图并排，对照关键字段、按钮名称、功能入口和状态。查看最小字号，检查缩放后是否模糊；回到实际展示尺寸再看一次。添加价格或客户评价时必须另有事实依据，不因为排版空着就补一条“好看的数字”。</p>
+<h2>输出与失败恢复</h2>
+<p>交付合成图、原截图版本/日期、背景生成任务记录和未修改界面的说明。背景不合适时重新设计背景；界面文字不清楚时重新截图或放大展示区域。截图包含私人信息的版本不得作为公开教程素材；删除本地文件也不证明已上传的远程副本删除。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--12-brand-brief-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/12-brand-brief.md">Markdown 源文件 ↗</a></div><h1>12｜把品牌色、字体与参考图整理成可复用创作 brief</h1>
+<p>一份可复用的创作 brief 能减少“每次重新解释品牌”的成本。本篇把品牌资料整理成任务输入，暂不生成图片。最终产出为 <code>brand.md</code>、资产登记与一份实际生成时需要补充的任务 brief。</p>
+<h2>把固定规则与本次目标分开</h2>
+<p>固定规则包括品牌名称、官方颜色、字体使用范围、Logo 版本、语气、禁用表达；本次目标包括场景、画幅、数量、截止需求和预算。模型 ID、实时价格、临时素材 URL 不适合写成永久品牌规则。</p>
+<p>从 <code>examples/briefs/brand.md</code> 复制一份到私有项目。示例品牌是虚构的，不能当成你的真实品牌信息。不要把团队其他客户的品牌素材顺手合进同一份文档。</p>
+<h2>资产登记</h2>
+<p>为每项参考图记录名称、文件摘要、来源、所有者、允许用途、到期时间和是否允许外发。Logo 与字体的限制可能不同；没有许可信息时标为待核对，不自动理解为可商用。包里不分发任何字体文件。</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>应保存的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Logo</td>
+<td>官方文件、深浅背景版本、允许的留白与最小尺寸</td>
+</tr>
+<tr>
+<td>颜色</td>
+<td>色值及使用场景，必要时附经批准的视觉样例</td>
+</tr>
+<tr>
+<td>字体</td>
+<td>名称与授权来源，文件由团队自行管理</td>
+</tr>
+<tr>
+<td>参考图</td>
+<td>允许学习的特征、不可复制的元素、上传边界</td>
+</tr>
+<tr>
+<td>文案</td>
+<td>已证实事实、禁用承诺、品牌负责人</td>
+</tr>
+</tbody>
+</table>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>只根据我提供的品牌资料整理一份可复用 brief。把已确认事实、风格偏好和未确认事项分开。为 Logo、字体和参考图登记来源及外发权限，不补写客户案例或资质。先输出文档，不上传、不生成；每次具体任务再单独确认画幅、数量与预算。</p>
+</blockquote>
+<h2>把资料编译成任务说明</h2>
+<p>选择与本次任务有关的部分，不能把全部品牌文档和所有图片塞进每次请求。比如做无文字背景只需要配色、材质、留白与参考风格；做产品海报才需要准确的名称与标识，但文字仍可后期排版。敏感业务指标不该为了“让模型更了解品牌”而上传。</p>
+<h2>小样验证</h2>
+<p>经授权后生成一个小样，用明确检查项评价“主体是否抢占标题区”“官方 Logo 是否由原文件合成”“是否出现未经证实的数字”。偏好不符就调整风格规则；事实错误要改数据来源与文案流程，不能只加“更加准确”四个字。</p>
+<h2>更新与交付</h2>
+<p>每次品牌规则变化保存版本及简短变更说明，让旧广告可以追溯使用了哪个规则。旧任务继续使用当时的快照；新任务采用新版本。最终交付一份人能读懂的 brief 和可审计的资产登记，而不是一段越来越长、无法维护的万能提示词。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S15</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--13-product-reference-edit-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/13-product-reference-edit.md">Markdown 源文件 ↗</a></div><h1>13｜给产品图换场景，同时检查包装与 logo</h1>
+<p>目标是将一张你有权使用的产品照片放进新的场景，同时尽可能保持产品形状、包装、文字和 logo。模型对这些细节的保持不是保证；教程的最后必须检查实际图片，不能只相信提示词里的“不要改变”。</p>
+<p>准备一张清晰产品图。可读标签、合适的拍摄角度与完整外形，比给一张模糊截图堆叠约束更容易检查结果。不要上传未获授权的客户资料或保密样品。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 编辑我提供的产品照片。把背景换成浅色工作台和自然窗光，保留产品外形、包装颜色、全部可见文字与 logo，不添加新卖点或标识。先确认图片可读、查询参考图编辑模型和 schema，展示输入及费用认知，暂不上传或提交。等我同意后只生成一个版本；完成后与原图比较，指出变形或文字不一致的地方。</p>
+</blockquote>
+<p>这里让 Agent 先停止在预览阶段，因为上传本身也是数据外发，需要与生成一起说明。已明确授权上传与生成的工作流可以合并交互，但不能把“先估价”解释成允许发出素材。</p>
+<h2>把保留项写成能检查的要求</h2>
+<p>用具体描述替代“品牌保持一致”。例如瓶身长宽比例不能明显改变；盖子颜色不变；正面标签保持原来位置；不新增容量、功效或认证文字。对文字准确性有硬要求时，准备好使用原图抠图、背景生成与合成的替代路径，而不是无限重抽。</p>
+<h2>CLI：确认真实输入文件和模型</h2>
+<p>从教程包根目录开始，在同一 Bash 会话操作：</p>
+<pre><code class="language-bash">set -euo pipefail
+REFERENCE='./assets/product.png'
+test -s &quot;$REFERENCE&quot;
+atlas models list --type image --json
+MODEL='替换为支持参考图编辑的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas skills read atlas/references/image.md --raw
+</code></pre>
+<p>只有模型支持相应单图输入时才用下面的 <code>--image</code>。多参考模型可能需要 <code>--images</code> 或 schema 专用字段，不要把图片路径直接塞进 prompt 当作已经上传。</p>
+<pre><code class="language-bash">PROMPT='Edit the provided product photo. Change only the surrounding scene to a light worktable with natural window light. Keep the product geometry, packaging colors, visible label text and logo unchanged. No new claims, labels or objects on the product.'
+INPUT=(-p &quot;$PROMPT&quot; --image &quot;@$REFERENCE&quot;)
+atlas generate image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --explain --json
+</code></pre>
+<h2>费用估算遇到本地参考图怎么办</h2>
+<p><code>--explain</code> 不上传文件；<code>generate cost</code> 同样不会为了估价上传本地参考。若模型的报价输入要求已有 HTTP(S) URL，而目前只有本地文件，就不能把删掉参考图后的报价当成这次编辑的准确费用。</p>
+<p>可以使用已经获授权上传且仍有效的素材 URL 估价，或先解释为何报价不完整，再由用户决定是否授权下一步。不要为了让 cost 成功而偷偷把图片传到第三方图床。也不要把同模态另一个模型的价格当成本次报价。</p>
+<h2>经授权后执行与验收</h2>
+<p>与教程 02 一样，提交一次、保存回执、继续同一个 ID。下面会产生生成费用，并可能按模型要求上传参考图：</p>
+<pre><code class="language-bash">mkdir -p tutorial-output
+RUN_DIR=$(mktemp -d './tutorial-output/product-XXXXXX')
+if ! atlas generate image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --no-wait --json &gt; &quot;$RUN_DIR/submit.json&quot;; then
+  printf '%s\n' '保留回执并核对受理结果，不要自动重新生成。' &gt;&amp;2
+  exit 1
+fi
+PREDICTION_ID=$(python3 scripts/receipt_id.py &quot;$RUN_DIR/submit.json&quot;)
+printf '%s\n' &quot;$PREDICTION_ID&quot; &gt; &quot;$RUN_DIR/prediction-id.txt&quot;
+atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json &gt; &quot;$RUN_DIR/result.json&quot;
+</code></pre>
+<p>执行块只用于第一次提交。故障后不要重复运行它，转到 <a href="#doc-tutorials--43-recover-job-md">恢复教程</a>。</p>
+<p>检查 JSON 的任务状态和 <code>saved_files</code>，再打开原图与生成图对比。至少核对外形、包装颜色、文字/logo、背景边缘四项。不具备视觉检查能力时，明确标记等待人工确认。</p>
+<p>如果背景成功但标签变了，结果应写“背景已完成，标签保真未达标”，不能写“全部保持一致”。保存失败样例，让用户决定局部修复、原图合成或一次新的生成。新尝试需要计入原有预算与授权范围。</p>
+<h2>最终交付</h2>
+<p>交付编辑图、原始参考图标识、模型与任务 ID、通过与未通过的保留项。不强制复制原始客户照片到公共素材目录；对外演示时另用可公开的参考素材。</p>
+<p>运行路径、授权与状态约定见 <a href="#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><article id="doc-tutorials--14-controlled-variants-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/14-controlled-variants.md">Markdown 源文件 ↗</a></div><h1>14｜同一件产品生成三种背景，做受控变体</h1>
+<p>这次为同一件产品制作三种背景：浅色工作台、柔和居家环境、纯色棚拍。目标是比较背景，不同时改变产品颜色、机位和文案。交付三张可追溯的图片与一份保留项对照。</p>
+<h2>固定不变的部分</h2>
+<p>准备同一张产品参考图，记录文件摘要与可上传范围。把产品轮廓、包装颜色、标签位置、可见文字写成保留项。镜头角度、主体占比、输出画幅和光线强度尽量固定，只有背景描述变化。若光线与新场景明显冲突，可以把光线列为第二阶段变量，不在第一轮悄悄调整。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用同一张产品参考图，通过 Atlas 制作三种背景候选。固定产品外形、包装文字、机位与主体占比，每次只改背景。先预览第一个版本和费用，批准后才生成；另外两个版本也在我批准的总数量内执行。逐张保存回执，任何一次标签改变都标记失败，不自动加做第四张。</p>
+</blockquote>
+<h2>逐张执行，不并发盲跑</h2>
+<p>按教程 13 选择真正支持参考编辑的模型，读取 schema。先生成浅色工作台版本。确认参考输入生效、产品没有明显变形后，再使用同一模型与参数做其余两个版本。模型支持 seed 时可以记录，但不要认为相同 seed 能强制一致；模型或输入变化后更没有这种保证。</p>
+<p>用下表为每一轮保留证据：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>唯一变化</th>
+<th>回执</th>
+<th>产品保真</th>
+<th>背景符合</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>浅色工作台</td>
+<td>执行后填写</td>
+<td>人工检查</td>
+<td>人工检查</td>
+<td>未审核</td>
+</tr>
+<tr>
+<td>B</td>
+<td>居家背景</td>
+<td>执行后填写</td>
+<td>人工检查</td>
+<td>人工检查</td>
+<td>未审核</td>
+</tr>
+<tr>
+<td>C</td>
+<td>纯色棚拍</td>
+<td>执行后填写</td>
+<td>人工检查</td>
+<td>人工检查</td>
+<td>未审核</td>
+</tr>
+</tbody>
+</table>
+<h2>同尺寸比较</h2>
+<pre><code class="language-bash">python3 scripts/blind_pack.py --inputs assets/variant-a.png assets/variant-b.png assets/variant-c.png \
+  --out tutorial-output/background-review --seed 17
+</code></pre>
+<p>脚本只打乱文件名并生成评分表，不调用模型。把 <code>review/</code> 交给审稿人，保留 <code>private-map.json</code> 给组织者。严格盲评还应清理可泄露模型身份的元数据；本脚本不会自动重编码。</p>
+<h2>验收与停止条件</h2>
+<p>先淘汰产品变形或文字失真的候选，再比较背景偏好。选择了最好看的一张，不代表知道它会带来更高转化。三张都不保真时改为“原产品抠图＋背景合成”，不要通过增加抽卡次数掩盖路线不适合。背景可用但文件尺寸不对，只做本地导出。</p>
+<h2>复用</h2>
+<p>记录接受的背景描述、保留约束、模型版本、实际参数与失败样例。下一批 SKU 仍需抽样确认，因为包装和透明材质变化可能改变难度；不要把一件商品的通过当成全目录通过。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--15-product-detail-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/15-product-detail.md">Markdown 源文件 ↗</a></div><h1>15｜把产品卖点做成一套详情页图片</h1>
+<p>详情页通常需要主视觉、细节、使用场景和规格说明。本篇围绕一个虚构灯具做四张图，重点是将事实文案与生成画面分开。你要自己提供获授权产品照片和经确认的规格；包内不提供真实商品卖点。</p>
+<h2>先写事实清单</h2>
+<p>把可证实的尺寸、材料、颜色、接口和功能登记成表，并记录来源。没有来源的“提升效率”“护眼认证”“节能百分比”不能让 Agent 自动补写。图像模型只负责场景与视觉表达；价格、认证、参数和购买承诺由事实层控制。</p>
+<h2>页面分工</h2>
+<p>第一张说明产品是什么，第二张展示真实细节，第三张说明使用环境，第四张放规格。每页尽量只回答一个问题。细节页使用真实局部照片优先，生成的微观纹理不能当成工艺证明。尺寸标线和数字用排版工具添加，避免模型把 30 cm 改成 80 cm。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>根据我提供的事实表和产品照片，做四张详情页素材。只使用有来源的卖点，不新增认证、价格或客户评价。先列出每页表达的事实、需要生成的背景和必须使用的真实产品区域。按我批准的数量调用 Atlas；文字与规格由本地排版添加，逐页验收。</p>
+</blockquote>
+<h2>生成与合成</h2>
+<p>先为主视觉制作一个符合品牌规则的背景，按教程 13 保持产品，或使用教程 11 的合成方式保证原包装不被重画。批准这页后再做使用场景。规格页可以完全采用原图与排版，不需要为了使用模型而额外生成一次。</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/detail-background.png \
+  --output tutorial-output/detail/background-1200.png --width 1200 --height 1600 --mode cover
+</code></pre>
+<p>1200×1600 是教学目标，应改成实际页面槽位。每页文字少而准确，长参数留给 HTML 或可访问文本；不要把所有信息只嵌在图片里。</p>
+<h2>逐层验收</h2>
+<p>产品负责人逐项核对事实；设计者检查布局、对比度与多页一致性；执行者检查文件、尺寸和引用路径。生成式使用场景不要暗示未经验证的耐高温、防水或承重能力。显示人像时也要有相应来源与使用许可。</p>
+<h2>失败与交付</h2>
+<p>错误数字改文字层，包装失真改合成路线，背景不符合再讨论生成。交付四张最终图、无字底图、事实来源清单和排版源文件；原始客户资料放私有存储，公开样例采用单独可公开素材。一次任务返回了四个 URL，不代表这四页已通过事实审核。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--16-multi-size-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/16-multi-size.md">Markdown 源文件 ↗</a></div><h1>16｜一套素材输出不同渠道尺寸，不拉伸原图</h1>
+<p>本次把一张获批素材输出为横版、方形和竖版。目标是在不同槽位保留主体与文字，不把原图拉伸成任意尺寸。三个尺寸是教学规格，不代表平台当前要求。</p>
+<h2>先区分三种操作</h2>
+<p>contain 等比缩小到框内，再补边，适合不允许丢信息的截图和产品图；cover 等比填满后裁掉边缘，适合背景；重新构图需要回到生成或设计步骤，适合原主体与目标画幅明显不兼容的情况。补边不是生成式扩图，扩图也不能保证新区域真实。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>把获批素材导出横版1600×900、方形1080×1080、竖版1080×1920三种版本。先分析主体和文字所在区域。能安全裁切就裁切，不能裁切就补边或给重新构图方案，不拉伸。不调用新的模型，除非我明确批准重构图。</p>
+</blockquote>
+<h2>执行两种确定性导出</h2>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/approved.png \
+  --output tutorial-output/sizes/landscape.png --width 1600 --height 900 --mode cover
+python3 scripts/media_ops.py fit-image --inputs assets/approved.png \
+  --output tutorial-output/sizes/square.png --width 1080 --height 1080 --mode contain
+python3 scripts/media_ops.py fit-image --inputs assets/approved.png \
+  --output tutorial-output/sizes/portrait.png --width 1080 --height 1920 --mode contain
+</code></pre>
+<p>脚本按中心裁切，不能自动找到人脸或产品。主体偏左或边缘有文字时先检查，不要把命令成功等同于构图正确。补白版本适合做排版底稿；透明素材需要单独保留 alpha 的处理链，本包的白色补边会改变背景。</p>
+<h2>文字后加</h2>
+<p>带标题的宣传图最好保存无字底图和可编辑标题层。先确定画幅再排文字，避免小图中标题太小或被裁掉。真实截图需要像素可读性，不能为了填满画幅把文字放到看不清。遇到密集信息，应减少图内信息或单独制作竖版布局。</p>
+<h2>质量检查</h2>
+<p>逐张读取宽高，打开最终文件，检查主体、logo、字幕区、安全留白与边缘。不同图像格式的透明和压缩特性不同，转换后再查看；扩展名不是格式证明。上传到实际渠道后检查平台二次裁切与压缩，必要时保留针对该渠道的派生版本。</p>
+<h2>交付与恢复</h2>
+<p>为三张文件写明用途与处理方法。某一张失败只重做对应派生图，母版保持不变。原分辨率不足时说明放大只是改变采样数量，不能声称新增的像素恢复了真实细节；需要超分或重生成再取得批准。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--17-blind-ad-selection-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/17-blind-ad-selection.md">Markdown 源文件 ↗</a></div><h1>17｜生成三张候选广告图，做人工盲选</h1>
+<p>你有三张候选广告图，想决定先用哪一张。这里做人工盲选，目标是提高选择过程的可解释性，不测广告转化，也不根据模型品牌先入为主。</p>
+<h2>保持比较条件相同</h2>
+<p>三张图要来自同一个 brief、同样的事实文案与相近画幅。先检查事实、产品保真和授权，硬错误的图直接排除并保留原因；不要把不存在的产品功能当作“更吸引人”的创意优势。待比较图在同样大小、同样背景下展示。</p>
+<h2>制作匿名候选包</h2>
+<pre><code class="language-bash">python3 scripts/blind_pack.py \
+  --inputs assets/ad-a.png assets/ad-b.png assets/ad-c.png \
+  --out tutorial-output/ad-review --seed 31
+</code></pre>
+<p>目录内 <code>review/</code> 是给审稿人的，<code>private-map.json</code> 是组织者保留的映射。不要把整个目录交给评分者。重命名无法消除水印或编码信息带来的身份提示；严格测试可另做统一格式的评测副本，但保存原文件供质量核对。</p>
+<h2>评分锚点</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>1 分</th>
+<th>3 分</th>
+<th>5 分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>指令遵循</td>
+<td>主要目标缺失</td>
+<td>大体符合，有明显偏差</td>
+<td>明确要求全部满足</td>
+</tr>
+<tr>
+<td>产品保真</td>
+<td>外形/标签错误</td>
+<td>有局部可疑变化</td>
+<td>对照参考未见关键变化</td>
+</tr>
+<tr>
+<td>伪影控制</td>
+<td>干扰使用</td>
+<td>近看可见，影响有限</td>
+<td>在约定展示尺寸无明显问题</td>
+</tr>
+<tr>
+<td>偏好</td>
+<td>不愿使用</td>
+<td>可接受</td>
+<td>在本任务中优先选择</td>
+</tr>
+</tbody>
+</table>
+<p>“5 分”也只代表本次检查条件下的评价，不能证明没有任何瑕疵。对产品保真不适用的纯背景任务，把该维度设为不适用，不能随手填满分。</p>
+<h2>组织评审</h2>
+<p>先让评审者独立填写包内评分表与理由，再讨论争议。不要让一位资深同事先宣布答案。记录被拒原因，比如 logo 变化、标题难读或场景与产品用途冲突。样本很少时报告票数和分歧，不把几个人的均值包装成精密排名。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>帮我为这三张已生成图片建立匿名评审包，不再调用 Atlas。隐藏文件名里的模型提示，保留私有映射，给出同条件的评分表。评分只评价指令、保真、伪影与偏好，不推测点击率或销量。等人工评分完成后再揭示来源。</p>
+</blockquote>
+<h2>验收与下一步</h2>
+<p>交付匿名候选、空白/已填写评分表、映射和选择理由。真正的投放实验需要在投放平台另做随机分流、控制预算和统计窗口；本篇的盲选结果只能决定先测试哪些素材，不能宣称“转化提升”。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--18-sku-batch-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/18-sku-batch.md">Markdown 源文件 ↗</a></div><h1>18｜从 SKU 表批量生成素材，逐条记录状态</h1>
+<p>把 SKU 表转成素材任务，先解决“哪一行对应哪个任务、发生异常后从哪里继续”。本篇用两条虚构 SKU 演示离线建计划，再逐条授权执行；不会一次自动跑完整个商品目录。</p>
+<h2>输入表的最小结构</h2>
+<p><code>examples/sku.csv</code> 包含 sku、prompt、reference_url。SKU 必须唯一、大小写也不能冲突；prompt 只能使用经确认的商品事实。真实商品需要参考图时，填写已经获授权且仍有效的 URL，不能只写“商品名”就期待模型还原真实包装。</p>
+<h2>先准备，不联网</h2>
+<pre><code class="language-bash">MODEL='替换为当前已确认模型ID'
+python3 scripts/batch_plan.py --csv examples/sku.csv --model &quot;$MODEL&quot; \
+  --out tutorial-output/sku-batch-01 --max-jobs 2
+</code></pre>
+<p>脚本生成每条 SKU 的配置、计划和 <code>batch.json</code>。它拒绝重复 SKU、空提示词、路径穿越和超出数量；不调用 Atlas。带单张参考 URL 时，必须按 schema 明确指定 <code>--reference-field</code>；模型要数组或其他结构时请改成逐项配置，脚本不会猜字段。</p>
+<h2>抽一行跑通</h2>
+<pre><code class="language-bash">python3 scripts/run_job.py preview --run-dir tutorial-output/sku-batch-01/lamp-white
+</code></pre>
+<p>预览不是估价。另用与计划相同的模型与 params 查询费用，确认当前账户、数量与参考素材外发授权。首件批准后才执行：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py submit --run-dir tutorial-output/sku-batch-01/lamp-white --approve
+python3 scripts/run_job.py wait --run-dir tutorial-output/sku-batch-01/lamp-white
+</code></pre>
+<p><code>submit</code> 返回 pending 时脚本退出码为 3，这是任务未完成，不应由上层自动重交。只有 <code>wait/get</code> 用来继续原 ID。脚本的 <code>attempt.json</code> 在首次尝试前落盘，第二次 submit 会被拒绝；不要删除它绕过保护。</p>
+<h2>从小样到第二行</h2>
+<p>审核第一件的产品保真、输出尺寸和交付文件。确认后对第二行单独预览、估价和批准。真实规模扩大时要加服务端项目额度、并发限制和账户级任务记录；本地 max-jobs 仅限制这次计划里的数量，不能限制其他机器同时消费。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>根据 SKU 表创建本地 Atlas 任务计划，先不上传和生成。检查 SKU 唯一性、事实文案、参考输入和行数上限。先对一条 SKU 做预览与估价，批准后提交一次并保存回执。任何受理未知的行暂停，不用重新提交填满“成功率”。</p>
+</blockquote>
+<h2>交付与恢复</h2>
+<p>每条 SKU 保留 prepared、pending、unknown、remote_failed、remote_succeeded 及内容审核结果。重新运行只读取已存在的计划，不创建一组新目录再跑一遍。下载失败恢复下载；包装失真记录内容失败，两者处理不同。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S6</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--19-image-to-video-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/19-image-to-video.md">Markdown 源文件 ↗</a></div><h1>19｜让一张图片动起来：生成、续查与视频验收</h1>
+<p>本教程从一张可用参考图生成一个短镜头。先做单镜头，可以把问题限制在主体保持、运动和实际视频规格上，不必同时调试分镜、配音与拼接。</p>
+<p>示例目标是 5 秒竖屏镜头。选择模型时必须确认它确实支持相应参考输入、时长和画幅；不支持时应换成经过用户同意的目标或模型，而不是无声丢掉要求。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>给 Agent 的任务说明</h2>
+<blockquote>
+<p>使用 Atlas，把这张参考图做成一个 5 秒竖屏镜头。镜头缓慢推进，主体保持稳定，不改变产品外形和文字。先查图生视频模型与 schema，说明音频支持情况、实际参数和费用认知；不先上传或提交。等我确认后生成一次，保存任务 ID，最后检查真实视频的时长、画幅、运动和声音。超时后继续原任务。</p>
+</blockquote>
+<h2>手动路径：先确认模型和素材</h2>
+<pre><code class="language-bash">set -euo pipefail
+REFERENCE='./assets/reference.png'
+test -s &quot;$REFERENCE&quot;
+atlas models list --type video --json
+MODEL='替换为支持本次图生视频要求的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas skills read atlas/references/video.md --raw
+</code></pre>
+<p>找不到与要求相符的模型时应停在这一步。不要拿文本生视频模型假装已经使用了参考图。</p>
+<p>在确认 <code>--image</code>、5 秒、9:16 可由当前 CLI 与模型接受后，构建输入：</p>
+<pre><code class="language-bash">PROMPT='A single continuous shot based on the reference image. Slow camera push-in. Keep the main subject stable and preserve the product geometry and visible markings. Subtle natural motion, no scene cut.'
+INPUT=(-p &quot;$PROMPT&quot; --image &quot;@$REFERENCE&quot; --duration 5 --aspect-ratio 9:16)
+atlas generate video &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --explain --json
+</code></pre>
+<p>分辨率和音频参数应按真实 schema 加入同一 INPUT。不要假设视频一定有声音，也不要把“提示词要求没有声音”当成关闭音频生成参数的替代。费用估算复用同一输入；本地参考与 URL-only 报价的限制见教程 13。</p>
+<h2>授权后提交一次</h2>
+<p>下方是付费步骤，只用于首次提交：</p>
+<pre><code class="language-bash">mkdir -p tutorial-output
+RUN_DIR=$(mktemp -d './tutorial-output/video-XXXXXX')
+if ! atlas generate video &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --no-wait --json &gt; &quot;$RUN_DIR/submit.json&quot;; then
+  printf '%s\n' '提交结果需要核对；不要重新运行本生成块。' &gt;&amp;2
+  exit 1
+fi
+PREDICTION_ID=$(python3 scripts/receipt_id.py &quot;$RUN_DIR/submit.json&quot;)
+printf '%s\n' &quot;$PREDICTION_ID&quot; &gt; &quot;$RUN_DIR/prediction-id.txt&quot;
+printf '任务 ID：%s\n' &quot;$PREDICTION_ID&quot;
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>随后继续这个任务：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json &gt; &quot;$RUN_DIR/result.json&quot;
+</code></pre>
+<p>本地等待结束不等于服务端失败。<code>10m</code> 仅限制这一轮等待；无论超时还是终端中断，都不要靠重复生成来“再等一下”。</p>
+<h2>技术规格与内容分开检查</h2>
+<p>从 <code>saved_files</code> 找到实际保存的视频路径。已安装 ffprobe 时可检查容器和媒体流：</p>
+<pre><code class="language-bash">VIDEO='替换为 saved_files 中的真实视频路径'
+test -s &quot;$VIDEO&quot;
+ffprobe -v error \
+  -show_entries format=duration:stream=codec_type,codec_name,width,height,avg_frame_rate \
+  -of json &quot;$VIDEO&quot;
+</code></pre>
+<p>检查实际时长、宽高关系与是否有音频流。这个命令读取媒体信息，不能证明全片都能正常解码，更不能证明动作自然或口型同步。正式交付还应完整播放，必要时加全片解码检查。</p>
+<p>内容检查应回答：是否采用了参考主体，是否出现形变或标识漂移，运动是否符合要求，有没有意外切镜或不需要的声音。对未达标部分如实记录；不能只截一张好看的首帧当作视频通过验收。</p>
+<h2>交付清单</h2>
+<p>交付真实视频文件或远程链接、模型与任务 ID、实际规格、视觉与声音检查结果。下载失败只恢复下载；动作未达标才涉及新的生成决策。二者不要混在一起。</p>
+<p>运行路径、授权与状态约定见 <a href="#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><article id="doc-tutorials--20-complete-ad-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/20-complete-ad.md">Markdown 源文件 ↗</a></div><h1>20｜把三段产品镜头剪成一条完整短广告</h1>
+<p>本篇把三段各5秒的获批产品镜头剪成15秒短广告。输入来自你已经完成的生成或拍摄；本地剪辑不产生模型费用。最终交付应有一个完整 MP4、字幕与审核记录，不能只给三段链接。</p>
+<h2>先确认时间线</h2>
+<p>使用 <code>examples/briefs/product-ad.md</code> 的三镜头练习：全貌、材质、使用场景。每段都应通过产品保真审核。逐段核对时长与画幅；少于5秒的镜头不能悄悄冻结末帧补足而不说明，长度多出的镜头则根据剪辑决定裁切位置。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>把已批准的三个产品镜头剪成15秒竖屏短广告，不重新生成。先检查每段时长、画幅和产品一致性，再统一视频规格。保留无字幕母版，另外添加我确认的字幕与配音。不要编写新卖点；原音轨是否保留先告诉我。</p>
+</blockquote>
+<h2>统一规格再拼接</h2>
+<pre><code class="language-bash">python3 scripts/media_ops.py concat \
+  --inputs assets/shot-01.mp4 assets/shot-02.mp4 assets/shot-03.mp4 \
+  --output tutorial-output/ad/picture-master.mp4 --width 1080 --height 1920 --fps 30
+</code></pre>
+<p>此工具会先把各镜头转成相同的画幅、帧率与编码，再拼接；为了后续统一声音，输出故意不含原音轨。不要用它保存有价值的对白；那种项目应在编辑器中逐轨管理。本地转码可能重复/丢弃帧来形成目标帧率，不能把它写成运动质量提升。</p>
+<h2>添加声音和字幕</h2>
+<pre><code class="language-bash">python3 scripts/media_ops.py mix-audio \
+  --inputs tutorial-output/ad/picture-master.mp4 assets/voice.wav assets/music.wav \
+  --output tutorial-output/ad/with-audio.mp4 --music-volume 0.10
+python3 scripts/subtitles.py lint --input assets/ad.srt --duration 15
+python3 scripts/media_ops.py burn-subtitles --inputs tutorial-output/ad/with-audio.mp4 \
+  --subtitles assets/ad.srt --output tutorial-output/ad/final.mp4
+</code></pre>
+<p>mix-audio 按视频时长补静音或裁音频；过长旁白会被截断，因此应先确认稿件时长，不能用该命令解决朗读过长。背景音乐大小是示例值，必须听审。字幕字号与位置也要在实际竖屏预览中确认。</p>
+<h2>验收整片</h2>
+<pre><code class="language-bash">python3 scripts/media_audit.py tutorial-output/ad/final.mp4 \
+  --decode --width 1080 --height 1920 --duration 15 --require-audio \
+  --output tutorial-output/ad/audit.json
+</code></pre>
+<p>技术检查后完整播放，检查切点、产品变化、字幕、声音突变和最后一个字是否完整。报告生成与后处理的各自状态，明确字体与音轨来源。</p>
+<h2>故障恢复</h2>
+<p>拼接失败只修视频规格，字幕乱码只修本地渲染环境；缺一个镜头再恢复该镜头任务。不要因为最后的 MP4 没导出就让 Agent 把前三个付费镜头全部重做。交付无字幕母版、最终版和分离音轨，便于后续本地化。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S2、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--21-character-continuity-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/21-character-continuity.md">Markdown 源文件 ↗</a></div><h1>21｜用角色参考制作多镜头视频并检查一致性</h1>
+<p>多镜头角色一致性需要把身份、服装、道具和场景连续性分开管理。本次制作三段镜头：正面介绍、侧面动作、远景离开。真实人物需有对应授权；练习可以使用你自己设计且有权使用的虚构角色。</p>
+<h2>准备角色包</h2>
+<p>使用一张审核过的主参考，必要时补侧面与全身参考，检查这些图本身是否属于同一角色。写清不可改变的特征，例如发型、外套、配饰、主色；把表情、动作和镜头大小列为可变项。角色包不是人物识别数据库，不附真实人物私人资料。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 为我提供的角色参考制作三个连续镜头。先确认参考图彼此一致，按 schema 选择支持角色/图像参考的模型。固定发型、衣着、道具与场景方向，只改变镜头和动作。先生成一段验证参考有效；批准后再做另外两段。保留失败样例，不靠换脸或虚构授权补救。</p>
+</blockquote>
+<h2>镜头级计划</h2>
+<table>
+<thead>
+<tr>
+<th>镜头</th>
+<th>变化</th>
+<th>固定项</th>
+<th>特别检查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01 正面</td>
+<td>轻微表情</td>
+<td>发型、上衣、配饰</td>
+<td>五官与参考关系</td>
+</tr>
+<tr>
+<td>02 侧面</td>
+<td>转身拿道具</td>
+<td>道具形态、手的左右</td>
+<td>遮挡后是否换人</td>
+</tr>
+<tr>
+<td>03 远景</td>
+<td>离开画面</td>
+<td>服装、运动方向</td>
+<td>全身比例与步态</td>
+</tr>
+</tbody>
+</table>
+<p>把每镜头作为独立任务保存，附相同参考与其特定动作。模型支持多参考时按照实际数组字段填写；不支持时不要把数张图拼成复杂图再假装获得原生多参考能力。使用上一镜头末帧可能帮助衔接，也可能把错误累积到下一镜头，应同时核对主参考。</p>
+<h2>逐段与跨段检查</h2>
+<p>完整播放每段，检查转头、遮挡、远近变化是否造成身份漂移。把第一帧、中间帧和最后一帧并排仅作辅助，全片仍要看。跨镜头检查道具换手、衣服颜色、光照方向和动作结束状态。不要让自动人脸相似度成为唯一判定，它无法评价剧情连续性，也不能证明身份授权。</p>
+<h2>修复策略</h2>
+<p>只有局部镜头失败时，缩小该镜头的动作幅度或改变拍摄距离；在用户批准的范围内重新生成该镜头。主参考本身矛盾则先修角色包。模型不支持必需控制时报告能力缺口，不能偷偷更换用户指定模型或扩展预算。</p>
+<h2>完成标准</h2>
+<p>交付三段审核过的镜头、角色包版本、镜头连续性记录及未通过事项。成片可以按教程20合并。保留“生成一致性通过”和“角色权利已确认”两个独立结论，技术相似不等于有权使用。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S3</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--22-native-audio-voiceover-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/22-native-audio-voiceover.md">Markdown 源文件 ↗</a></div><h1>22｜原生音频与后期配音，怎样选择和对齐</h1>
+<p>视频声音可以随模型一起生成，也可以后期加入旁白、环境音与音乐。本篇用一条无口型要求的产品镜头练习两条路线的取舍。目标是得到与画面长度一致、内容准确的声音方案。</p>
+<h2>先核对模型能力</h2>
+<p>在当前 video schema 里找音频相关能力与字段，不默认所有模型都有音轨。字段可能是布尔开关，也可能根本不存在。提示词写“静音”不能替代实际参数；工具返回 MP4 也不能证明里面有音频。</p>
+<p>原生音频适合探索氛围或模型能满足的同步效果；必须逐字准确的产品讲稿、后续要多语言复用的旁白，通常更适合独立录音或 TTS 再合成。这里是本任务的工程取舍，不是所有模型的质量排名。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>先检查我选定的视频模型能否生成音频。给出原生声音和后期配音两条方案，说明能否保证使用我的准确讲稿。不要在没有批准时生成两份视频。最终检查实际音轨、讲稿完整性和时间对齐；视频自带声音不代表内容已审核。</p>
+</blockquote>
+<h2>检查已有视频音轨</h2>
+<pre><code class="language-bash">python3 scripts/media_audit.py assets/clip.mp4 --output tutorial-output/audio-choice/probe.json
+</code></pre>
+<p>如果没有音频，明确报告，而不是让播放器静音设置成为唯一诊断。已有音频应先听审：是否有随机对白、错误发音或不合适的音乐。是否保留由使用者决定。</p>
+<h2>后期配音路径</h2>
+<p>按教程25准备旁白，先测量实际时长。需要15秒视频时，旁白宜在结尾留出自然停顿，具体时长由剪辑决定。示例合成会替换视频原音轨：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py mix-audio --inputs assets/clip.mp4 assets/voice.wav \
+  --output tutorial-output/audio-choice/vo-version.mp4
+</code></pre>
+<p>该脚本不会拉伸语音，会按视频时长补静音或截断。因此旁白过长时应改稿或明确调整视频，不直接截掉结尾后交付。需要保留原始环境声时使用多轨编辑器或另写经测试的混音步骤，不能假设这个简化脚本保留了原声音。</p>
+<h2>验收与恢复</h2>
+<p>完整听一遍，检查关键数字、品牌名、开头与结尾。声音与画面有因果动作时按帧核对；无口型要求也要避免声音出现时物体尚未动作。音轨错只重新配音/混音，视频画面不必重新生成。交付无声母版、原音轨版本、旁白与最终混音，标明最终选择。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S2、S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--23-first-last-frame-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/23-first-last-frame.md">Markdown 源文件 ↗</a></div><h1>23｜用首尾帧控制镜头，识别模型的能力边界</h1>
+<p>首尾帧控制的目标是让一个镜头从给定画面开始，在给定画面附近结束。中间运动是否自然仍需要检查。本篇制作一个产品从正面转到轻微侧面的短镜头，不把两个完全不同的物体强行当成连续状态。</p>
+<h2>先确认存在这项能力</h2>
+<p>查询当前模型 schema，确认有两个不同的图像输入或其他正式支持的首尾帧机制。CLI 存在 <code>--end-image</code> 这个选项不代表所有模型都接受它。没有对应能力就停在选型，或经用户同意改为两段镜头剪辑；不能把第二张图塞进 prompt 假装执行了控制。</p>
+<h2>准备两张相容的图</h2>
+<p>保持产品、光照和画幅一致，末帧只改变合理的角度或位置。先按教程16调整两图尺寸，检查输入图本身有没有标签变化。两张参考相矛盾时，模型可能扭曲中间帧；先修输入比长提示词更可控。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>使用这两张获批准的图片作为开始与结束状态。先查 Atlas 当前模型是否真的支持首尾帧；支持后展示两个输入字段及费用认知，不上传或生成。批准后提交一次，完整检查起点、终点和中间运动；没有该能力就明确停止，不退化成普通文生视频。</p>
+</blockquote>
+<h2>CLI 预览示例</h2>
+<p>只有当前模型与 CLI 的映射都已确认时才执行：</p>
+<pre><code class="language-bash">MODEL='替换为支持首尾帧的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas generate video &quot;$MODEL&quot; \
+  -p 'A continuous gentle orbit from the first reference to the final reference. Preserve product geometry and markings.' \
+  --image @assets/start.png --end-image @assets/end.png --explain --json
+</code></pre>
+<p>在预览里确认两个文件都映射到实际输入，不要忽略未知字段警告。根据 schema 补时长和画幅，再按教程19的授权、提交、续查流程执行。上传和价格限制与其他参考图任务相同。</p>
+<h2>验收：不能只看两头</h2>
+<p>保存实际视频，分别比较首帧、末帧与输入，再慢放中间运动。检查是否出现交叉溶解式变形、物体翻转、文字漂移或突然切换。第一帧压缩/色彩差异不必要求字节完全相同，但内容偏差应有明确容忍标准。</p>
+<h2>失败与交付</h2>
+<p>中间动作复杂时先缩小角度、延长允许时长或改变镜头设计，任何新的生成都计入授权。结果只能完成起点却无法符合终点时，报告部分完成，不说“首尾帧锁定成功”。交付参考对照、真实视频、模型与任务记录。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--24-video-extension-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/24-video-extension.md">Markdown 源文件 ↗</a></div><h1>24｜延长已有视频：接缝、动作和声音怎样检查</h1>
+<p>延长已有视频要检查三件事：模型是否真的使用原视频、接缝是否连续、声音是否衔接。本篇先完成视频延长的能力检查，再把生成片段与已有素材组合；没有该模型能力时提供一个本地剪辑替代，但明确它不等于生成式延长。</p>
+<h2>能力分支</h2>
+<p>在目录搜索 video extend，读取实际模型说明，确认输入是整段视频、末帧、还是一个已有生成任务引用。普通 image-to-video 从末帧生成后续片段，只能称“末帧续接”，不能冒充原生视频延长。不要创建未经证实的 <code>atlas extend</code> 命令。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>我要延长这段获授权的视频。先确认 Atlas 当前账号有没有相应模型，核对输入类型、时长上限、声音处理和输出是完整视频还是新增片段。批准后只提交一次。若没有能力，不生成替代任务；给出末帧续接或本地剪辑的区别，让我选择。</p>
+</blockquote>
+<h2>准备原片</h2>
+<p>保存原始文件，不在其上覆盖。检查实际帧率、时长、色彩与音轨。最后一秒应有稳定且可延续的动作；快速切镜、黑场、片尾字幕通常不适合直接延长。必要时先剪到一个合理接点，但保留剪切记录。</p>
+<pre><code class="language-bash">python3 scripts/media_audit.py assets/original.mp4 --decode \
+  --output tutorial-output/extend/original-audit.json
+</code></pre>
+<h2>参数与提交</h2>
+<p>支持视频输入的模型，按 schema 使用 <code>--video</code> 或对应字段，在 explain 中核对原文件确实进入请求。只接末帧的模型则按教程19执行，并在记录中标注路线。实际时长与分辨率依模型能力选择，不能假定请求5秒就一定精确返回5秒。</p>
+<p>收到结果先检查其内容是“原片加新增部分”还是“仅新增部分”。把完整结果再拼到原片后，会重复播放原内容；必须先核对这一点。</p>
+<h2>接缝检查</h2>
+<p>在接点前后各看一小段，比较主体位置、速度、运动方向、曝光与镜头轨迹。声音另听爆音、突变与重复对白。跨淡化只能遮盖轻微差异，不能修复身份改变或动作逻辑错误。字幕时间轴需要按最终剪辑重新检查。</p>
+<h2>本地替代与恢复</h2>
+<p>用户接受停格或重复镜头时，可在编辑器里复制片段/保持末帧，并清楚标为剪辑扩展；不能声称模型预测了后续动作。生成超时沿用原 ID；接缝失败只重做新增部分。交付原片、新增片段、最终版与接点审核记录。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--25-voiceover-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/25-voiceover.md">Markdown 源文件 ↗</a></div><h1>25｜把脚本生成配音，检查数字、专有名词与停顿</h1>
+<p>本篇交付一段可听的配音、最终口播稿，以及数字和专有名词检查记录。先把内容审定，再合成声音；否则每次改一个产品名称，都可能需要重新付费。示例文本使用虚构品牌，不克隆任何人的声音。</p>
+<h2>准备文稿与声音要求</h2>
+<p>将口播稿保存为 UTF-8 文本，写清语言、情绪、目标时长和使用场景。把“3.5”“2026”“API”“DeskLight”等读法另记在 <a href="examples/briefs/pronunciation.md">发音表</a>。界面显示文案与实际发音文本可以不同，但不要擅自改动事实、金额、单位或人名。</p>
+<p>目标时长是验收条件，不是所有 TTS 模型都有的参数。先用实际稿件读一遍，再决定删字、拆段或调整停顿；不要为了塞进十秒把声音加速到无法听懂。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 为我的已审定文稿制作普通合成配音，使用当前可用且适合中文的标准声音，不克隆真人。先查询 TTS 模型、语言、voice 和输入字段，预览完整请求与费用认知。等我确认后生成一次，保留任务 ID。交付音频、实际时长、数字和专有名词的逐项听检结果；未听检的部分明确标注。</p>
+</blockquote>
+<h2>选择 TTS，而非音乐或转写模型</h2>
+<p>CLI 支持音频命令的安装版本可以先执行：</p>
+<pre><code class="language-bash">atlas version --json
+atlas models list --type audio --json
+MODEL='替换为目录中的TTS模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas skills read atlas/references/audio-3d.md --raw
+</code></pre>
+<p>同属 audio 不代表用途相同。核实模型用途是文本转语音，查看文本字段究竟叫 <code>text</code> 还是其他名称，voice 是枚举、ID 还是可选默认值。不把音乐模型当作配音模型。如果当前 CLI 没有该命令，转到已连接 MCP 的 <code>atlas_list_models</code>、<code>atlas_get_model_info</code> 与 <code>atlas_generate_audio</code> 路线，不猜命令别名。</p>
+<p>复制 <a href="examples/config/image.json">图片配置</a> 为你自己的 <code>voice.json</code>，将 <code>kind</code> 改成 <code>audio</code>，填入真实模型与已核对的参数，删除不适用的 prompt。该配置是本包脚本输入，不是服务端原生请求体：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py prepare --config voice.json --run-dir tutorial-output/voice-01
+python3 scripts/run_job.py preview --run-dir tutorial-output/voice-01
+</code></pre>
+<p>只有确认本次费用与上传范围后，执行付费步骤：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py submit --run-dir tutorial-output/voice-01 --approve
+python3 scripts/run_job.py wait --run-dir tutorial-output/voice-01
+</code></pre>
+<h2>对照文稿逐句听</h2>
+<p>先用 <code>media_audit.py</code> 读取时长和音轨，再完整播放。数字、单位、缩写、品牌、人名各听一遍；注意句末是否被截断、词间是否出现不自然停顿、情绪是否偏离使用场景。机器转写回听可以辅助发现漏词，但不是正确发音的证明，额外转写同样可能计费。</p>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/voice.wav --require-audio --decode
+</code></pre>
+<p>路径需要替换成实际文件。若只发现一句读音错误，先修改对应短段并获得必要授权，重新生成该段后再合成。不要让 Agent 为比较几十个声音自动连续下单。提交过且正在处理的音频仍应续查原 ID。</p>
+<p>交付采用真实输出格式，不把 MP3 改名为 WAV。保存原始音频、最终稿、模型/voice 选择和听检结论；客户稿件不要混入公共示例。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S3、S5</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--26-transcript-subtitles-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/26-transcript-subtitles.md">Markdown 源文件 ↗</a></div><h1>26｜从录音得到转写和字幕，检查时间轴</h1>
+<p>从录音得到“可读文本”和得到“能同步播放的字幕”，是两项交付。字幕还需要可靠时间戳、分句和人工复核。本教程先检查 ASR 返回能力，再把实际结果转换为 SRT，不通过平均分配时长伪造对齐。</p>
+<h2>准备与首次请求</h2>
+<p>确保录音有合法使用范围，尤其是客户会议和个人语音。先检查音轨、实际时长、文件大小，再查询语音识别模型允许的语言、格式、长度与输入字段。Atlas 的 <code>atlas_transcribe_audio</code> 用于转写，但所选模型是否返回逐字或逐段时间戳，需要读取当前 schema 和结果说明。</p>
+<blockquote>
+<p>请用 Atlas 转写这段已获授权的录音。先查 ASR 模型是否支持本次语言和带时间戳输出，说明上传、费用与限制，不先提交。授权后保留原任务 ID，先交付原始转写；只有获得可靠时间戳时才制作 SRT。遇到不清楚的人名标注待核对，不补写听不见的内容。</p>
+</blockquote>
+<p>远程服务不能读取你机器上的 <code>/Users/...</code>。本地 MCP 上传需要你允许外发；已有授权 URL 则作为所选模型规定的音频输入。生成工具里的 <code>params</code> 结构也不等于本包 <code>run_job.py</code> 的配置或 REST 请求体。</p>
+<h2>将真实结果转换到中间结构</h2>
+<p>本包用数组存放 <code>start</code>、<code>end</code>（单位秒）和 <code>text</code>。这是教学中间结构，不声称 Atlas 每个 ASR 都返回这个结构。把实际 ASR 返回结果按其说明转换，保留原始响应以便追溯。示例文件 <a href="examples/subtitles/segments.json">segments.json</a> 是手写测试数据，没有经过真实转写。</p>
+<pre><code class="language-bash">mkdir -p tutorial-output/subtitles
+python3 scripts/subtitles.py from-json \
+  --input examples/subtitles/segments.json \
+  --output tutorial-output/subtitles/demo.srt --duration 4
+python3 scripts/subtitles.py lint \
+  --input tutorial-output/subtitles/demo.srt --duration 4
+</code></pre>
+<p>换成你的结果时，<code>--duration</code> 使用实际录音时长。脚本检查非负时间、结束晚于开始、顺序、重叠和越界；不会判断一句话对应哪段声音，也不会自动修正错字。双人同时讲话等确需重叠的材料，人工检查后再使用 <code>--allow-overlap</code>。</p>
+<h2>没有时间戳时怎么继续</h2>
+<p>可以先交付带“未对齐”标记的文本，再使用经过核实的对齐工具或人工标点时间轴。不要按字数均分整段音频，并声称已完成同步字幕。对于长录音，先读 <a href="#doc-tutorials--30-long-recording-md">30 分段教程</a>，明确模型时间戳相对片段还是相对原音频。</p>
+<h2>字幕内容与显示检查</h2>
+<p>专有名词按原始录音核对，不能用“读起来通顺”替代听证。逐句回放开头、中间和结尾，确认提示没有提前剧透、字幕消失时间合适、句子没有越过镜头或说话人变化。必要时分行，但不要在本来连续的专名中间断开。</p>
+<p>将字幕叠加到预览视频后再检查字号与遮挡，见 <a href="#doc-tutorials--34-subtitles-logo-outro-md">34</a>。字幕 lint 通过只代表结构合规；中文缺字、遮住产品、时间对不上都仍然可能发生。</p>
+<p>完成后交付 <code>transcript.txt</code>、真实时间戳结构、<code>captions.srt</code>、不确定词清单和转写任务 ID。保留审校前后版本；录音不清的地方用明确标记，不编造补全。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--27-localization-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/27-localization.md">Markdown 源文件 ↗</a></div><h1>27｜给同一条视频制作多语言版本</h1>
+<p>目标是把同一条已审定视频做成多语言版本，同时保留事实、品牌和镜头意义。一个语言版本要经历翻译、配音、对齐、字幕和审核，不应只把中文稿扔给 TTS 后直接交付。</p>
+<h2>先锁定母版</h2>
+<p>确定画面剪辑、字幕是否烧录、原音轨能否分离，以及片中有没有不能重新使用的素材。保留无字幕母版和独立声音最方便；只有带字幕成片时，应说明旧文字残留和重新制作的限制。用术语表固定产品名、数字、单位与不得翻译的字符串。</p>
+<blockquote>
+<p>基于这个已获授权的视频做英文和日文版本。保留画面中的产品事实和品牌，不增加功能或承诺。先交付两种语言的译稿和需要我确认的用语，暂不生成声音；确认后分别检查 TTS 支持，按授权生成。每个语言独立保存任务记录，交付视频、字幕、音轨和未完成的审校项。</p>
+</blockquote>
+<h2>翻译与口播稿分开管理</h2>
+<p>建立 <code>locales/en/</code> 和 <code>locales/ja/</code> 等独立目录，每个目录保存 <code>script.txt</code>、<code>pronunciation.md</code>、<code>voice</code>、<code>captions.srt</code> 和 <code>review.json</code>。这是项目目录约定，不是 Atlas locale 命令。翻译时明确语境、观众和语气；数字、币种和本地业务承诺需由业务负责人确认，不能由翻译模型顺手替换。</p>
+<p>逐句对照母版镜头：画面在讲哪个功能，译稿是否还在说同一件事。回译可发现部分偏差，但不是母语审核的替代。对外发布的重要文案应由熟悉目标语言的人审校。</p>
+<h2>配音长度不等于字幕长度</h2>
+<p>按 <a href="#doc-tutorials--25-voiceover-md">25</a> 生成每种语言配音，并读取真实时长。如果声音比画面长，先缩短口播或调整镜头，而不是直接截断；如果更短，可保留呼吸停顿或调整对应片段。普通旁白本篇不承诺人物口型同步。</p>
+<p>字幕应按该语言音轨重新对齐，不沿用中文时间戳强行塞入。按 <a href="#doc-tutorials--26-transcript-subtitles-md">26</a> 制作字幕，时间来自实际音轨或人工对齐。</p>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/master.mp4 --decode
+python3 scripts/media_audit.py ./assets/voice-en.wav --require-audio --decode
+python3 scripts/subtitles.py lint --input ./assets/captions-en.srt
+</code></pre>
+<p>上述路径为你准备的文件。确认配音不长于已批准的母版后，再做本地合成：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py mix-audio \
+  --inputs ./assets/master.mp4 ./assets/voice-en.wav \
+  --output tutorial-output/locales/en-vo.mp4
+python3 scripts/media_ops.py burn-subtitles \
+  --inputs tutorial-output/locales/en-vo.mp4 \
+  --subtitles ./assets/captions-en.srt \
+  --output tutorial-output/locales/en-final.mp4
+</code></pre>
+<p><code>mix-audio</code> 会替换原音轨，并按画面时长裁切/补静音，必须先检查长度；它不会自动安排每句话落在哪个镜头。背景音乐可按脚本第三输入加入，不能因此重复叠入含原人声的音轨。</p>
+<h2>按语言独立验收与恢复</h2>
+<p>核对发音、字幕、货币与单位、文化语境、缺字和镜头对齐。英文通过不代表日文通过；某个语言失败时只处理该语言的相关步骤。交付每种语言的成片、字幕、干声和审校记录，明确哪些是机器翻译稿，哪些经过人工审校。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--28-authorized-avatar-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/28-authorized-avatar.md">Markdown 源文件 ↗</a></div><h1>28｜用获授权肖像与声音制作讲解视频</h1>
+<p>本篇制作经过授权的讲解视频。输入是一张有使用权的肖像、批准的口播稿，以及已获授权或标准合成声音。目标是完成可追溯的合成讲解片，不把真人身份和声音当成随手可下载的素材。</p>
+<h2>在生成前检查授权范围</h2>
+<p>记录肖像来源、被表现者同意的用途、声音来源、发布渠道、授权期限和是否允许修改文稿。授权文件可以存于受控系统，本地清单只保存引用编号，不必把签字或证件交给模型。标准 TTS 与声音克隆应区分；本教程默认使用标准声音，不教授仿冒未经同意的真人。</p>
+<blockquote>
+<p>用我明确授权的肖像与文稿做讲解视频，使用标准合成声音。先检查当前 talking-avatar/lipsync 模型的输入与时长限制，解释会上传什么、如何标识合成内容及费用认知。没有所需授权或能力时停止。确认后只执行获批的文稿，不让人物说额外的话，交付完整视频和口型、声音、披露检查结果。</p>
+</blockquote>
+<h2>先音频，后视频，保存两份回执</h2>
+<p>审定口播稿后按 <a href="#doc-tutorials--25-voiceover-md">25</a> 生成声音，完整听检。不要先让头像模型说完再修改文本，因为一次读音错误会拖着视频一起重做。音频通过后，记录真实时长，再选择支持肖像+音频输入的模型。</p>
+<p>通过 <code>atlas_list_models</code> 查询 Video 类候选，再读取 <code>atlas_get_model_info</code>。确认工具实际需要的字段：图像可能是单 URL，声音可能是音频 URL，部分模型还要求视频模板。仅知道模型名字包含 avatar 不足以推断参数。若选择 <code>atlas_quick_generate</code>，先确认模型解析唯一且输入映射正确；面向发布任务优先使用已确定模型的明确请求。</p>
+<p>取得上传许可后，把肖像和声音变为当前模型支持的输入。保留素材校验值、具体模型 ID 和两次任务 ID。不要将真实本地文件名放进 prompt 后当作已经上传。</p>
+<h2>视频验收要看连续段落</h2>
+<p>检查眼睛、牙齿、嘴部边缘、头颈连接、手部和背景的连续运动。听声音是否完整，口型有没有持续偏移；不能只凭首帧肖像接近就判定合格。对于镜头转动很大或嘴部被遮挡的输入，先换用获授权且更合适的照片，不应擅自抓取另一张网络肖像。</p>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/avatar-final.mp4 --require-audio --decode
+</code></pre>
+<p>实际文件路径由回执确定。解码检查不能测量口型同步，仍需观看和听检。若只声音坏了，先核对原音频；若音频正确而口型错位，问题在视频阶段，不必重新生成 TTS。</p>
+<h2>发布与交付</h2>
+<p>按照你的使用场景和适用要求清楚披露这是合成视频，避免暗示真人参加录制或亲自发表了未批准的讲话。身份与授权不能仅靠一个 <code>consent=true</code> 字段获得证明。交付视频、批准稿、合成说明、素材授权引用、模型/任务记录和人工检查结果；原始肖像与授权文件保持受控，不放进公开示例仓库。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S5</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--29-background-music-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/29-background-music.md">Markdown 源文件 ↗</a></div><h1>29｜为产品演示制作背景音乐与声音层次</h1>
+<p>目标是在产品演示中增加音乐，同时保证口播清楚、不遮住操作声。音乐创作、授权确认与混音是独立环节。本篇不假设生成音轨天然拥有你需要的所有商业使用权。</p>
+<h2>写清音乐 brief</h2>
+<p>描述时长、节奏、情绪、乐器、是否无歌词，以及视频哪里需要起伏。使用“轻电子、克制、弱鼓点、为旁白留空间”这样的声音特征，不要求冒充某位在世音乐人或已有歌曲。确认当前服务的使用条件和项目的发布许可，由实际许可决定能否使用。</p>
+<blockquote>
+<p>用 Atlas 为这个产品演示准备一段无歌词背景音乐。先查音乐模型的输入、时长和输出能力，说明费用与使用条件中仍需确认的部分。授权后只生成一个候选；配音单独保存，音乐不能盖过人声。交付原始音乐、混音预览和完整听检意见，不把示例增益当成平台响度标准。</p>
+</blockquote>
+<p>音频目录中区分 TTS、音乐和 ASR。读取模型 schema 后准备请求，通过 <code>atlas_generate_audio</code> 或当前 CLI 音频入口提交。遇到模型只支持固定时长时，先确认是否可接受；不要伪造 <code>duration</code> 参数。</p>
+<h2>保留干净的声音分层</h2>
+<p>至少有画面母版、旁白干声、音乐三个文件。模型原生声音里已经混有音乐时，不能简单再叠一层并假定不会冲突。先决定保留、替换还是重新剪辑；本包混音脚本会替换原视频音轨，不自动分离人声和音乐。</p>
+<p>完整播放候选音乐，核对有没有意外人声、突兀的开头、收尾截断、过强的瞬时峰值，以及与品牌不符的情绪。涉及修改音乐段落时保留原稿，不把短片段反复循环当成唯一处理方法。</p>
+<h2>先看三条素材时长</h2>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/demo.mp4
+python3 scripts/media_audit.py ./assets/voice.wav --require-audio
+python3 scripts/media_audit.py ./assets/music.wav --require-audio
+</code></pre>
+<p>确保口播完整落在画面长度内；本包脚本会按画面时长补静音或裁切，不会重新编排音乐或自动完成句间对齐。确定后生成本地预览：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py mix-audio \
+  --inputs ./assets/demo.mp4 ./assets/voice.wav ./assets/music.wav \
+  --music-volume 0.12 --output tutorial-output/demo-mix.mp4
+</code></pre>
+<p><code>0.12</code> 是示范线性增益，不是实测最佳值或响度标准。脚本使用限幅保护，但不能替代完整的响度、真峰值与主观听检。需要自动压低音乐的项目可以采用经过验证的 ducking 混音方案；本脚本没有实现这一功能。</p>
+<h2>交付前用不同环境试听</h2>
+<p>分别检查开头、每句口播、转场和结尾，至少用耳机与常用播放设备检查。目标是人声清晰、没有明显削波、音乐收尾自然；符合技术参数也可能听起来疲劳。最终按发布渠道的当前规范做响度交付，保留测量配置和结果，不能把教程样例称为所有平台通用标准。</p>
+<p>交付干声、音乐原文件、混音成片、音轨来源与使用条件记录。只混音失败时重新运行本地步骤，音乐生成无需重做。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--30-long-recording-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/30-long-recording.md">Markdown 源文件 ↗</a></div><h1>30｜处理长录音：分段、合并与专有名词校正</h1>
+<p>长录音要先分段，再转写和合并。难点在于模型输入限制、分段边界与时间轴；把每段的文字直接拼接，很容易重复一句话或丢掉片段交界处的词。本包脚本只做本地切分与时间偏移，不替你调用 ASR。</p>
+<h2>了解原始文件</h2>
+<p>先保留母版，记录采样率、声道、时长和授权范围。若说话人分别位于不同声道，直接合成单声道会失去分离线索；本篇的分段脚本为了教学统一输出单声道 16kHz PCM，使用前应确认这符合本次识别要求，否则在可信音频工具中保留声道后单独处理。</p>
+<blockquote>
+<p>处理这段获授权的长录音，先查模型的语言、时长和体积限制，再提出分段计划，暂不上传。每段保留在原文件里的起止时间、请求 ID 和转写状态；不要自动重提未知受理的片段。合并时核对重叠语句，不能把每段时间戳都当成从整段录音起算。</p>
+</blockquote>
+<h2>本地切分并保存偏移</h2>
+<p>下面的 120 秒片长、2 秒重叠是教学选择，要根据实际模型限制调整。PCM 体积也必须检查，不能只看时长。</p>
+<pre><code class="language-bash">python3 scripts/audio_chunks.py --input ./assets/meeting.wav \
+  --out tutorial-output/meeting-chunks --seconds 120 --overlap 2
+</code></pre>
+<p>输出 <code>chunk-0000.wav</code> 等文件与 <code>chunks.json</code>。manifest 中的 <code>offset_seconds</code> 是这段在原录音中的位置；<code>segments_file</code> 表示后续应保存的 ASR 中间结果，此时文件还不存在，<code>transcribed</code> 为 false。脚本没有发网络请求。</p>
+<p>每段音频分别使用已验证的 ASR 请求并独立保存回执。先跑一段确认能力、识别效果和费用，再批准余下片段；不要把整个目录一把上传而不设数量和并发边界。重试只针对已确认可重新执行的片段。</p>
+<h2>保存片段内时间戳</h2>
+<p>把每段实际返回结果转换为 <a href="#doc-tutorials--26-transcript-subtitles-md">26</a> 的 <code>start/end/text</code> 数组。先确认这些时间相对于片段起点；若上游返回全局时间，不能再加一次 offset。将中间文件保存为清单中指定的名字，再编辑供合并使用的清单，去除失败或未识别项，不能填空数组冒充已经转写。</p>
+<pre><code class="language-bash">python3 scripts/subtitles.py merge \
+  --input tutorial-output/meeting-chunks/chunks.json \
+  --output tutorial-output/meeting-merged.srt
+</code></pre>
+<p>脚本会加偏移、排序并检查结构。默认拒绝重叠字幕；存在切片重叠时，先人工听取边界，决定保留哪段文本与时间范围，再合并。不要仅按相同字符串去重：讲话者可能真的连续重复同一句话。</p>
+<h2>专名、说话人与缺失段</h2>
+<p>用事先整理的词表核对姓名、项目名和缩写，记录不确定词而不是猜。没有可靠说话人分离时，不能为了美观替每句话编造说话者。某一段持续失败时，交付应显示该段时间范围缺失，而不是把前后字幕无缝拼上造成已全部完成的印象。</p>
+<p>最终交付合并文本、字幕、片段状态表和必要的缺失/歧义说明。原始音频和全部分段可能包含敏感信息，采用受控保存周期；对外复现只使用自备公开示例。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--31-video-upscale-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/31-video-upscale.md">Markdown 源文件 ↗</a></div><h1>31｜把视频做超分，并保存前后对照和质量记录</h1>
+<p>目标是把一段低清视频交给当前可用的增强模型，并保存可公平检查的原始输入、模型输出和评测记录。“输出变成 1080p”只说明尺寸增加，不足以证明细节真实、运动稳定或观感改善。</p>
+<h2>先设计样片，再确认接口</h2>
+<p>从完整素材中选择静止细节、运动、遮挡、字幕和压缩较重的片段，记录原时码。先用少量代表片段，而非直接提交整部视频。查询账户目录，确认确有视频增强/超分能力，并读取输入、倍率、输出、长度及费用字段。没有相应能力时，可用你获授权的其他超分工具产生结果，再沿用本篇检查流程；不能把文本生视频当成忠实增强。</p>
+<blockquote>
+<p>对这段视频做增强测试，先保留源文件并核对当前模型确实支持视频超分。展示输入限制、目标尺寸和费用认知，确认后只处理批准的样片。交付原片、未经再次压缩的模型结果、同时间轴比较与失败记录；不要声称没有原始高清真值也测得了恢复准确率。</p>
+</blockquote>
+<h2>固定对比条件</h2>
+<p>保存源编码、分辨率、帧率、裁切范围和是否有原生 HDR 信息。不同候选应使用同一解码后的内容和时段，不得给其中一个额外锐化后再比较。模型内部是否改变帧率或补帧要记录；即使输出帧数接近，也需检查起始偏移和尾部截断。</p>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/source.mp4 --decode
+python3 scripts/media_audit.py ./assets/upscaled.mp4 --decode
+</code></pre>
+<p>元数据不是质量分数。先对齐同一事件的时间和裁切，再生成方便观看的比较预览：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py side-by-side \
+  --inputs ./assets/source.mp4 ./assets/upscaled.mp4 \
+  --width 640 --height 360 --fps 30 \
+  --output tutorial-output/upscale-comparison.mp4
+</code></pre>
+<p>这个预览会缩放并重新编码，不能替代原文件的 100% 像素细节检查；脚本也不会自动寻找时间偏移。<code>--fps 30</code> 只规范预览播放，不用于修改原始评测基准。</p>
+<h2>看空间，也看时间</h2>
+<p>检查细线与文字是否变形、边缘是否有光晕、脸部是否生成陌生细节、纹理是否反复闪动。连续播放相机移动和遮挡出现的位置，首帧好看不代表整段稳定。把失败归到具体场景，而非只给一个没有解释的总分。</p>
+<p>没有真实高清参考时，PSNR/SSIM 不能直接被称为“恢复真值准确度”。有严格配对的高清源时，可以构造清楚记录退化过程的样本，算全参考指标；真实低清材料另做盲评和时序检查，二者分开报告。普通插值可作为本地对照，但不是高清真值。</p>
+<p>最终记录各样本技术规格、实际耗费（已知才填）、人工评价、错误与重复尝试。使用 <a href="#doc-tutorials--46-model-evaluation-md">46</a> 扩展多模型盲评；始终保留失败样本，不能只展示最成功的一段。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--32-photo-restoration-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/32-photo-restoration.md">Markdown 源文件 ↗</a></div><h1>32｜修复旧照片，区分细节恢复和生成式改写</h1>
+<p>旧照片修复可以改善可读性，也可能生成原片没有保存下来的细节。这个教程把清洁修复、放大、上色与生成式改写分开交付，避免把猜测的人脸、衣服纹理或背景文字说成历史事实。</p>
+<h2>保存原始扫描与修复目标</h2>
+<p>用最高可获得质量保存一份未修改扫描，记录照片来源、日期信息来自哪里、是否允许处理肖像。先列损伤：折痕、污点、褪色、模糊、缺损各自的位置。只想去划痕时，不要默认增加上色、磨皮、年轻化或改变背景。</p>
+<blockquote>
+<p>用 Atlas 处理这张有使用权的旧照片，优先清理划痕和污点，保留人物年龄、脸型、衣服和构图。先说明当前编辑模型能做什么、哪些细节可能被生成性补写，确认后处理一个版本。不默认上色；交付原片对照、处理范围和不确定细节说明，不把修复图当成历史证据。</p>
+</blockquote>
+<h2>从低风险变化开始</h2>
+<p>先检查原图真实尺寸和方向，按参考编辑流程确认模型确实接收图片。若照片文字、勋章或面部辨识有重要用途，优先采用受控局部修补，避免全图重新解释。缺损区域太大时，输出可以叫“视觉重建尝试”，不能承诺还原原貌。</p>
+<p>按照 <a href="#doc-tutorials--13-product-reference-edit-md">13</a> 预览、授权上传和提交，保存原任务 ID。将“清理划痕”和“上色实验”作为不同版本，分别记录变化。费用与失败恢复仍使用同一任务契约，没有专属 <code>atlas restore</code> 命令。</p>
+<h2>做同尺度对照</h2>
+<p>从原图和结果中选相同区域，以相同尺寸查看眼睛、嘴角、耳朵、文字和高频纹理。对齐与比较过程中不要额外给某一张锐化。需要制作说明用预览时，可先统一展示画布：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs ./assets/scan.png \
+  --output tutorial-output/scan-preview.png --width 1200 --height 900 --mode contain
+python3 scripts/media_ops.py fit-image --inputs ./assets/restored.png \
+  --output tutorial-output/restored-preview.png --width 1200 --height 900 --mode contain
+</code></pre>
+<p>两张预览仅方便看布局；细节仍需查看原始文件。较小的原片被放大后变得平滑，并不能证明模型找回了真实纹理。家庭成员可辅助辨认人物特征，但意见应作为人工核对记录，而非完美一致性的测量。</p>
+<h2>哪些结果应退回</h2>
+<p>面部比例变了、眼神不同、增添饰物、把模糊字补成可读但错误的字，都应明确标注。可以保留背景修复成功部分，重新局部处理；不要因为整体更漂亮就忽略身份漂移。重新调用模型是新尝试，需处于批准范围内，下载恢复则不应再生成。</p>
+<p>交付未改母版、修复版本、可选上色版本、变化清单和生成式补写说明。重要档案应把衍生图与原片严格区分，公开展示时清楚标识修复/重建性质。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--33-vertical-reframe-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/33-vertical-reframe.md">Markdown 源文件 ↗</a></div><h1>33｜把横版视频重构为竖版，保留主体与字幕</h1>
+<p>把横版视频变成竖版，至少有补边保留、中心裁切和逐镜头重构三种方法。先根据内容选择，而不是把整条视频的两侧统一切掉。代码能保证输出尺寸，主体、屏幕文字和字幕能否留下，需要实际检查。</p>
+<h2>先做镜头清单</h2>
+<p>观看母版，记录每次切镜与主要主体位置。演示软件界面时，画面两端可能都有必要信息；多人对话时，中心可能恰好是空位。已有烧录字幕也要记录其位置。明确最终目标尺寸；本文的 1080×1920 是示例交付，不是所有渠道固定要求。</p>
+<blockquote>
+<p>将这条获授权横版视频做竖版交付，保留主体、关键操作和字幕。先按镜头指出可裁切与不能裁切的部分，给我看低清构图预览；不调用生成式补画、不上传素材，除非我另外同意。完成后逐镜头检查，交付成片与处理方式记录。</p>
+</blockquote>
+<h2>路线一：保留全画面，固定补边</h2>
+<p>需要保留全部信息时，可以规范到竖版画布。本包命令使用白色补边、统一帧率并输出无声视频，音轨后续单独处理：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py normalize-video --inputs ./assets/landscape.mp4 \
+  --output tutorial-output/vertical-padded.mp4 \
+  --width 1080 --height 1920 --fps 30
+</code></pre>
+<p>这条路线没有裁掉内容，却可能让界面字太小。应在手机大小播放检查；可以拆成上下信息区或重新组织镜头，而不是继续放大到模糊。</p>
+<h2>路线二：确认主体居中后裁切</h2>
+<p>只有确认整段主体都在裁切区内，才使用固定中心裁切。下面按比例放大后裁切，保留原音频（存在时），不会上传：</p>
+<pre><code class="language-bash">ffmpeg -nostdin -n -i ./assets/landscape.mp4 \
+  -vf 'scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,setsar=1' \
+  -map 0:v:0 -map '0:a?' -c:v libx264 -pix_fmt yuv420p -c:a aac \
+  tutorial-output/vertical-cropped.mp4
+</code></pre>
+<p>先创建输出目录并核对 FFmpeg 可用。固定裁切不是自动主体追踪。主体在镜头中移动时，应在可信编辑器逐镜头设置关键帧，或使用经验证的跟踪工具；本包没有实现自动人物跟踪。</p>
+<h2>路线三：重排内容或经授权重新生成</h2>
+<p>当软件演示文字无法读取时，可改为局部画面与说明区组合；同时保留原截图内容，不凭空生成新的按钮。生成式扩展画面会引入不存在的信息，只有明确同意且模型支持时才使用，不能把它当成无损几何操作。</p>
+<h2>验收与恢复</h2>
+<p>检查每次切镜前后、主体移动边缘、画面中的文字和字幕安全区。完整解码确认文件可用，再用实际设备观看。HDR/色彩管理或复杂旋转信息的片源，应另做色彩流程验证，本文命令不承诺自动保留全部专业色彩语义。</p>
+<p>输出文件错误时重做本地转换即可，不要重新向 Atlas 提交原视频。最终交付说明各镜头采用的处理方式、是否去掉原声音、哪些内容需要用户确认。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--34-subtitles-logo-outro-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/34-subtitles-logo-outro.md">Markdown 源文件 ↗</a></div><h1>34｜给生成视频加字幕、logo 与片尾</h1>
+<p>本教程把字幕、logo 和片尾作为确定性后期，叠到已经通过检查的视频上。文字由审定文案和排版工具生成，不要求生成模型逐字写出商标或字幕。准备母版 MP4、UTF-8 SRT、有使用权的透明 logo 和片尾画面。</p>
+<h2>固定交付规格</h2>
+<p>先确定分辨率、帧率、字幕字号、安全区、logo 显示位置与片尾时长。批准稿保存成文件，生成模型不应临时改写产品承诺。字幕、logo、片尾三步分别保存输出，这样可以只重做出错的阶段。</p>
+<blockquote>
+<p>给这个已完成视频加上我提供的字幕、logo 和两秒片尾。保留原始内容和声音，不调用付费生成。先核对字幕时间与母版时长，再给出排版预览；检查中文缺字、品牌比例和遮挡，最后交付实际 MP4、外挂字幕与后期说明。</p>
+</blockquote>
+<h2>第一步：检查并烧录字幕</h2>
+<pre><code class="language-bash">mkdir -p tutorial-output/post
+python3 scripts/subtitles.py lint --input ./assets/captions.srt
+python3 scripts/media_ops.py burn-subtitles --inputs ./assets/master.mp4 \
+  --subtitles ./assets/captions.srt --font-size 24 \
+  --output tutorial-output/post/captioned.mp4
+</code></pre>
+<p>FFmpeg 需要有 <code>subtitles</code> 滤镜/libass，系统还需可用的中文字形。本包不附带字体文件。执行成功也要看屏幕上是否出现方框；换用有授权且覆盖所需语言的本地字体，再确认画面。需要复杂样式时可用 ASS，并在自己的后期工具中验证，而非把 SRT 当成任意排版容器。</p>
+<h2>第二步：叠加 logo</h2>
+<p>下面以宽 160 像素、右下角留 40 像素为教学示例。先确认母版尺寸足够，logo 不压住字幕。输入须为你准备的图片，文件后缀不能代替真实透明通道。</p>
+<pre><code class="language-bash">ffmpeg -nostdin -n -i tutorial-output/post/captioned.mp4 -i ./assets/logo.png \
+  -filter_complex '[1:v]scale=160:-1[logo];[0:v][logo]overlay=W-w-40:H-h-40[out]' \
+  -map '[out]' -map '0:a?' -c:v libx264 -pix_fmt yuv420p -c:a aac \
+  tutorial-output/post/branded.mp4
+</code></pre>
+<p>logo 是静态输入，overlay 默认重复其末帧。完整看一遍开头和结尾，确认不会消失、拉伸或挡住画面。上述位置不是平台强制安全区。</p>
+<h2>第三步：片尾与音轨</h2>
+<p>先按母版尺寸准备片尾图，再将它生成两秒静态视频；示例采用 1080×1920 和 30fps：</p>
+<pre><code class="language-bash">ffmpeg -nostdin -n -loop 1 -i ./assets/outro.png -t 2 \
+  -vf 'scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1' \
+  -r 30 -an -c:v libx264 -pix_fmt yuv420p tutorial-output/post/outro.mp4
+python3 scripts/media_ops.py concat \
+  --inputs tutorial-output/post/branded.mp4 tutorial-output/post/outro.mp4 \
+  --output tutorial-output/post/with-outro-silent.mp4 --width 1080 --height 1920 --fps 30
+</code></pre>
+<p>注意：本包 concat 为降低轨道不一致问题，明确输出无声母版。**不能把这个文件直接当有声成片交付。**从原母版提取获授权的声音后，使用 <a href="#doc-tutorials--29-background-music-md">29</a> 的混音步骤恢复，并设计片尾两秒如何收音；也可以在可信编辑器里统一编排音频。字幕总时长必须适配新的片长，片尾不能被误认为漏字幕。</p>
+<p>最终完整检查声音、字幕、logo、片尾和实际时长。分别交付原字幕与最终有声成片；单个阶段失败从上一文件继续，不重新生成画面。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--35-delivery-audit-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/35-delivery-audit.md">Markdown 源文件 ↗</a></div><h1>35｜交付前检查容器、分辨率、帧率、时长和音轨</h1>
+<p>本篇建立交付前的技术检查。它回答文件是否存在、媒体流是什么、是否满足指定规格、能否完整解码；不会回答创意是否优秀、字幕是否准确或产品是否变形。把两类检查分开，才能避免“FFmpeg 没报错”被当成最终作品合格。</p>
+<h2>写明期望规格</h2>
+<p>从需求中取出容器、分辨率、时长、是否必须有声音，以及可接受的误差。不要看到文件是 MP4 就假定它是 H.264，也不要仅看编码头把可变帧率认定为恒定帧率。旋转标记、像素长宽比、色彩空间与 HDR 信息都可能影响实际显示。</p>
+<blockquote>
+<p>检查交付目录里的视频，只做本地读取与解码，不上传、不重生成。先核对实际宽高、时长、音轨和容器，再检查整片能否解码；对帧率、旋转和色彩的未知情况明确说明。把技术检查和人工视觉/声音检查分开记录。</p>
+</blockquote>
+<h2>基础命令与严格检查</h2>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/final.mp4
+python3 scripts/media_audit.py ./assets/final.mp4 \
+  --width 1080 --height 1920 --duration 15 --tolerance 0.2 \
+  --require-audio --decode --output tutorial-output/final-audit.json
+</code></pre>
+<p>这里的 15 秒±0.2 秒是示例验收，不是所有平台规范。脚本返回 0 表示本次指定的检查通过，1 表示发现规格或解码问题，2 表示无法完成检查。没有传某个规格就不会检查该项；<code>content_review</code> 始终为 <code>not_performed</code>。</p>
+<p>默认全片解码上限为 180 秒，需要更长检查时显式使用 <code>--decode-timeout</code>。达到本地上限应报告未完成解码，不能将其解释为视频坏了或解码已通过。只读元数据时没有遍历每一帧。</p>
+<h2>看报告里容易被忽略的字段</h2>
+<p>检查 <code>video</code> 和 <code>audio</code> 数组，而不是只看第一个数值。<code>avg_fps</code> 和 <code>r_fps</code> 不一致时记录原因待查；二者相同也不能单独证明 CFR。<code>sample_aspect_ratio</code> 非 1:1 或包含 rotation 时，编码宽高与显示宽高可能不同。缺失 duration 不可自动当作零秒内容。</p>
+<p>如果需要固定编码、音频采样率或码率，先读报告，再在可信转换流程中明确设置并复检；本包脚本不会替你悄悄修复所有问题。两次转换造成的损失也应纳入结果说明。</p>
+<h2>将验收产物与运行日志分开</h2>
+<p>把最终文件与必要的人工审核记录放进专用交付目录，先确认没有 API key、客户未授权资料或内部 URL，再建立文件清单：</p>
+<pre><code class="language-bash">python3 scripts/manifest.py --root ./delivery --output ./delivery/manifest.json
+</code></pre>
+<p><code>manifest.py</code> 记录字节数和 SHA-256，拒绝符号链接；它不做敏感信息识别，也不能证明版权或内容准确。发送前后比对摘要，可以检查传输是否改变了文件。</p>
+<h2>不通过时从相应阶段修复</h2>
+<p>下载中断先重取原任务结果，码流损坏检查源文件或重新下载；规格不符再考虑本地转码；运动形变属于内容问题，可能涉及重新生成。每一类应保存不同原因，避免一个笼统失败码让自动化系统把整条链重跑并重复付费。</p>
+<p>最终报告应同时显示技术检查结果、人工审核结果和未验证事项。客户只要最终成片时，不必把所有内部日志一起打包。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--36-3d-delivery-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/36-3d-delivery.md">Markdown 源文件 ↗</a></div><h1>36｜图片生成 3D 资产后，怎样检查与导出</h1>
+<p>生成出 GLB 或 OBJ，只证明取得了某种文件，不等于资产能直接进入游戏、网页或制造流程。本篇以通用 glTF/GLB 交付为例，检查结构、纹理、尺度与外观；不承诺生成资产拥有可制造的拓扑或可动画绑定。</p>
+<h2>先定义目标用途</h2>
+<p>网页展示通常关注加载体积、纹理和渲染效果；游戏还需要面数、材质数量、碰撞体和性能约束；3D 打印则要另查封闭性、厚度与真实尺寸。记录目标工具和格式，避免拿一张预览图当成网格交付。</p>
+<blockquote>
+<p>用 Atlas 从我的获授权参考图生成一个用于网页展示的 3D 资产。先确认模型的 3D 能力、输入与输出格式，说明不可见背面可能被猜测，确认后生成一次。交付真实网格、纹理与预览，并检查加载、尺度和材质；不声称已经通过制造或游戏性能验证。</p>
+</blockquote>
+<h2>生成与产物选择</h2>
+<p>独立 MCP 中 3D 归入 Image 类型，并通过 <code>atlas_generate_image</code> 路线处理；CLI 则仅在当前版本和账户目录支持时使用 3d 路径。先读模型详情，确认是 image-to-3D 还是 text-to-3D，不能把普通图片输出当成模型文件。</p>
+<pre><code class="language-bash">atlas models list --type 3d --json
+MODEL='替换为当前账户可用的3D模型ID'
+atlas models get &quot;$MODEL&quot; --json
+</code></pre>
+<p>上传参考与生成需要明确授权。回执中可能同时有 GLB、ZIP 和渲染预览；逐一记录真实类型，不只下载第一项。ZIP 解包前审查目录，拒绝绝对路径、上级目录穿越、符号链接和异常大文件；不要执行包内脚本。</p>
+<h2>结构校验与本地导入</h2>
+<p>Khronos glTF Validator 可检查 glTF/GLB 的规范问题。使用官方工具，按其说明验证并保存报告；不把商业保密模型上传到未经批准的服务。规范错误与警告分开检查，验证器通过并不代表几何正确、材质好看或运行性能达标。</p>
+<p>在已安装的可信 3D 编辑器中导入实际资产。Blender 等工具的导入位置与版本有关，按当前安装界面选择 glTF/GLB 导入，不复制未知来源的自动执行脚本。旋转观察正面、侧面和背面，检查缺面、法线、透明材质、贴图丢失、比例与中心位置。</p>
+<h2>处理与重新导出</h2>
+<p>先保存原始生成文件，再在副本上处理多余网格、材质和尺度。单张图看不到的背面可能是生成的假设，重要物体应补充真实参考或人工重建。调整面数、压缩纹理、改变单位后，重新导入导出文件，避免导出选项漏掉贴图或对象。</p>
+<p>网页验收需在目标渲染器加载，检查旋转、缩放、移动端内存和透明效果。不要用桌面编辑器预览正常来证明所有终端可用。模型转换为另一个格式也不能通过改后缀完成。</p>
+<h2>最终交付</h2>
+<p>交付原始资产、处理后的发布资产、纹理（若外置）、预览、校验报告和单位/面数/修改记录。使用本包 manifest 对专用交付目录建立摘要；保留未通过项，例如“背面细节未核实”“未绑定骨骼”“未测试 3D 打印”。结构或导出失败先在本地修复，不默认再调用生成模型。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S3、S13</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--37-python-cli-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/37-python-cli.md">Markdown 源文件 ↗</a></div><h1>37｜用 Python 调用 CLI，持久保存每次任务回执</h1>
+<p>本篇用 Python 调用 Atlas CLI，并把一项业务操作对应到一个稳定目录。目的在于保留请求、受理状态和产物位置，尤其避免脚本在等待超时后从头重新生成。随包的 <code>run_job.py</code> 是教学包装器，不是 Atlas 官方持久工作流服务。</p>
+<h2>配置与目录</h2>
+<p>准备 Python 3.10+ 和已登录的 Atlas CLI。先从当前目录选模型，检查必填参数与价格，再把实际参数写入配置。样例 <a href="examples/config/image.json">image.json</a> 的模型 ID 是故意设置的不可用占位，不改就会被拒绝。</p>
+<pre><code class="language-bash">atlas version --json
+atlas auth status --json
+atlas models list --type image --json
+</code></pre>
+<p>本包配置只有 <code>kind</code>、<code>model</code>、<code>params</code>。<code>params</code> 是已经核对的模型参数，不能包含凭据或覆盖 model。包装器不映射本地 <code>@file</code> 媒体，只接受获授权的 URL；需要上传本地参考时先按 <a href="#doc-tutorials--13-product-reference-edit-md">13</a> 处理，不把本地路径当成远程 URL。</p>
+<blockquote>
+<p>将这个已核对请求作为一项稳定操作执行，使用固定 run 目录。先准备与预览，不提交；授权后只提交一次，保存任何返回的 ID，即使进程退出非零。等待失败只查原任务，受理未知时停止重提，不删除 attempt 标记来绕过保护。</p>
+</blockquote>
+<h2>分开运行，分开观察</h2>
+<pre><code class="language-bash">python3 scripts/run_job.py prepare --config my-image.json --run-dir tutorial-output/job-001
+python3 scripts/run_job.py preview --run-dir tutorial-output/job-001
+</code></pre>
+<p>prepare 只写本地文件，preview 调用 CLI 的 <code>--explain</code>，可能读取当前目录但不提交生成。价格需要另用正式估价入口，不能把 preview 当成报价。审查 <code>plan.json</code> 和预览后才进入付费步骤：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py submit --run-dir tutorial-output/job-001 --approve
+python3 scripts/run_job.py get --run-dir tutorial-output/job-001
+python3 scripts/run_job.py wait --run-dir tutorial-output/job-001 --wait-seconds 600
+python3 scripts/run_job.py inspect --run-dir tutorial-output/job-001
+</code></pre>
+<p>这些是独立阶段，不要在有 <code>set -e</code> 的一条 Shell 链里盲目串联。包装器退出 3 代表已知处理中，4 代表已知远程失败，2 代表错误或未知，0 才是本次阶段满足成功条件。被接受的异步提交通常就是处理中，所以 3 不代表需要再提交。</p>
+<h2>标记能保护什么，不能保护什么</h2>
+<p>提交前，脚本通过独占创建 <code>attempt.json</code> 记录一次尝试；同目录第二次提交会被阻止，崩溃也不自动移除。请求与参数有摘要校验，修改原计划会被拒绝。命令通过参数数组执行，不用 Shell 拼接，因此 prompt 不会直接成为 Shell 命令。</p>
+<p>这些措施只约束这个目录和包装器。新建另一个目录、另一台机器或直接调用 API 仍可能产生新任务；客户端文件不能保证服务端 exactly-once、跨设备额度或账号级幂等。共享不可信目录也不是安全边界。</p>
+<h2>测试与接入应用</h2>
+<p>先运行离线测试：</p>
+<pre><code class="language-bash">python3 -m unittest discover -s tests -v
+</code></pre>
+<p>测试用模拟调用覆盖超时、非零退出仍有 ID、未知状态、计划变化与重复提交，不实际调用 Atlas。将其接入应用时，可导入模块或使用 subprocess 参数数组启动；不要让外部请求指定任意 <code>--atlas</code> 可执行路径。</p>
+<p>日志包含 prompt、素材 URL 和路径等业务信息，应保存在受控位置；不要把完整 run 目录当成默认公开 artifact。成片验收另用 <a href="#doc-tutorials--35-delivery-audit-md">35</a>，不要把 wrapper 成功当成画面质量通过。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S6、S14</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--38-node-api-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/38-node-api.md">Markdown 源文件 ↗</a></div><h1>38｜把媒体生成功能接进 Node.js 项目</h1>
+<p>本篇提供一个不用第三方 SDK 的 Node.js REST 示例。它覆盖本地准备、单次提交和原任务查询，适合学习后端集成；它不是面向所有业务的生产 SDK，也不内置实时模型发现、报价、认证刷新或文件上传。</p>
+<h2>保持三种接口形状清楚</h2>
+<p>CLI 使用命令参数，MCP 生成工具常接收 <code>{model, params, dry_run}</code>，公开媒体 REST 的请求体则按所选模型使用展平字段。随包配置仍是 <code>{kind, model, params}</code>，客户端会编译为 <code>{...params, model}</code>，不把配置原封不动当 API 请求。</p>
+<p>接口路径依据公开 MCP 源码核对：图像 <code>/api/v1/model/generateImage</code>、视频 <code>generateVideo</code>、音频 <code>generateAudio</code>；3D 使用图像路径并要求先核实模型能力；查询为 <code>/api/v1/model/prediction/{id}</code>。模型是否当前可用、必填项和价格仍需单独查询。</p>
+<blockquote>
+<p>帮我用 Node 接入 Atlas 的媒体生成接口，先完成本地配置和假响应测试，不调用付费接口。密钥只保留在服务端，POST 不自动重试。上线后保存每次尝试、原始回执与任务 ID，浏览器只拿业务任务 ID；不要把服务端 API key 发给前端。</p>
+</blockquote>
+<h2>从可运行示例开始</h2>
+<p>文件在 <a href="examples/node/atlas-media.mjs">atlas-media.mjs</a>。推荐使用仍在维护的 Node 22 或更高兼容版本；脚本利用内置 fetch。准备经过 schema 核对的 <code>my-image.json</code>，先执行不联网的两个动作：</p>
+<pre><code class="language-bash">node examples/node/atlas-media.mjs prepare --config my-image.json --run-dir tutorial-output/node-001
+node examples/node/atlas-media.mjs preview --run-dir tutorial-output/node-001
+node --test tests/node-client.test.mjs
+</code></pre>
+<p>**这里的 preview 仅展示 REST 请求体，不等于 CLI 的在线 schema 编译，更不是 MCP dry_run 或报价。**测试使用注入的假 fetch，不读真实 API key、不发送网络请求。</p>
+<p>授权后才让进程安全获取 <code>ATLASCLOUD_API_KEY</code>；不要写进代码、网页或 Git。下面是实际付费入口：</p>
+<pre><code class="language-bash">node examples/node/atlas-media.mjs submit --run-dir tutorial-output/node-001 --approve
+node examples/node/atlas-media.mjs get --run-dir tutorial-output/node-001
+node examples/node/atlas-media.mjs wait --run-dir tutorial-output/node-001 --seconds 120
+</code></pre>
+<p>与 Python 包装器相同，退出 3 表示仍在处理，2 表示错误/未知，4 表示远程失败。请求可能已经受理但响应丢失，不能据此自动再次 POST。<code>attempt.json</code> 永不自动清除。</p>
+<h2>认证、查询与下载的边界</h2>
+<p>示例固定请求源站并拒绝 HTTP 重定向，不会把 Authorization 附到输出 CDN URL。查询返回中的非 2xx 也可能描述终态失败，要读 task status；401/403 停止，不擅自换账号。GET 可继续查询，但不能沿用 GET 重试策略去重试付费 POST。</p>
+<p>脚本不下载媒体。应用需要下载时，先核实结果来自对应任务，再使用不带 Atlas key 的受控下载器；限制来源、协议、重定向、大小和本地路径，不能向用户任意指定的内网 URL 发带凭据请求。</p>
+<h2>接入你自己的服务</h2>
+<p>浏览器调用你自己的业务接口，服务端将业务 ID 映射到 Atlas ID，数据库持久化账户、请求摘要和状态。只有所属用户能读该任务。使用队列处理长任务，并区分任务完成与产物保存。本文的本地目录教学方式不能替代多租户数据库、账务限制、审计和并发控制。</p>
+<p>最小验收包括：请求体没有多余 params 包装、密钥未输出、一个操作只发一次 POST、非零 HTTP 返回中的任务 ID 不丢失、查询错误不更换账户。假响应测试通过后，再按明确授权做一项真实小任务联调，核对正式 API 的返回形状。</p>
+<p>受理未知的请求进入核对队列，原任务成功只重试下载；这些流程在 <a href="#doc-tutorials--42-polling-webhook-md">42</a> 与 <a href="#doc-tutorials--45-unknown-submission-md">45</a> 继续展开。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S6、S10、S14</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--39-github-actions-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/39-github-actions.md">Markdown 源文件 ↗</a></div><h1>39｜在 GitHub Actions 中生成发布素材</h1>
+<p>在 CI 中生成发布素材，需要显式触发、固定代码来源、保护凭据和保存回执。不要把付费生成默认挂在每个 PR 或每次 push 上。本包提供手动触发示例，并将“只预览”和“真的生成”分开。</p>
+<h2>示例的具体保护</h2>
+<p><a href="examples/workflows/manual-generation.yml">manual-generation.yml</a> 放在 examples 目录，不会自动启用。它采用 <code>workflow_dispatch</code>，只允许私有仓库的 main 分支，execute 默认 false，固定单次图片提交。生成 job 使用名为 <code>atlas-generation</code> 的 environment，必须由你在仓库中配置审批人和密钥；写了环境名并不会自动创建审批规则。</p>
+<blockquote>
+<p>为这个私有仓库配置一条手动生成发布素材的 CI，默认只做请求预览。只使用受信任分支代码，API key 存于受审批环境。提交后保留回执，不因 workflow 重跑而重新生成；失败后先核对原任务。不要配置 pull_request_target 来运行贡献者代码并读取生成密钥。</p>
+</blockquote>
+<h2>准备仓库与参数</h2>
+<p>先把所需教程脚本审阅后放入目标仓库，核对真实模型 schema、价格和示例 prompt。复制 YAML 到 <code>.github/workflows/</code> 后再检查 paths。当前示例使用 Node REST 客户端，因此托管 runner 不需要额外安装 Atlas 二进制；已有安全安装渠道的自托管 runner 也可以用 <a href="#doc-tutorials--37-python-cli-md">37</a> 的 CLI 包装器。</p>
+<p>示例中的 actions 使用主版本引用以便阅读。上线前应按团队供应链策略核实并固定完整 commit SHA，记录升级流程；本包没有把未核实的 SHA 写成可信锁定值。</p>
+<h2>先跑 preview，再决定付费</h2>
+<p>在工作流手动触发页填入已核实模型，保持 execute=false。模型值经环境变量传到 Node，不直接插入 Shell 代码。预览只展示请求形状；该 Node 客户端没有实时 schema/价格查询，因此仍需事先确认模型当前必填参数和费用。</p>
+<p>确定范围后再显式 execute=true，并经 environment 审批。密钥仅在生成步骤注入。生成以单次提交开始，接受到任务 ID 后只轮询它。本例禁止同一次运行的第二次 attempt 自动执行生成，但新开 workflow run 仍可能重复付费，不能把它当作跨运行幂等。</p>
+<h2>回执与失败恢复</h2>
+<p>受理后，即使等待超时，仍将回执保存在受控 artifact，示例保留一天。回执可能有 prompt 与临时 URL，因此示例限制私有仓库；生产中还需设置访问范围、保存周期与脱敏。不要为方便下载，公开包含客户素材的整个运行目录。</p>
+<p>取回回执后使用原 ID 查询，不要点击 rerun 来“继续等待”。如果 runner 在落盘前被销毁而没有 ID，按 <a href="#doc-tutorials--45-unknown-submission-md">45</a> 核对。取消工作流只停止 CI 进程，不一定取消已经受理的服务端生成。</p>
+<h2>发布检查</h2>
+<p>真正用于 Release 或网站的文件需要下载、技术验收与人工内容检查，见 <a href="#doc-tutorials--35-delivery-audit-md">35</a>。本示例只演示请求与回执，不自动把未经审核的产物发布到 Release，也不自动修改代码提交。</p>
+<p>验收包括：默认无付费请求、非受信代码拿不到密钥、日志无明文 key、未知请求不重提、结果可用原 ID 继续查询。YAML 静态解析通过不等于 GitHub 云端联调成功；本包没有替你创建或运行工作流。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S6、S8、S10</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--40-n8n-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/40-n8n.md">Markdown 源文件 ↗</a></div><h1>40｜把 n8n 接成内容生产流程</h1>
+<p>n8n 可以把素材输入、Atlas 生成和后续分发连起来。本教程先做一条手动触发的最小流程，区分提交节点与状态节点，再增加业务持久化。已有社区节点时优先检查实际版本，不按照旧截图猜参数。</p>
+<h2>安装与最小导入</h2>
+<p>在你获授权管理的 n8n 环境安装 <code>n8n-nodes-atlascloud</code> 社区包，确认实例允许该包以及当前节点版本。使用 Atlas Cloud API credential 保存密钥，不写在 Code 节点、HTTP body 或可公开导出的 JSON 中。</p>
+<p>导入 <a href="examples/workflows/n8n-submit-poll.json">n8n-submit-poll.json</a>。它按照实际公开节点结构编写，包含 Manual Trigger、Atlas Task Submit、Atlas Task Status；没有有效凭据，模型是不可用占位，必须从当前节点下拉框重新选择并补上必填字段。未激活工作流不代表点击 Test 不收费。</p>
+<blockquote>
+<p>帮我接通 n8n 的 Atlas 内容流程，先只检查节点、凭据引用和参数，不执行生成。确认后一次提交，保存实际 prediction ID，再由 Status 节点查询；下载或发布失败不重新执行 Submit。任何对外发布先经过人工验收。</p>
+</blockquote>
+<h2>配置提交与查询</h2>
+<p>Task Submit 选择当前实际 Category、Model 和 <code>Submit Only</code>。Task Status 的公开示例从 <code>{{$json.prediction_id}}</code> 读取 ID；你仍要观察当前节点真实输出，因为不同包版本可能改变形状。最小示例中的等待时间字段单位由该节点界面定义，不能根据数字 15 猜是十五秒还是十五分钟。</p>
+<p>先在明确批准的单项素材上运行，确认 ID 已持久保存、Status 返回实际状态。状态未完成时只继续查询。设置节点重试时不要把所有错误统一设为“重跑提交”，尤其是请求超时或响应丢失。</p>
+<h2>生产使用要补外部状态表</h2>
+<p>最小 JSON 为教学图，没有数据库账本。要做批量业务，先用可靠存储保存业务 item ID、账户、请求摘要、attempt 状态和 prediction ID，再分支到轮询与下载。执行记录保留时间可能有限，不能把 n8n 的一次运行日志当作永久账本。</p>
+<p>提交节点发请求前写 attempt，受理后更新 ID；GET/状态节点出错可以恢复原查询。对未知受理项保留人工核对队列，不能通过清空状态重新触发。</p>
+<h2>下载、字幕与发布</h2>
+<p>只有已确认成功并拿到目标产物时，才调用 HTTP Request 下载文件。下载 URL 不应携带 Atlas 的 Authorization；按允许的来源和体积限制下载，不让用户任意提供的 URL 访问内网。进入下一步时检查 binary 数据是否确实存在，而不是只传递一个过期链接。</p>
+<p>有需要时把成片交给专门的受控后处理服务，再执行 <a href="#doc-tutorials--35-delivery-audit-md">35</a> 的检查与人工批准。自动发社媒、邮件或 CMS 是额外动作，应有明确发布授权，不能由“帮我生成素材”推断。</p>
+<h2>别把 Wait webhook 当成 Atlas 回调</h2>
+<p>n8n Wait 节点能够按时间或自身 webhook 恢复，但这不证明 Atlas 生成接口支持回调参数。没有明确平台契约时走状态查询；如需 webhook 通知，由你的服务在核实 Atlas 任务后发给自己的 n8n 流程，详见 <a href="#doc-tutorials--42-polling-webhook-md">42</a>。</p>
+<p>本包仅静态检查示例 JSON；发布前仍需在目标实例验证节点导入、凭据和结果形状。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S9、S11</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--41-comfyui-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/41-comfyui.md">Markdown 源文件 ↗</a></div><h1>41｜把 Atlas 生成素材接入 ComfyUI</h1>
+<p>本教程把 Atlas 返回的素材接入 ComfyUI，重点在云端任务与本地节点之间的类型边界。无需本地模型权重才能调用云端生成，不代表整个后处理图不需要本地算力或其他插件。</p>
+<h2>在正确环境安装</h2>
+<p>使用你的 ComfyUI 实际 <code>custom_nodes</code> 目录与运行它的 Python 环境。不要把某台机器的 <code>~/Documents/...</code> 当作所有桌面安装路径。先审阅官方节点代码与依赖，再在获授权环境安装，重启后确认节点列表中出现 AtlasCloud Client 和所需生成/预览节点。</p>
+<blockquote>
+<p>在我的 ComfyUI 中接入 Atlas，先确认运行环境、节点版本和现有图，不覆盖其他节点或凭据。先完成导入与参数检查，不点 Run；模型可用、费用与素材范围确认后，只跑一次批准任务。保留 prediction ID，预览节点失败不重新生成；分享图之前去掉密钥和私人素材信息。</p>
+</blockquote>
+<h2>导入教学图并核对能力</h2>
+<p><a href="examples/workflows/comfyui-image.json">comfyui-image.json</a> 使用官方公开示例中的三个节点类型：AtlasCloud Client、AtlasCloud Nano Banana Pro Text-to-Image、AtlasCloud Image Preview。图内没有 key，不能直接生成。它依赖特定节点和模型，<strong>不是自动兼容全部 Atlas 模型的通用图</strong>。</p>
+<p>导入后逐个检查缺失节点、输入输出插槽和参数。模型不可用时，应重新选择当前支持的模型与对应节点，并验证 schema；不要设置允许废弃模型的开关来掩盖能力缺失。缺失节点也不意味着应该安装名字相似的第三方包。</p>
+<h2>理解 URL 和 IMAGE 类型</h2>
+<p>生成节点通常返回 image URL 与 prediction ID，Image Preview 节点再取得素材并输出 ComfyUI 的 IMAGE 数据。URL 字符串不能直接当成张量接入所有图像处理节点。连接前看实际插槽类型；需要字幕、拼接或增强时，检查对应节点真的接受何种媒体。</p>
+<p>得到 IMAGE 后，可以进入你已安装并验证的本地处理链。新增一个后处理分支之前先保存原始产物和任务 ID，避免图中某个非确定节点被全图重跑时再次花钱。</p>
+<h2>凭据与可分享文件</h2>
+<p>官方 Client 示例会在 widget 中填写 API key。若本地使用该方式，保存与导出工作流前检查凭据是否被序列化；截图、工作流 JSON 和图像内嵌元数据都可能携带敏感内容。优先采用节点实际支持的安全配置方式，不能凭空声称某环境变量会被它读取。</p>
+<p>对外分享前，使用去除 key 的图、公开授权输入与不含客户信息的预览；不能只遮截图中的几位字符，却把完整 key 留在附件 JSON 里。最小样例只需要结构和无效占位，不需要真实令牌。</p>
+<h2>故障从具体节点恢复</h2>
+<p>生成已成功但预览下载失败：先保存 URL 和 ID，在同账户查询已有结果，单独重做下载/预览；不要直接从生成节点再跑整图。自定义节点缓存行为依版本而定，不能把“输入没变”当成一定不再请求的保证。</p>
+<p>交付时既给工作流，也给真实媒体产物和所用节点版本。图可以导入不代表模型当前有权限、参数正确或成品符合要求；这些需要分开验证。本包尚未在你的 ComfyUI 实例进行联调。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S12</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--42-polling-webhook-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/42-polling-webhook.md">Markdown 源文件 ↗</a></div><h1>42｜轮询与 webhook：怎样可靠等待生成结果</h1>
+<p>媒体生成通常比一次工具调用持续更久。可靠的等待方式要保存任务 ID，让等待进程可恢复，并把本地超时与服务端终态分开。本篇先提供能执行的轮询，再说明 webhook 在系统里的正确边界。</p>
+<h2>最小可执行等待</h2>
+<p>已有 Node 示例 run 目录与 ID 时，直接查询，不重新提交：</p>
+<pre><code class="language-bash">node examples/node/atlas-media.mjs get --run-dir tutorial-output/node-001
+node examples/node/atlas-media.mjs wait --run-dir tutorial-output/node-001 --seconds 120
+</code></pre>
+<p>或者使用 CLI 的原 ID：</p>
+<pre><code class="language-bash">PREDICTION_ID='替换为真实已受理任务ID'
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json
+</code></pre>
+<p>等待上限只限制本地进程。结束时仍在 processing，就记录“仍处理中”；不要转成生成失败，也不要新发一个请求当作延长等待。任务只有实际返回终态时才更新终态。</p>
+<blockquote>
+<p>对已受理的 Atlas 任务实现可恢复等待。只查询原 ID，保留账户与任务关系，按有限间隔轮询并设置本地截止时间；401/403 或 ID 不一致时停止，不更换账号。超时记录 pending/unknown，不再次提交。</p>
+</blockquote>
+<h2>应用里的持久状态</h2>
+<p>至少保存业务任务 ID、Atlas ID、账户引用、请求摘要、上次检查时间、下一次检查时间和终态。工作进程从队列领取待查询项；同一任务的状态更新使用乐观锁或数据库事务，防止多个 worker 互相覆盖。</p>
+<p>对 429、可恢复网络错误和非终态 5xx 使用有上限的退避与适当抖动；收到服务端重试提示时按契约处理。HTTP 5xx 内部可能已经返回 failed 的任务体，不应无限重查该终态。具体限流配额需要实际接口说明，本篇不给一个虚构的“安全 QPS”。</p>
+<h2>未核实 Atlas 回调参数，先不要编造</h2>
+<p>本次查阅的契约不足以确认可通用使用的 Atlas webhook 注册字段、签名算法与事件投递保证。因此本包没有 <code>callback_url</code> 或 <code>webhook_secret</code> 的假执行示例，也不把 n8n 的 Wait URL 写成 Atlas 原生回调功能。</p>
+<p>如果需要对你的应用发通知，可以由<strong>你自己的查询服务</strong>在确认终态后，将一个内部事件写入数据库/outbox，再投递到你控制的队列或回调接口。事件包含业务任务 ID、已核实状态、事件 ID 和版本，不含 API key。接收方验证你定义的身份与签名，并按事件 ID 去重。这是你的应用协议，不是 Atlas 标准。</p>
+<h2>真有官方 webhook 后仍需核对</h2>
+<p>上线前必须确认注册入口、签名覆盖字节、时间窗、重投机制、重复与乱序语义。验证事件后仍核对账户/任务归属，必要时读回服务端任务。不要允许某个伪造回调直接把另一个用户任务标成完成，或触发对任意 URL 的带凭据请求。</p>
+<p>通知投递采用至少一次时，接收方应幂等处理；“事件发出”“用户收到通知”“生成已完成”“文件保存完毕”仍是不同状态。通知失败重发通知，不重生成媒体。</p>
+<p>交付本教程时保留一次从 pending 到终态的实际状态记录，以及超时/重复查询测试。随包测试为模拟接口，不声称已经验证 Atlas 云端 webhook。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S3、S6、S9、S10</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--43-recover-job-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/43-recover-job.md">Markdown 源文件 ↗</a></div><h1>43｜等待超时或下载失败后，继续原任务</h1>
+<p>你已经点过生成，现在终端超时、Agent 会话断开，或者 API 显示成功但找不到文件。先不要再次运行生成命令。要判断的是原请求现在处于哪个阶段。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>第一种：已经有任务 ID</h2>
+<p>把它当作原任务的唯一查询入口：</p>
+<pre><code class="language-bash">PREDICTION_ID='替换为已返回的真实任务ID'
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>如果还在处理，继续查询或等待原任务：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json
+</code></pre>
+<p>不要仅根据 Shell 退出码判断结果。终态为 failed 或服务端 timeout，与本地 wait 达到时间上限，是不同情况。终态失败也不自动授权换模型重试。</p>
+<p>给 Agent 的恢复指令可以这样写：</p>
+<blockquote>
+<p>这个 Atlas 任务的 ID 是【填入真实 ID】。只查询和继续等待该任务，不要重新生成、切换模型或账户。远程完成后尝试取回已有产物；如果保存本地失败，告诉我远程链接、具体阶段和未完成事项。</p>
+</blockquote>
+<h2>第二种：生成已完成，但文件没保存下来</h2>
+<p>比较远程 <code>outputs</code> 与本地 <code>saved_files</code>，再检查实际路径是否存在、文件是否非空。一次远程成功不证明下载成功。</p>
+<p>继续原任务的读取/下载路径即可，优先让 CLI 根据真实媒体类型决定文件后缀：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>需要明确本地路径时，先核对真实格式，再使用：</p>
+<pre><code class="language-bash">OUTPUT='./recovered/result.mp4'
+mkdir -p './recovered'
+atlas generate wait &quot;$PREDICTION_ID&quot; --output &quot;$OUTPUT&quot; --json
+</code></pre>
+<p>上例仅用于已知输出确实为 MP4 的任务。图片、音频、3D 应使用真实后缀；不要通过改后缀冒充格式转换。再次失败时保留输出 URL 与错误阶段，不要调用生成来修复下载问题。</p>
+<h2>第三种：提交超时，连 ID 都没有拿到</h2>
+<p>这是“是否已受理未知”，不应写成“生成失败”。先保留原回执、发生时间、账户、所选模型与脱敏后的请求信息。检查有没有成功写到本地的 submit.json、终端输出或其他可靠记录。</p>
+<p>使用独立 MCP 且实际暴露 <code>atlas_list_predictions</code> 时，可以在同一账户查询历史，再用 <code>atlas_get_prediction</code> 核对候选任务。但相同模型和相近时间并不一定足以唯一匹配；证据不够时应继续保留未知状态，或通过平台支持渠道核对。不能猜一个 ID。</p>
+<p>本次核对的 CLI 指南没有提供可以在这里直接代替上述历史查询的统一命令，因此本教程不编造 <code>atlas jobs history</code> 之类的命令。</p>
+<p>新的一次生成调用可能被当作新任务计费。本地回执减少了丢失风险，但不能解决请求已到服务端、响应尚未保存时进程崩溃的所有情况。严谨的自动化还需要服务端幂等与请求核对能力。</p>
+<h2>第四种：登录或供应商访问错误</h2>
+<pre><code class="language-bash">atlas auth status --json
+atlas doctor --json
+</code></pre>
+<p>本地过期时由用户重新完成登录。本地仍为 logged_in，却收到供应商访问错误时，不要擅自更换 dev 环境、API 地址、账户或凭据。也不要把同一个原任务拿到另一个账户继续查询后，错误解释为任务不存在。</p>
+<h2>恢复结果应该怎么报告</h2>
+<p>可以按下面四句话交付：原任务 ID 是什么；目前确认的服务端状态是什么；产物已在哪里找到；本地保存或内容验收还有什么未完成。若始终没有得到 ID，就说受理结果仍未知，不宣称未扣费，也不宣称肯定扣费。</p>
+<p>这一篇的验收目标是减少错误重提交，不是保证所有任务最终成功。能准确停在未知状态，比自动再花一笔钱更可靠。</p>
+<p>运行路径、授权与状态约定见 <a href="#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><article id="doc-tutorials--44-missing-file-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/44-missing-file.md">Markdown 源文件 ↗</a></div><h1>44｜API 显示成功，为什么本地还是没有文件</h1>
+<p>服务端显示 succeeded，电脑上却找不到文件，通常说明生成和交付处在不同阶段。本篇从回执、远程产物、下载和本地路径逐层检查，目标是找回已经生成的结果，不再花钱生成一次。</p>
+<h2>先取得原任务的完整事实</h2>
+<p>保留任务 ID 和原账户，读取实际结果：</p>
+<pre><code class="language-bash">PREDICTION_ID='替换为原任务ID'
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>检查状态是否真为完成，以及任务类型是否应该产生媒体文件。ASR 可能主要返回文本，3D 可能返回多个网格和预览，不能对所有任务套用“一个 MP4”的交付规则。MCP text 内容或 REST data 包装也不能直接喂给只识别 CLI 根字段的脚本。</p>
+<blockquote>
+<p>这个任务已经远程完成但我没找到本地文件。请只检查原任务的 outputs、saved_files 与实际路径，保留账户，不提交新生成。区分没有产物、链接不能取、下载失败和文件保存到别处；给出明确已确认与未确认事项。</p>
+</blockquote>
+<h2>对照三个位置</h2>
+<p><code>outputs</code> 是服务端返回的产物引用；<code>saved_files</code> 是客户端宣称保存的文件；文件系统里的真实非空文件才证明落盘。缺少 saved_files 可能意味着使用了不下载模式、宿主没有文件工具或下载失败，不代表服务端未生成。</p>
+<p>从真实路径核对文件，不根据 URL basename 猜测。使用 Python 包装器时，CLI 工作目录是对应的 run 目录；相对路径应以那个工作目录解析，不一定是你启动终端时的目录。跨设备访问也不能把远端机器路径当本地路径。</p>
+<h2>只恢复下载</h2>
+<p>先核实输出类型，再让 CLI 取回原任务结果。没有硬性命名要求时使用默认扩展名：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>若确知输出是 MP4，再指定新的安全路径：</p>
+<pre><code class="language-bash">mkdir -p tutorial-output/recovered
+atlas generate wait &quot;$PREDICTION_ID&quot; \
+  --output tutorial-output/recovered/video.mp4 --json
+</code></pre>
+<p>不要覆盖不明旧文件；单任务多产物时检查全部输出，并确认 CLI 对自定义路径的处理。扩展名只用于命名，不会把 WebM 转成 MP4。</p>
+<h2>链接失败时检查原因</h2>
+<p>临时链接可能过期，代理或网络策略也可能阻止访问。先重新查询原任务取得当前可用引用，再通过平台支持的取回方式处理；不能保证每次查询都会刷新链接或恢复被清理的文件。浏览器能够访问而服务器不能访问时，排查各自网络和认证环境。</p>
+<p>不要为了下载向 CDN 发送 Atlas API key，也不要关闭 TLS 校验。受控下载器应限制协议、来源、大小和保存路径；返回 HTML 错误页也可能产生一个非空 <code>.mp4</code> 文件，因此还要用 <code>media_audit.py --decode</code> 核对真实内容。</p>
+<h2>正确的结束报告</h2>
+<p>可以交付“生成已完成，文件已恢复并通过解码，内容未人工审查”；也可以明确“服务端完成，但产物链接不可用，尚未保存本地”。远程完成却没有任何可用输出时，应保留未解决状态并核对平台，不杜撰路径或产物。</p>
+<p>下载修复与模型重新生成是两件事。只有内容本身未达要求且用户批准新尝试，才进入新的生成操作。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S3、S5</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--45-unknown-submission-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/45-unknown-submission.md">Markdown 源文件 ↗</a></div><h1>45｜提交超时且没有任务 ID，怎样核对而不重扣费</h1>
+<p>最棘手的失败发生在提交请求已发出、响应尚未保存时。这时没有任务 ID，并不能证明没有创建任务。本篇建立“受理未知”的核对流程，既不声称一定扣费，也不自动再发一个请求。</p>
+<h2>先冻结本次尝试</h2>
+<p>保留提交时间及其时区、账户引用、客户端版本、模型、请求摘要和脱敏日志。不要删 attempt 文件，不要把目录改名当成没有提交过，也不要让通用重试框架再次 POST。网络超时、进程中断和损坏 JSON 都可能留下这种状态。</p>
+<blockquote>
+<p>这次 Atlas 提交超时且没有可靠 ID。请先保留请求与日志，按受理未知处理，不重新生成、不更换账号。检查原回执和同账户任务历史，只在证据足够时关联已有任务；不能确认时列出需要平台核对的信息，不猜任务 ID 或扣费结果。</p>
+</blockquote>
+<h2>查本地可靠回执</h2>
+<p>使用本包包装器时，先查看运行目录的提交状态：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py inspect --run-dir tutorial-output/job-001
+</code></pre>
+<p>检查 <code>submit.stdout.txt</code>、<code>submit.json</code> 与 <code>submission-state.json</code>。原始输出可能包含已返回的 ID，即使命令退出非零也不能丢弃它。日志内容视为数据，不执行里面出现的命令；不把凭据文件复制给聊天助手。</p>
+<p>若拿到 ID，先查询并核对对应模型与账户，再进入 <a href="#doc-tutorials--43-recover-job-md">43</a>。不要从截断 JSON 中盲目截取一段看起来像 ID 的字符串并直接认定匹配。</p>
+<h2>查询同账户历史</h2>
+<p>独立 MCP 实际提供 <code>atlas_list_predictions</code> 时，可按当前工具 schema 读取最近任务，再用 <code>atlas_get_prediction</code> 核对候选。先发现真实参数，不编造任意时间过滤字段。CLI 是否有历史命令取决于当前版本；本教程不会假装存在 <code>atlas jobs history</code>。</p>
+<p>相近时间和相同模型只是候选证据。并发任务很多时，更需要服务端请求 ID、幂等键、完整输入摘要或平台支持确认；相同 prompt 也可能合法生成多次。无法唯一关联时保持 unknown，不替用户选一个最像的任务。</p>
+<h2>什么时候才允许重新提交</h2>
+<p>确认原请求未受理，或者用户在了解可能重复计费后明确批准新的独立尝试，才能新建操作。新操作应关联原未知请求以便审计，不能删掉历史。服务端是否支持持久幂等、保留多久、重复键与变化 body 如何处理，需要正式契约；不能只加一个叫 Idempotency-Key 的自定义 header 就声称实现了去重。</p>
+<p>本包的 attempt 标记只减少本地误重提，不能覆盖响应丢失窗口的全部风险。生产应用需持久化业务请求 ID、原始回执与核对状态，并设计人工或平台对账路径。</p>
+<h2>对账与清理</h2>
+<p>当任务历史和账单记录更新后，记录最终结论、证据与关联的任务。账单可能按不同时间汇总，不能用短期余额不变推断肯定未计费。保存周期根据业务与隐私要求决定；公开问题单只提供最少必要的脱敏信息。</p>
+<p>本教程成功标准是没有在证据不足时重复提交，并能准确记录未知状态，不保证所有请求都能立刻找回。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S3、S6</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--46-model-evaluation-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/46-model-evaluation.md">Markdown 源文件 ↗</a></div><h1>46｜给同一任务比较多个模型：预算、盲评与重复样本</h1>
+<p>给同一任务比较多个模型，需要固定输入和交付目标，同时把失败、重复尝试与实际成本留在记录中。最终漂亮的一张图可以说明一个案例，但不能单独代表模型整体能力。</p>
+<h2>先写评测问题</h2>
+<p>例如“根据同一产品图生成三种环境，包装文字保真且适合网页展示”，比“谁最好”更可检验。先固定输入、输出规格、每个模型的尝试次数、最大提交数量和内容验收项。模型只支持不同尺寸或参考语法时，应明确差异与不可比部分。</p>
+<blockquote>
+<p>为同一批素材比较三个当前可用模型。先按能力筛掉不满足要求的候选，固定输入与预算，不执行生成。获批后每个模型按相同预定次数取样，保留失败和额外尝试；盲评前隐藏模型名，评分只评价可观察质量，不推断转化率。</p>
+</blockquote>
+<h2>公平不等于请求字节完全相同</h2>
+<p>同一任务应保留一致的语义目标与参考素材，但模型参数和提示词表达可能不同。分别记录共通 brief、各自参数和适配改写，不暗中给某模型更长描述或更多参考。seed 的随机空间属于各自实现，相同 seed 数字不能证明跨模型样本被严格配对。</p>
+<p>对每项尝试单独建立 run 目录，保存模型版本信息、schema 时间、实际配置、返回状态与产物。只比较成功项会高估不稳定模型；把失败率和成功样本质量分开报告。</p>
+<h2>建立盲评包</h2>
+<p>取得实际产物后，用本地工具匿名编号：</p>
+<pre><code class="language-bash">python3 scripts/blind_pack.py \
+  --inputs ./assets/candidate-a.png ./assets/candidate-b.png ./assets/candidate-c.png \
+  --out tutorial-output/blind-eval --seed 42
+</code></pre>
+<p><code>review/</code> 是候选与空白评分表，<code>private-map.json</code> 由组织者保留。脚本复制原文件，文件内嵌元数据仍可能泄露模型或作者，发布前要检查；必要时对所有候选用同样方式生成无元数据预览，并把原始文件留作细节复核。随机命名不等于完整匿名化。</p>
+<h2>评分与样本数量</h2>
+<p>先让评分者独立判断指令遵循、主体保真、伪影、文字和整体可用性，再说明原因。视频增加时间稳定性与声音对齐。每个维度写出 1/3/5 分的可观察锚点；评分者不知道模型和价格，讨论在独立打分后进行。</p>
+<p>至少记录样本数、评分者数、评分分布与不同意见。样本很少时呈现探索性观察，不写成确定的统计优胜。传播点击或购买转化要用真实随机实验测量，不能由视觉偏好分数外推。</p>
+<h2>成本与结论</h2>
+<p>总成本包括失败尝试、被丢弃候选和后处理；未知费用保持未知。可以计算“已知实际花费 / 被接受产物数”，分母为零时应报告没有被接受产物，不能除零或填零成本。模型速度也需区分排队、推理、下载与人工审核，不能只比某次首个响应。</p>
+<p>交付任务级结论和适用范围，如某类素材标签保真较好、运动片段不稳定。将失败样例回流到模型选择和教程，而不把一张排行榜当作长期路由规则。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S5、S14</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--47-budget-approval-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/47-budget-approval.md">Markdown 源文件 ↗</a></div><h1>47｜给自动化任务建立预算与审批边界</h1>
+<p>自动化任务要控制的不只有单次价格，还包括上传范围、模型选择、次数、账户和授权有效期。本篇设计可审阅的预算与审批记录，区分客户端计划约束和服务端真正能够强制执行的额度。</p>
+<h2>先定义批准的内容</h2>
+<p>把任务目标、所用账户、模型、数量、输入摘要、是否允许上传、是否允许额外候选和有效期放在同一份记录。样例 <a href="examples/config/approval.example.json">approval.example.json</a> 默认为 <code>not_approved</code>、费用未知、上传禁止，它是本包教学记录，不会给 Atlas 账户增加真实权限。</p>
+<blockquote>
+<p>为这次生成建立范围和预算记录。先列模型、数量、输入、估算依据、允许的上传与迭代次数，未知价格不能填零。确认前不提交；参数或账户变化后重新说明差异。客户端标记不冒充服务端硬额度，收到超时也不自动再花钱重做。</p>
+</blockquote>
+<h2>报价绑定到实际请求</h2>
+<p>费用估算尽量使用与提交相同的参数。分辨率、时长、数量、原生音频和输入长度都可能影响费用，具体依模型契约。参考图报价需要 URL 时，先确认素材外发许可；省略必填参考得到的报价不能冒充完整价格。</p>
+<p>将审阅后的配置摘要与报价时间写入记录。参数变化后重新检查费用和授权，不沿用旧的“同意”。<code>max_estimated_total</code> 是估算边界，不能保证最终账单不变；价格保留时长与计费规则必须由平台正式能力支持。</p>
+<h2>操作防重复与预算是两道控制</h2>
+<p><code>run_job.py</code> 用稳定目录和 attempt 标记阻止本地重复提交，但不累计账户支出，也不检查例子的 approval JSON。<code>--approve</code> 只是调用者明确允许这一次 POST，不代表审批链完备，更不代表服务端预留额度。</p>
+<p>生产系统需要后端在同一个可靠事务中检查租户权限、预留额度和创建任务记录。多个 worker 并发时，不能每个都先读到“余额足够”再各自花一笔；要有原子的额度预留或平台提供的等效能力。取消、失败、实际扣款与预留释放需依据真实账务状态结算。</p>
+<h2>高成本变化应该可见</h2>
+<p>从草稿变成正式渲染、增加镜头、提高分辨率、切更贵模型、批量处理客户素材，都是应重新评估范围的变化。已明确批准的重复步骤无需无休止确认，但不能把“做一条视频”扩展成无限尝试直到满意。</p>
+<p>为运行保留只读发现、预览、已授权提交、待核对、完成这些阶段。发现与预览也可能请求网络，只是不应发起付费生成；不能把“无生成费用”描述为完全离线。</p>
+<h2>用失败案例验证控制</h2>
+<p>离线演练应覆盖：同一目录第二次提交、改动已审配置、价格未知、额度不足、并发预留、受理未知与下载失败。随包测试实际覆盖的是本地脚本边界，未实现多租户账务服务，所以不会声称并发硬预算已经通过验证。</p>
+<p>最终交付批准记录、请求摘要、实际任务记录、已知费用和偏差说明。账单总额与客户端看到的结果数量不一定一一对应，报告中分清估算、预留和实际扣款。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S2、S6、S14</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-tutorials--48-author-skill-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="tutorials/48-author-skill.md">Markdown 源文件 ↗</a></div><h1>48｜把自己的工作流写成 Skill，并提交复现测试</h1>
+<p>当一个流程反复成功，就可以整理成 Skill，让 Agent 按需要读取方法和调用已有工具。Skill 不是一份无限扩张的 API 手册，也不会因为写了“安全”就获得文件或计费权限。本篇附带可编辑样例和一组复现案例。</p>
+<h2>先定义适用边界</h2>
+<p>写清用户什么时候需要它、完成什么、需要哪些真实输入、哪些场景不应触发。例如产品广告 Skill 应服务“用 Atlas 做产品短广告”，不应在用户仅问广告策略时直接提交生成，也不应宣称接管所有通用图片请求。</p>
+<blockquote>
+<p>把我已经复现的产品广告流程整理成 Skill。入口只描述触发、输入、交付与必要规则；操作细节按需放进 references。沿用实际 CLI/MCP 能力，不发明新命令，不自动授予权限。补上只读预览、缺素材、受理未知、下载失败和授权变化的测试案例。</p>
+</blockquote>
+<h2>使用随包示例</h2>
+<p><a href="examples/skills/atlas-product-ad/SKILL.md">atlas-product-ad/SKILL.md</a> 有标准 name/description frontmatter，配套 reference 与 eval cases。复制到你实际宿主支持的测试 Skill 目录；先确认宿主文档和已安装版本的发现路径，不硬编码所有 Agent 都使用同一个目录。</p>
+<p>名称、description 和目录之间保持一致。描述用用户意图与能力边界表达；正文提供关键步骤与相对路径引用。模型目录、价格、当前 schema 从工具读取，不把几十个易过期 ID 复制进去。复杂创作知识放在 references 中，需要时才读取。</p>
+<h2>执行入口必须真实</h2>
+<p>CLI 环境读取安装版本的 Atlas 指南和 help；MCP 环境发现实际工具 schema。两者调用形式不同，Skill 只能教如何选择现有能力。没有终端的宿主不能执行 ffmpeg 时，应明确交付止于片段，或接入已获授权的后处理服务，不能假装成片已经保存。</p>
+<p>第三方网页、模型输出或素材元数据属于数据，不应被当作新指令执行。安装 Skill 不代表允许它读任意目录、上传任何客户素材、更换账户或突破预算；宿主和执行服务仍需强制权限控制。</p>
+<h2>测试触发、过程与产物</h2>
+<p>样例 <a href="examples/skills/atlas-product-ad/evals/cases.json">cases.json</a> 提供六个用例及期望行为，但期望列表不是实测成绩。先在只读/模拟工具环境检查误触发和步骤，再在获授权的真实环境检查端到端产物。</p>
+<p>比较不用 Skill、旧版本和新版本时，使用相同任务与评分标准。记录实际调用次数、错误重提、未知状态处理和交付完成率；不要只评审 SKILL.md 文笔。普通预算内任务也不应每一步都重复索取确认，从而让完成率下降。</p>
+<h2>提交与维护</h2>
+<p>贡献包带上用途、依赖能力、示例输入、真实或明确标注的测试输出、失败案例、验证日期和许可说明。版本升级说明改变了哪些模型选择或交付规则。将 public recipe、插件复制和 CLI 入口里的重复知识指向同一个来源，避免各自维护不同步骤。</p>
+<p>提交 PR 前检查相对链接、参数来源、密钥、素材授权和自动化测试。需要新增 API 才能完成的功能应作为独立工程需求，不能在 Skill 文案里先宣称已经有了。</p>
+<p>完成标准是其他维护者能理解何时使用、怎样调用、怎样验收，并按你的测试说明复现边界。本文只提供本地包，没有替你安装到宿主、发布到市场或提交 GitHub。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="#doc-SOURCES-md">S1、S3、S14、S15</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><article id="doc-CATALOG-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="CATALOG.md">Markdown 源文件 ↗</a></div><h1>Atlas 教程目录 · 48 篇完整正文</h1>
+<p>按需阅读，每篇均已写成教程。<strong>正文完成与离线测试，不等于线上付费生成或宿主联调已经完成。</strong> 包内不含真实模型生成样片；离线图案和音调仅用于验证脚本。</p>
+<p><a href="#home">从 README 开始</a> · <a href="index.html">离线阅读页</a> · <a href="#doc-common--EXECUTION-md">通用执行约定</a> · <a href="#doc-verification--REPORT-md">测试报告</a></p>
+<h2>首次接入</h2>
+<p><strong>01</strong> · <a href="#doc-tutorials--01-agent-setup-md">把 Atlas 接入你的 Agent，配置过程不产生生成费用</a></p>
+<p><strong>02</strong> · <a href="#doc-tutorials--02-first-image-md">从零生成第一张图片：保存任务回执和真实文件</a></p>
+<p><strong>03</strong> · <a href="#doc-tutorials--03-local-mcp-md">本地 MCP 接入：先发现工具，再预览付费请求</a></p>
+<p><strong>04</strong> · <a href="#doc-tutorials--04-model-selection-md">面对一大串模型，怎样按输入和用途选择</a></p>
+<p><strong>05</strong> · <a href="#doc-tutorials--05-schema-preview-cost-md">看懂 schema、--explain、dry_run 与费用估算</a></p>
+<p><strong>06</strong> · <a href="#doc-tutorials--06-upgrade-check-md">升级 Atlas 后，怎样检查旧教程还能不能用</a></p>
+<h2>开发者日常素材</h2>
+<p><strong>07</strong> · <a href="#doc-tutorials--07-website-assets-md">给新网站制作 Hero、功能插图和移动端素材</a></p>
+<p><strong>08</strong> · <a href="#doc-tutorials--08-article-og-md">给技术文章制作封面与 Open Graph 配图</a></p>
+<p><strong>09</strong> · <a href="#doc-tutorials--09-github-launch-md">给 GitHub 项目制作 README 横幅和发布配图</a></p>
+<p><strong>10</strong> · <a href="#doc-tutorials--10-onboarding-md">给应用制作一套 onboarding 插图</a></p>
+<p><strong>11</strong> · <a href="#doc-tutorials--11-real-screenshot-md">把真实产品截图装进宣传场景，不重画界面</a></p>
+<p><strong>12</strong> · <a href="#doc-tutorials--12-brand-brief-md">把品牌色、字体与参考图整理成可复用创作 brief</a></p>
+<h2>电商与品牌图片</h2>
+<p><strong>13</strong> · <a href="#doc-tutorials--13-product-reference-edit-md">用产品参考图更换场景，同时检查包装与 logo</a></p>
+<p><strong>14</strong> · <a href="#doc-tutorials--14-controlled-variants-md">同一件产品生成三种背景，做受控变体</a></p>
+<p><strong>15</strong> · <a href="#doc-tutorials--15-product-detail-md">把产品卖点做成一套详情页图片</a></p>
+<p><strong>16</strong> · <a href="#doc-tutorials--16-multi-size-md">一套素材输出不同渠道尺寸，不拉伸原图</a></p>
+<p><strong>17</strong> · <a href="#doc-tutorials--17-blind-ad-selection-md">生成三张候选广告图，做人工盲选</a></p>
+<p><strong>18</strong> · <a href="#doc-tutorials--18-sku-batch-md">从 SKU 表批量生成素材，逐条记录状态</a></p>
+<h2>视频创作</h2>
+<p><strong>19</strong> · <a href="#doc-tutorials--19-image-to-video-md">让一张参考图动起来：提交、续查与视频验收</a></p>
+<p><strong>20</strong> · <a href="#doc-tutorials--20-complete-ad-md">把三段产品镜头剪成一条完整短广告</a></p>
+<p><strong>21</strong> · <a href="#doc-tutorials--21-character-continuity-md">用角色参考制作多镜头视频并检查一致性</a></p>
+<p><strong>22</strong> · <a href="#doc-tutorials--22-native-audio-voiceover-md">原生音频与后期配音，怎样选择和对齐</a></p>
+<p><strong>23</strong> · <a href="#doc-tutorials--23-first-last-frame-md">用首尾帧控制镜头，识别模型的能力边界</a></p>
+<p><strong>24</strong> · <a href="#doc-tutorials--24-video-extension-md">延长已有视频：接缝、动作和声音怎样检查</a></p>
+<h2>声音与本地化</h2>
+<p><strong>25</strong> · <a href="#doc-tutorials--25-voiceover-md">把脚本生成配音，检查数字、专有名词与停顿</a></p>
+<p><strong>26</strong> · <a href="#doc-tutorials--26-transcript-subtitles-md">从录音得到转写和字幕，检查时间轴</a></p>
+<p><strong>27</strong> · <a href="#doc-tutorials--27-localization-md">给同一条视频制作多语言版本</a></p>
+<p><strong>28</strong> · <a href="#doc-tutorials--28-authorized-avatar-md">用获授权肖像与声音制作讲解视频</a></p>
+<p><strong>29</strong> · <a href="#doc-tutorials--29-background-music-md">为产品演示制作背景音乐与声音层次</a></p>
+<p><strong>30</strong> · <a href="#doc-tutorials--30-long-recording-md">处理长录音：分段、合并与专有名词校正</a></p>
+<h2>后处理与交付</h2>
+<p><strong>31</strong> · <a href="#doc-tutorials--31-video-upscale-md">把视频做超分，并保存前后对照和质量记录</a></p>
+<p><strong>32</strong> · <a href="#doc-tutorials--32-photo-restoration-md">修复旧照片，区分细节恢复和生成式改写</a></p>
+<p><strong>33</strong> · <a href="#doc-tutorials--33-vertical-reframe-md">把横版视频重构为竖版，保留主体与字幕</a></p>
+<p><strong>34</strong> · <a href="#doc-tutorials--34-subtitles-logo-outro-md">给生成视频加字幕、logo 与片尾</a></p>
+<p><strong>35</strong> · <a href="#doc-tutorials--35-delivery-audit-md">交付前检查容器、分辨率、帧率、时长和音轨</a></p>
+<p><strong>36</strong> · <a href="#doc-tutorials--36-3d-delivery-md">图片生成 3D 资产后，怎样检查与导出</a></p>
+<h2>自动化与集成</h2>
+<p><strong>37</strong> · <a href="#doc-tutorials--37-python-cli-md">用 Python 调用 CLI，持久保存每次任务回执</a></p>
+<p><strong>38</strong> · <a href="#doc-tutorials--38-node-api-md">把媒体生成功能接进 Node.js 项目</a></p>
+<p><strong>39</strong> · <a href="#doc-tutorials--39-github-actions-md">在 GitHub Actions 中生成发布素材</a></p>
+<p><strong>40</strong> · <a href="#doc-tutorials--40-n8n-md">把 n8n 接成内容生产流程</a></p>
+<p><strong>41</strong> · <a href="#doc-tutorials--41-comfyui-md">把 Atlas 生成素材接入 ComfyUI</a></p>
+<p><strong>42</strong> · <a href="#doc-tutorials--42-polling-webhook-md">轮询与 webhook：怎样可靠等待生成结果</a></p>
+<h2>恢复、质量与贡献</h2>
+<p><strong>43</strong> · <a href="#doc-tutorials--43-recover-job-md">等待超时或下载失败后，继续原任务</a></p>
+<p><strong>44</strong> · <a href="#doc-tutorials--44-missing-file-md">API 显示成功，为什么本地还是没有文件</a></p>
+<p><strong>45</strong> · <a href="#doc-tutorials--45-unknown-submission-md">提交超时且没有任务 ID，怎样核对而不重扣费</a></p>
+<p><strong>46</strong> · <a href="#doc-tutorials--46-model-evaluation-md">给同一任务比较多个模型：预算、盲评与重复样本</a></p>
+<p><strong>47</strong> · <a href="#doc-tutorials--47-budget-approval-md">给自动化任务建立预算与审批边界</a></p>
+<p><strong>48</strong> · <a href="#doc-tutorials--48-author-skill-md">把自己的工作流写成 Skill，并提交复现测试</a></p>
+</article><article id="doc-common--EXECUTION-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="common/EXECUTION.md">Markdown 源文件 ↗</a></div><h1>通用执行约定：先准备，再提交，再交付</h1>
+<p>本教程包的 48 篇正文全部写完。正文和离线样例的完成，不代表 48 个付费工作流已经联调。在线模型、账户权限、价格和插件版本可能改变，执行前必须查当前环境。真实客户照片、私有代码、字体文件和账户密钥均未随包分发。</p>
+<h2>环境与路径</h2>
+<p>Shell 示例采用 Bash，从教程包根目录执行；Windows 可用 WSL，或用 PowerShell 按同样步骤操作，不能把 Bash 数组原样贴入 PowerShell。Python 脚本使用 Python 3.10+ 标准库；Node 示例使用带内建 fetch 的 Node 22+，生产环境选仍受维护的版本。媒体步骤需要 ffmpeg、ffprobe，脚本不会自动安装软件。<code>assets/</code> 路径代表你自己准备的获授权素材；无需把它们上传到 Git 仓库。</p>
+<p><code>MODEL</code>、<code>MODEL_ID</code>、<code>REFERENCE_URL</code> 都是明确的配置变量，不是产品自带模型或素材。本包不固定某家模型及价格。查询实际 schema 后，把必填项、单位、默认值、参考字段和允许值保存到任务记录中；不能仅改一个模型名称便复用其他模型的参数。</p>
+<h2>三种入口各自使用自己的契约</h2>
+<p>CLI：<code>atlas models get MODEL --json</code> 读取参数，<code>--explain</code> 预览编译后请求，<code>generate cost</code> 估价。CLI 的参数与 REST 字段可能有映射，优先看预览。独立 MCP：通过实际发现的工具 schema 调用，<code>params</code> 内是模型参数；当前实现常返回文字内容，不保证 structuredContent。REST：生成请求是 <code>{&quot;model&quot;:&quot;实际模型ID&quot;, ...模型参数}</code>，不是把 MCP 的整个请求包原样 POST。</p>
+<p>查 schema 本身不等于调用生成模型。LLM chat、媒体生成都是潜在付费操作；上传会外发素材，即使上传步骤没有单独收费也需要授权。<code>--explain</code>、<code>dry_run</code> 不替代价格估算。独立 MCP 源码在 schema 缺失时存在跳过验证的路径，因此使用者必须自己确认 schema 已取得；不要把 dry_run 解释成所有参数一定经过完整验证。</p>
+<h2>完整操作记录</h2>
+<p>推荐一项业务任务固定一个目录：<code>tutorial-output/run-001/</code>。保存配置、版本、schema 记录、费用认知、授权范围、提交尝试、服务端 ID、结果观察、真实文件和验收结果。目录名不是服务端幂等键。异常后不要换一个目录再次提交相同业务任务。</p>
+<p>本包的 <code>scripts/run_job.py</code> 提供 prepare / preview / submit / get / wait / inspect。prepare 完全离线；preview 读取服务并预览，不生成；submit 需要 <code>--approve</code> 才会尝试提交。脚本只保存本地事实，不替代账户授权、服务端幂等或硬预算。<code>--approve</code> 仅表示操作者明确放行，不证明获得了外部客户授权。</p>
+<pre><code class="language-bash">python3 scripts/run_job.py --help
+python3 scripts/run_job.py prepare --config examples/config/image.json --run-dir tutorial-output/run-001
+</code></pre>
+<p>示例中的模型是占位符，prepare 会拒绝未填写的模型。先在当前账户发现真实模型并修改你自己的配置副本；不要随意填一个字符串来绕过检查。教程中的本地媒体工具则可使用离线 fixture，见 README 的离线演练。</p>
+<h2>何时可以重试</h2>
+<p>只读状态查询失败可以有界重试；已经确定受理的任务继续使用原 ID。提交超时且未得到 ID，记为 unknown，保留证据，核对同一账户历史或服务端记录。不得因为 HTTP 5xx、CLI 非零退出、空输出或断网就自动重交付费 POST。Ctrl+C 和本地等待超时不能证明服务端取消。再次运行新生成通常属于新操作，要重新确认范围。</p>
+<p>远程状态 completed/succeeded、文件下载成功、文件可解码、内容符合要求是四个独立检查。技术工具不会证明产品标签准确、声音自然、肖像授权有效或广告有转化效果。</p>
+<h2>素材与输出的安全边界</h2>
+<p>不自动上传目录、不把凭据写进配置、不读取系统密钥文件。下载链接不应携带 Atlas API key；第三方地址也不能获得 Authorization 头。示例后处理只处理本地可信文件，解析非可信媒体仍应放进受限容器。敏感资料的 URL、提示词、回执和缩略图也需要访问控制；不要因为它们不是密码就公开。</p>
+<h2>阅读方式</h2>
+<p>每篇都给出明确目标、实际步骤、可复制的 Agent 指令、验收与失败分支。标明“本包约定”的 JSON 是教程辅助格式；Atlas 不会自动识别这些字段。模型特有能力缺失时，教程会给出可执行的基础路径或明确停止点，不凭空创造命令。</p>
+</article><article id="doc-common--DELIVERY-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="common/DELIVERY.md">Markdown 源文件 ↗</a></div><h1>交付检查单</h1>
+<h2>文件事实</h2>
+<p>记录服务端任务 ID、原始结果类型、下载位置、文件大小和 SHA-256。确认不是 HTML 错误页、过期签名链接或仅供预览的缩略图。扩展名必须符合实际文件格式；改名不构成转码。多文件产物逐个登记，不能只保存第一张预览图便声称交付了 3D 模型。</p>
+<h2>技术规格</h2>
+<p>图片检查像素尺寸、裁切、透明通道、色彩管理和可读性。视频检查显示方向、SAR/DAR、帧率、时长、音频和完整解码。字幕检查起止时间、超界、重叠、文字和显示区域。3D 检查比例、朝向、材质、贴图和目标引擎导入。</p>
+<h2>内容验收</h2>
+<p>保留项逐条对照原输入，例如产品形状、Logo、价格数字、姓名、讲稿读法、角色衣着。视觉盲评记录原始评分与审稿人，不把生成模型自身的“已完成”当作质量判断。音视频必须在时间维度检查，首帧截图不能证明全片一致。</p>
+<h2>结果表述</h2>
+<p>把“已完成”“未达标”“未验证”分开。下载失败时给已有任务和真实链接；没有 ID 时保留受理未知。不要用新的生成掩盖原任务故障。示例中的目标阈值只是教学规格，需要按实际渠道和项目修改。</p>
+<h2>机器清单</h2>
+<p>使用 <code>scripts/manifest.py --root 交付目录 --output 清单路径</code> 为交付目录创建文件清单；不要让扫描目录包含凭据和未脱敏回执。验收详情可使用 <code>examples/config/delivery-review.json</code>。文件摘要证明字节一致，不证明内容真实性或拥有许可。</p>
+</article><article id="doc-SOURCES-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="SOURCES.md">Markdown 源文件 ↗</a></div><h1>资料依据与核对范围</h1>
+<p>编写/核对日期：2026-09-20。以下链接是原始资料，不代表在线集成或付费模型测试。会变化的模型能力、价格、节点和认证路径，执行前仍须核对。正文中的脚本、JSON 中间格式、审批记录是本包教学约定。</p>
+<h2>S1 · 公开 CLI 与 Agent 上手指南</h2>
+<p><a href="https://github.com/AtlasCloudAI/cli">AtlasCloudAI/cli</a>；<a href="https://github.com/AtlasCloudAI/cli/blob/main/docs/AGENT_QUICKSTART.md">AGENT_QUICKSTART.md</a>，核对 blob <code>ba530452cc741093ab9b9d341ad6af5a2bcff96c</code>。用于安装、认证状态、Skill 入口、结果和续查说明。公开首页与维护源码可能不同步，最终以安装版本的 help、内置指南和实际账户为准。</p>
+<h2>S2 · 与安装版本绑定的 CLI 操作指南</h2>
+<p>已核对维护中的 image/video/troubleshooting 操作规则，正文不随包分发私有源码。用户通过安装的 CLI 读取本机实际版本：</p>
+<pre><code class="language-bash">atlas skills read atlas --raw
+atlas skills read atlas/references/image.md --raw
+atlas skills read atlas/references/video.md --raw
+atlas skills read atlas/references/troubleshooting.md --raw
+</code></pre>
+<p>用于 --explain/cost 的无上传边界、ID 字段差异、saved_files 和不重复提交规则。源码已有音频/3D 命令不保证每个历史发布都包含。</p>
+<h2>S3 · 独立 MCP 服务</h2>
+<p><a href="https://github.com/AtlasCloudAI/mcp-server/blob/main/README.md">README</a>，blob <code>c5dba8c12aae382c9715858d7f71e115e5f9e978</code>；<a href="https://github.com/AtlasCloudAI/mcp-server/blob/main/src/tools/image.ts">图像工具</a>，blob <code>da7a00469e510e9eb38d041052a66a4a0a18c0d9</code>。用于本地 stdio、API key、模型发现、生成/音频/转写/3D、上传与历史说明。它不是插件远程 OAuth 接入文档。实际 MCP 返回常为 text 内容，不套用 CLI 根 JSON 字段。</p>
+<h2>S4 · 原配方目录</h2>
+<p><a href="https://github.com/AtlasCloudAI/atlas-cloud-skills/blob/main/library/README.md">Recipe Library</a>，blob <code>53c1ad6f993cf1fda23a6b64a6bc682f31eb5ca5</code>。用于对照已有 visual/motion/edit/social 配方，长教程在其任务范围上补执行、验收与恢复，而不是声称全部选题首次出现。</p>
+<h2>S5 · ffprobe</h2>
+<p><a href="https://ffmpeg.org/ffprobe.html">FFmpeg ffprobe 文档</a>。用于媒体流/容器读取和 JSON 输出。元数据不等于全片解码，解码不等于内容质量审核。当前网页与本地 FFmpeg 版本可能不同，执行以本地功能为准。</p>
+<h2>S6 · 已核对的媒体 REST 与异常语义</h2>
+<p><a href="https://github.com/AtlasCloudAI/mcp-server/blob/main/src/services/api-client.ts">api-client.ts</a>，blob <code>a2f411dcc6c52698e002302bd0ac16519dc87493</code>；<a href="https://github.com/AtlasCloudAI/mcp-server/blob/main/src/services/generation.ts">generation.ts</a>，blob <code>b061dd0fb36d5ef4db570d97127b8c392c00bc46</code>。</p>
+<p>用于媒体 endpoint、展平请求体、response.data.id、POST 不自动重试及非 2xx 可能携带终态的说明。源码在模型 schema 无法获取时有跳过校验的路径，因此教程不能无条件承诺 dry_run 完整验证。没有由这些文件证明通用 webhook 参数或服务端硬预算。</p>
+<h2>S7 · FFmpeg 本地后处理</h2>
+<p><a href="https://ffmpeg.org/ffmpeg-filters.html">官方滤镜文档</a>，涉及 scale/pad/crop、overlay、subtitles、amix、apad、atrim 与 alimiter；<a href="https://ffmpeg.org/ffmpeg.html">ffmpeg 命令文档</a>。所附脚本只面向本地可信素材，尺寸、fps、增益均是教学参数，不是行业通用发布标准。静音拼接和替换音轨的语义在教程中明确说明。</p>
+<h2>S8 · GitHub Actions</h2>
+<p><a href="https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow">手动触发</a>；<a href="https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax">工作流语法</a>。用于 workflow_dispatch、inputs、permissions、job/step 配置与显式执行。示例不是已在用户仓库运行的 workflow。</p>
+<h2>S9 · n8n 通用节点</h2>
+<p><a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest/">HTTP Request</a>；<a href="https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.wait/">Wait</a>。n8n 自身能等待 webhook 不证明 Atlas 接口支持原生 webhook 回调。</p>
+<h2>S10 · Node 内置 fetch</h2>
+<p><a href="https://nodejs.org/api/globals.html#fetch">Node globals / fetch</a>。随包示例使用 Node 标准库与 fetch，不宣称 Atlas 有同名官方 SDK。实际离线测试 runtime 版本见验证报告。</p>
+<h2>S11 · Atlas n8n 节点与示例</h2>
+<p><a href="https://github.com/AtlasCloudAI/n8n-nodes-atlascloud/blob/main/README.md">节点 README</a>，blob <code>4880a2676dcf064c3760b747f0d820f620da78e4</code>；<a href="https://github.com/AtlasCloudAI/n8n-nodes-atlascloud/blob/main/workflows/03-async-video.json">异步示例</a>，blob <code>e793f658f6d4fc603cfc4b8fac030909c30f93cb</code>。</p>
+<p>用于 Task Submit / Task Status 节点类型、提交模式和 prediction_id 表达式。随包派生图故意无有效凭据、使用不可用模型占位，导入后必须重选实际字段。MIT 许可副本见 third-party。</p>
+<h2>S12 · Atlas ComfyUI 节点与示例</h2>
+<p><a href="https://github.com/AtlasCloudAI/atlascloud_comfyui">节点仓库</a>；<a href="https://github.com/AtlasCloudAI/atlascloud_comfyui/blob/main/examples/01-text-to-image.json">单图示例</a>，blob <code>c8b709bd662a617be13eec498b3af92543ba60c8</code>。用于具体三节点结构与插槽类型，不作为所有模型可用性的证据。随包图去掉可用凭据并替换业务 prompt，保留上游许可和来源。</p>
+<h2>S13 · glTF 验证</h2>
+<p><a href="https://github.khronos.org/glTF-Validator/">Khronos glTF Validator</a>。用于结构合规检查，不证明网格外观、物理尺度、制造或实时渲染性能。本次 Blender 官方手册页面读取失败，故教程不依据它声称某个版本的确定菜单、快捷键或导出选项；导入导出按实际安装工具验证。</p>
+<h2>S14 · 本包原创设计与测试</h2>
+<p>run_job、Node 客户端、本地审批样例、回执目录、盲评与验收约定是本次设计建议；不是已有平台特性。离线测试日志见 verification。本地防重提不等于服务端 exactly-once，也不等于跨账户硬额度。评测建议描述方法，不包含伪造效果或收益数据。</p>
+<h2>S15 · Agent Skills</h2>
+<p><a href="https://agentskills.io/specification">Agent Skills 规范</a>。用于 SKILL.md、name/description 与按需 references 的结构。宿主发现路径与实际能力要另行核实；包内样例及 expected 测试案例不代表特定 Agent 已实测通过。</p>
+<h2>S16 · Open Graph</h2>
+<p><a href="https://ogp.me/">Open Graph protocol</a>。用于网页分享元数据 og:title/type/image/url 等。教程的 1200×630 等尺寸是项目示例，不是协议唯一强制尺寸。</p>
+</article><article id="doc-verification--REPORT-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="verification/REPORT.md">Markdown 源文件 ↗</a></div><h1>验证报告 · 2026-09-20</h1>
+<h2>已完成的实际验证</h2>
+<table>
+<thead>
+<tr>
+<th>检查</th>
+<th>结果</th>
+<th>实际范围</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>教程完整性</td>
+<td>48 / 48 有完整正文</td>
+<td>原 6 篇修订 + 42 篇补写；共 79,255 字符，按 Unicode 字符计，含代码，不等于中文字数</td>
+</tr>
+<tr>
+<td>Python 单元测试</td>
+<td>49 / 49 通过</td>
+<td>CLI 回执、未知受理、非零退出仍有 ID、防重复、计划变化、字幕、批量与元数据处理</td>
+</tr>
+<tr>
+<td>Node 单元测试</td>
+<td>12 / 12 通过</td>
+<td>注入假 fetch，单次 POST、审批边界、ID 核对、终态、无 JSON 响应与计划变化</td>
+</tr>
+<tr>
+<td>本地媒体 smoke</td>
+<td>23 / 23 预期结果通过</td>
+<td>FFmpeg 合成图案/音调，图片适配、叠图、拼接、字幕、混音、解码、分段与文件清单；包含预期拒绝的错误用例</td>
+</tr>
+<tr>
+<td>Shell 代码块</td>
+<td>93 个语法检查通过</td>
+<td>仅 bash -n，没有执行教程中的付费命令</td>
+</tr>
+<tr>
+<td>相对文档链接</td>
+<td>245 个目标存在</td>
+<td>检查本地路径，外部站点与动态运行路径不在此计数</td>
+</tr>
+<tr>
+<td>JSON / YAML / 源码</td>
+<td>静态检查通过</td>
+<td>语法与文件完整性，不宣称宿主兼容或模型参数有效</td>
+</tr>
+<tr>
+<td>离线 HTML</td>
+<td>桌面/移动端布局与交互检查通过</td>
+<td>48 个导航项、全文检索、文章切换、复制按钮、无横向页面溢出、无页面 JS 错误或外部网络请求</td>
+</tr>
+</tbody>
+</table>
+<p>原始记录：<a href="verification/python-tests.txt">Python</a>、<a href="verification/node-tests.txt">Node</a>、<a href="verification/media-smoke-results.json">媒体案例</a>、<a href="verification/media-smoke-log.txt">媒体日志</a>、<a href="verification/static-checks.json">静态检查</a>、<a href="verification/reader-checks.json">阅读页</a>、<a href="verification/summary.json">总览</a>。</p>
+<h2>运行环境</h2>
+<ul>
+<li>Python：3.13.5；Node：v22.16.0。</li>
+<li>ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers。</li>
+<li>Linux x86_64。这不是 macOS、Windows 或全部宿主的兼容认证。</li>
+</ul>
+<p>浏览器验证通过 Chromium 渲染 HTML 内容并检查交互。本环境对 file:// 导航有管理策略限制，因此采用内存 set_content 渲染；没有声称在此环境通过双击文件完成浏览。用户的普通浏览器可将该自包含 HTML 作为本地文档打开，具体策略由用户环境决定。复制按钮的存在已经检查，操作系统剪贴板权限并未跨平台认证。</p>
+<h2>明确没有执行的事项</h2>
+<p>没有读取或使用真实 Atlas 凭据，没有提交付费生成、上传客户素材、创建远程任务或修改 GitHub。没有在真实 MCP 宿主、n8n、ComfyUI 或 GitHub Actions 中连接你的账户。没有验证具体模型的实时权限、价格、输出质量、音色、角色一致性、3D 拓扑或广告效果。</p>
+<p>媒体 smoke 中的图案、音调和字幕都是测试数据，没有真实口播或模型生成。字幕渲染/解码通过不代表对所有中文字体与语言做过听视审查。模型质量教程的评分表为空白，不伪造分数。</p>
+<h2>如何复跑</h2>
+<p>从包根目录运行 README 的单元测试和 tests/run_smoke.py。新建一个离线输出目录，不能覆盖真实 run 目录。原 smoke 的全部派生媒体未重复打包；必要输入小样位于 offline-fixtures/，脚本能够重新生成。更新脚本后需重新测试，不能沿用旧报告当作新版本的证据。</p>
+<p>包内哈希在最终构建后写入 SHA256SUMS.txt。它验证字节完整性，不是数字签名、供应链认证或内容质量保证。</p>
+</article><article id="doc-PUBLISHING-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="PUBLISHING.md">Markdown 源文件 ↗</a></div><h1>发布与复现清单</h1>
+<h2>内容完整性</h2>
+<p>48 个 catalog 项必须各有正文，不发布孤立选题。保留每篇输入、操作、授权范围、验收与失败处理。新模型专题引用实时 schema，不复制过期价格。发布目录与离线 HTML 使用同一个 catalog。</p>
+<h2>线上验证和文稿验证分开</h2>
+<p><code>verification/REPORT.md</code> 记录本次真实离线测试。新增线上记录须补：日期、已发布 CLI/MCP/节点版本、宿主、真实模型、schema 核对时间、使用账户的非敏感引用、请求/产物证据与已知限制。不得把维护源码能力当作已发布版本证明。</p>
+<p>模型生成样例必须真实且可公开，提供来源与使用许可。没有真实样例的文章仍可作为操作教程，但不要配一个本地测试图案冒充模型效果。测试例中的 expected 不是实测分数。</p>
+<h2>发布门槛</h2>
+<p>静态检查链接、代码语法与 JSON/YAML；执行离线单元与媒体 smoke；检查密钥和客户材料；再按用户批准的额度执行小范围真实流程。重要失败场景包含等待超时、缺少 ID、下载失败、参数变化、批量重复和权限错误。</p>
+<p>CI 采用受信任代码与最少权限。示例 Actions 主版本引用在生产使用前固定到审核过的 commit。n8n/ComfyUI 导入后重新确认实际模型、节点字段和凭据，不靠文件名推断兼容。</p>
+<h2>版本变更</h2>
+<p>每次修改记录受影响教程和依赖能力。更换执行契约或结果字段时，重跑相关回执用例。只修排版不用代用户重新付费生成；换模型要重新核对参数与质量，不能宣称旧样例仍代表新模型。</p>
+<h2>发布后的反馈</h2>
+<p>将用户失败归为接入、认证、能力发现、参数、提交、等待、下载、规格、内容或权限。先定位阶段再修正教程，避免把所有支持问题都变成“重新生成一次”。收集反馈前说明隐私范围，不要求用户公开令牌、原始客户素材或完整后台日志。</p>
+</article><article id="doc-scripts--README-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="scripts/README.md">Markdown 源文件 ↗</a></div><h1>工具索引</h1>
+<p>所有工具可用 <code>--help</code> 查看参数。均为本包教学工具，不是新增 Atlas 子命令。</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>能力</th>
+<th>副作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>run_job.py</td>
+<td>prepare/preview/submit/get/wait/inspect</td>
+<td>prepare 本地；preview/查询可联网；submit 需 --approve，可能计费</td>
+</tr>
+<tr>
+<td>receipt_id.py</td>
+<td>读取 CLI 根字段 ID</td>
+<td>只读本地，不解析所有 MCP/REST</td>
+</tr>
+<tr>
+<td>batch_plan.py</td>
+<td>CSV → 单 SKU 配置/目录</td>
+<td>本地写文件，不批量提交</td>
+</tr>
+<tr>
+<td>media_audit.py</td>
+<td>ffprobe 与可选全片解码</td>
+<td>只读媒体，写可选报告</td>
+</tr>
+<tr>
+<td>media_ops.py</td>
+<td>适配尺寸、叠图、拼接、字幕、混音、对比</td>
+<td>本地写新文件，拒绝覆盖</td>
+</tr>
+<tr>
+<td>make_fixtures.py</td>
+<td>合成测试图案/音调</td>
+<td>无网络，无模型生成</td>
+</tr>
+<tr>
+<td>subtitles.py</td>
+<td>时间戳/SRT 校验与偏移合并</td>
+<td>不转写、不自动对齐声音</td>
+</tr>
+<tr>
+<td>audio_chunks.py</td>
+<td>切分音频与保存偏移</td>
+<td>本地 PCM，默认单声道，不做 ASR</td>
+</tr>
+<tr>
+<td>blind_pack.py</td>
+<td>匿名候选与空评分表</td>
+<td>复制文件，元数据仍需审查</td>
+</tr>
+<tr>
+<td>manifest.py</td>
+<td>字节数/SHA-256 清单</td>
+<td>不扫描隐私或证明版权</td>
+</tr>
+</tbody>
+</table>
+<p>run_job 的状态退出码：0 本次成功、3 仍处理中、4 远程失败、2 错误或未知。并非所有脚本都采用这个退出码表，见对应 --help 与教程。</p>
+<p>素材、回执和 prompt 可包含私人信息。输出目录保持受控，不把 --approve 当成账户授权，不删除 attempt 标记重提任务。FFmpeg 工具只在可信本地素材上使用；不可信媒体需要隔离环境。</p>
+</article><article id="doc-third-party--README-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="third-party/README.md">Markdown 源文件 ↗</a></div><h1>上游结构与许可</h1>
+<p>n8n 与 ComfyUI 示例按官方公开工作流结构派生，变更了业务 prompt、凭据占位与教学说明。来源路径和 blob 版本见 <a href="#doc-SOURCES-md">SOURCES</a> 的 S11/S12。保留上游 MIT 许可：<a href="third-party/n8n-LICENSE.txt">n8n</a>、<a href="third-party/comfyui-LICENSE.txt">ComfyUI</a>。</p>
+<p>没有打包上游完整仓库、私有源码、可执行二进制、模型权重或字体。原创教程和脚本为本次交付；这些许可不能替代你对输入素材、肖像、声音与生成产物使用范围的确认。</p>
+</article><div class="page-nav"><a id="prev" hidden></a><a id="next" hidden></a></div><footer>文稿与离线验证已完成；真实账户、付费模型与宿主联调需另行确认。无外部字体、无追踪脚本。</footer></main><script>
+const all=Array.from(document.querySelectorAll('article'));const links=Array.from(document.querySelectorAll('.lesson-link'));const search=document.querySelector('#search');
+const texts=new Map(all.map(a=>[a.id,a.textContent.toLowerCase()]));
+function activate(){let key=decodeURIComponent(location.hash.slice(1)||'home');if(!document.getElementById(key))key='home';for(const a of all)a.hidden=a.id!==key;for(const a of document.querySelectorAll('nav a'))a.classList.toggle('active',a.getAttribute('href')==='#'+key);const index=links.findIndex(a=>a.dataset.target===key);const prev=document.querySelector('#prev'),next=document.querySelector('#next');prev.hidden=index<=0;next.hidden=index<0||index>=links.length-1;if(index>0){prev.href=links[index-1].href;prev.textContent='← '+links[index-1].textContent;}if(index>=0&&index<links.length-1){next.href=links[index+1].href;next.textContent=links[index+1].textContent+' →';}document.body.classList.remove('menu-open');window.scrollTo(0,0);const h=document.querySelector('article:not([hidden]) h1');document.title=(h?h.textContent:'Atlas')+' · 教程全集';}
+search.addEventListener('input',()=>{const q=search.value.trim().toLowerCase();let n=0;for(const a of links){a.hidden=!!q&&!texts.get(a.dataset.target).includes(q);if(!a.hidden)n++;}for(const g of document.querySelectorAll('.nav-group'))g.hidden=!Array.from(g.querySelectorAll('.lesson-link')).some(a=>!a.hidden);document.querySelector('#count').textContent=q?`匹配 ${n} / 48 篇`:'48 篇完整教程 · 支持全文检索';});
+for(const pre of document.querySelectorAll('pre')){const code=pre.querySelector('code');if(!code)continue;const b=document.createElement('button');b.className='copy';b.type='button';b.textContent='复制';b.addEventListener('click',async()=>{try{if(navigator.clipboard){await navigator.clipboard.writeText(code.textContent);}else{const t=document.createElement('textarea');t.value=code.textContent;document.body.append(t);t.select();document.execCommand('copy');t.remove();}b.textContent='已复制';setTimeout(()=>b.textContent='复制',1300);}catch{b.textContent='请手动选中复制';}});pre.append(b);}
+document.querySelector('.mobile-toggle').addEventListener('click',()=>document.body.classList.toggle('menu-open'));window.addEventListener('hashchange',activate);activate();
+</script></body></html>

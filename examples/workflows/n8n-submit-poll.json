@@ -1,0 +1,96 @@
+{
+  "name": "Atlas 教程：单次提交与状态查询（需配置后使用）",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger",
+      "name": "Manual start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "category": "Text-to-Video",
+        "modelUuid": "RESELECT_A_LIVE_MODEL_IN_UI",
+        "prompt": "A paper sculpture turns slowly on a clean studio table. No text.",
+        "executionMode": "submit"
+      },
+      "id": "submit",
+      "name": "Atlas submit once",
+      "type": "n8n-nodes-atlascloud.atlasCloudTaskSubmit",
+      "typeVersion": 1,
+      "position": [
+        460,
+        240
+      ],
+      "credentials": {
+        "atlasCloudApi": {
+          "id": "",
+          "name": "SELECT_YOUR_PRIVATE_CREDENTIAL"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "waitForCompletion",
+        "predictionId": "={{ $json.prediction_id }}",
+        "pollingOptions": {
+          "maxWaitTime": 15,
+          "pollInterval": 5
+        }
+      },
+      "id": "status",
+      "name": "Atlas query original task",
+      "type": "n8n-nodes-atlascloud.atlasCloudTaskStatus",
+      "typeVersion": 1,
+      "position": [
+        720,
+        240
+      ],
+      "credentials": {
+        "atlasCloudApi": {
+          "id": "",
+          "name": "SELECT_YOUR_PRIVATE_CREDENTIAL"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual start": {
+      "main": [
+        [
+          {
+            "node": "Atlas submit once",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Atlas submit once": {
+      "main": [
+        [
+          {
+            "node": "Atlas query original task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "tutorial_only": true,
+    "live_tested": false,
+    "note": "Import then select installed-node credentials/model/required fields. Manual Test becomes billable. No durable external ledger in this minimal example. Never rerun Submit to recover Status."
+  }
+}

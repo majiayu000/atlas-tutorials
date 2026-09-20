@@ -1,0 +1,76 @@
+# Example only: copy to a PRIVATE repository's .github/workflows/ after review.
+# Configure atlas-generation environment reviewers and its ATLASCLOUD_API_KEY secret.
+# For production pin actions to reviewed full commit SHAs.
+name: Atlas manual single image
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Exact model ID already checked against the live catalog
+        required: true
+        type: string
+      execute:
+        description: Submit ONE billable request after reviewing the configuration
+        required: true
+        default: false
+        type: boolean
+permissions:
+  contents: read
+concurrency:
+  group: atlas-manual-generation
+  cancel-in-progress: false
+jobs:
+  preview:
+    if: github.event.repository.private == true && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare local request only
+        env:
+          MODEL_ID: ${{ inputs.model }}
+        run: |
+          node --input-type=module -e 'import fs from "node:fs"; fs.writeFileSync("ci-config.json", JSON.stringify({kind:"image",model:process.env.MODEL_ID,params:{prompt:"Abstract geometry for a developer website. No text or logos."}}));'
+          node examples/node/atlas-media.mjs prepare --config ci-config.json --run-dir tutorial-output/ci-preview
+          node examples/node/atlas-media.mjs preview --run-dir tutorial-output/ci-preview
+  generate:
+    needs: preview
+    if: inputs.execute && github.run_attempt == 1
+    environment: atlas-generation
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare approved request
+        env:
+          MODEL_ID: ${{ inputs.model }}
+        run: |
+          node --input-type=module -e 'import fs from "node:fs"; fs.writeFileSync("ci-config.json", JSON.stringify({kind:"image",model:process.env.MODEL_ID,params:{prompt:"Abstract geometry for a developer website. No text or logos."}}));'
+          node examples/node/atlas-media.mjs prepare --config ci-config.json --run-dir tutorial-output/ci-run
+      - name: Submit once then poll the same task
+        env:
+          ATLASCLOUD_API_KEY: ${{ secrets.ATLASCLOUD_API_KEY }}
+        run: |
+          set +e
+          node examples/node/atlas-media.mjs submit --run-dir tutorial-output/ci-run --approve
+          status=$?
+          set -e
+          if [ "$status" -ne 0 ] && [ "$status" -ne 3 ]; then exit "$status"; fi
+          set +e
+          node examples/node/atlas-media.mjs wait --run-dir tutorial-output/ci-run --seconds 300
+          status=$?
+          set -e
+          if [ "$status" -ne 0 ] && [ "$status" -ne 3 ]; then exit "$status"; fi
+          if [ "$status" -eq 3 ]; then echo 'Still processing: use the original ID. Do not rerun generation.'; fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: private-atlas-receipts-${{ github.run_id }}
+          path: tutorial-output/ci-run/
+          retention-days: 1
+          if-no-files-found: warn

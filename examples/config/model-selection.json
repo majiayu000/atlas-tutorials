@@ -1,0 +1,16 @@
+{
+  "example_only": true,
+  "need": {
+    "input": "text",
+    "output": "image",
+    "hard_constraints": [
+      "no required reference",
+      "output can be resized to the requested slot"
+    ]
+  },
+  "candidate_records": [],
+  "selected_model": null,
+  "schema_checked_at": null,
+  "price_estimate": null,
+  "user_approved": false
+}

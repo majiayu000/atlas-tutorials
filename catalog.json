@@ -1,0 +1,434 @@
+[
+  {
+    "id": 1,
+    "slug": "01-agent-setup",
+    "title": "把 Atlas 接入你的 Agent，配置过程不产生生成费用",
+    "category": "首次接入",
+    "path": "tutorials/01-agent-setup.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 2,
+    "slug": "02-first-image",
+    "title": "从零生成第一张图片：保存任务回执和真实文件",
+    "category": "首次接入",
+    "path": "tutorials/02-first-image.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 3,
+    "slug": "03-local-mcp",
+    "title": "本地 MCP 接入：先发现工具，再预览付费请求",
+    "category": "首次接入",
+    "path": "tutorials/03-local-mcp.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 4,
+    "slug": "04-model-selection",
+    "title": "面对一大串模型，怎样按输入和用途选择",
+    "category": "首次接入",
+    "path": "tutorials/04-model-selection.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 5,
+    "slug": "05-schema-preview-cost",
+    "title": "看懂 schema、--explain、dry_run 与费用估算",
+    "category": "首次接入",
+    "path": "tutorials/05-schema-preview-cost.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 6,
+    "slug": "06-upgrade-check",
+    "title": "升级 Atlas 后，怎样检查旧教程还能不能用",
+    "category": "首次接入",
+    "path": "tutorials/06-upgrade-check.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 7,
+    "slug": "07-website-assets",
+    "title": "给新网站制作 Hero、功能插图和移动端素材",
+    "category": "开发者日常素材",
+    "path": "tutorials/07-website-assets.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 8,
+    "slug": "08-article-og",
+    "title": "给技术文章制作封面与 Open Graph 配图",
+    "category": "开发者日常素材",
+    "path": "tutorials/08-article-og.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 9,
+    "slug": "09-github-launch",
+    "title": "给 GitHub 项目制作 README 横幅和发布配图",
+    "category": "开发者日常素材",
+    "path": "tutorials/09-github-launch.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 10,
+    "slug": "10-onboarding",
+    "title": "给应用制作一套 onboarding 插图",
+    "category": "开发者日常素材",
+    "path": "tutorials/10-onboarding.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 11,
+    "slug": "11-real-screenshot",
+    "title": "把真实产品截图装进宣传场景，不重画界面",
+    "category": "开发者日常素材",
+    "path": "tutorials/11-real-screenshot.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 12,
+    "slug": "12-brand-brief",
+    "title": "把品牌色、字体与参考图整理成可复用创作 brief",
+    "category": "开发者日常素材",
+    "path": "tutorials/12-brand-brief.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 13,
+    "slug": "13-product-reference-edit",
+    "title": "用产品参考图更换场景，同时检查包装与 logo",
+    "category": "电商与品牌图片",
+    "path": "tutorials/13-product-reference-edit.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 14,
+    "slug": "14-controlled-variants",
+    "title": "同一件产品生成三种背景，做受控变体",
+    "category": "电商与品牌图片",
+    "path": "tutorials/14-controlled-variants.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 15,
+    "slug": "15-product-detail",
+    "title": "把产品卖点做成一套详情页图片",
+    "category": "电商与品牌图片",
+    "path": "tutorials/15-product-detail.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 16,
+    "slug": "16-multi-size",
+    "title": "一套素材输出不同渠道尺寸，不拉伸原图",
+    "category": "电商与品牌图片",
+    "path": "tutorials/16-multi-size.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 17,
+    "slug": "17-blind-ad-selection",
+    "title": "生成三张候选广告图，做人工盲选",
+    "category": "电商与品牌图片",
+    "path": "tutorials/17-blind-ad-selection.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 18,
+    "slug": "18-sku-batch",
+    "title": "从 SKU 表批量生成素材，逐条记录状态",
+    "category": "电商与品牌图片",
+    "path": "tutorials/18-sku-batch.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 19,
+    "slug": "19-image-to-video",
+    "title": "让一张参考图动起来：提交、续查与视频验收",
+    "category": "视频创作",
+    "path": "tutorials/19-image-to-video.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 20,
+    "slug": "20-complete-ad",
+    "title": "把三段产品镜头剪成一条完整短广告",
+    "category": "视频创作",
+    "path": "tutorials/20-complete-ad.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 21,
+    "slug": "21-character-continuity",
+    "title": "用角色参考制作多镜头视频并检查一致性",
+    "category": "视频创作",
+    "path": "tutorials/21-character-continuity.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 22,
+    "slug": "22-native-audio-voiceover",
+    "title": "原生音频与后期配音，怎样选择和对齐",
+    "category": "视频创作",
+    "path": "tutorials/22-native-audio-voiceover.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 23,
+    "slug": "23-first-last-frame",
+    "title": "用首尾帧控制镜头，识别模型的能力边界",
+    "category": "视频创作",
+    "path": "tutorials/23-first-last-frame.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 24,
+    "slug": "24-video-extension",
+    "title": "延长已有视频：接缝、动作和声音怎样检查",
+    "category": "视频创作",
+    "path": "tutorials/24-video-extension.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 25,
+    "slug": "25-voiceover",
+    "title": "把脚本生成配音，检查数字、专有名词与停顿",
+    "category": "声音与本地化",
+    "path": "tutorials/25-voiceover.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 26,
+    "slug": "26-transcript-subtitles",
+    "title": "从录音得到转写和字幕，检查时间轴",
+    "category": "声音与本地化",
+    "path": "tutorials/26-transcript-subtitles.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 27,
+    "slug": "27-localization",
+    "title": "给同一条视频制作多语言版本",
+    "category": "声音与本地化",
+    "path": "tutorials/27-localization.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 28,
+    "slug": "28-authorized-avatar",
+    "title": "用获授权肖像与声音制作讲解视频",
+    "category": "声音与本地化",
+    "path": "tutorials/28-authorized-avatar.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 29,
+    "slug": "29-background-music",
+    "title": "为产品演示制作背景音乐与声音层次",
+    "category": "声音与本地化",
+    "path": "tutorials/29-background-music.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 30,
+    "slug": "30-long-recording",
+    "title": "处理长录音：分段、合并与专有名词校正",
+    "category": "声音与本地化",
+    "path": "tutorials/30-long-recording.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 31,
+    "slug": "31-video-upscale",
+    "title": "把视频做超分，并保存前后对照和质量记录",
+    "category": "后处理与交付",
+    "path": "tutorials/31-video-upscale.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 32,
+    "slug": "32-photo-restoration",
+    "title": "修复旧照片，区分细节恢复和生成式改写",
+    "category": "后处理与交付",
+    "path": "tutorials/32-photo-restoration.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 33,
+    "slug": "33-vertical-reframe",
+    "title": "把横版视频重构为竖版，保留主体与字幕",
+    "category": "后处理与交付",
+    "path": "tutorials/33-vertical-reframe.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 34,
+    "slug": "34-subtitles-logo-outro",
+    "title": "给生成视频加字幕、logo 与片尾",
+    "category": "后处理与交付",
+    "path": "tutorials/34-subtitles-logo-outro.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 35,
+    "slug": "35-delivery-audit",
+    "title": "交付前检查容器、分辨率、帧率、时长和音轨",
+    "category": "后处理与交付",
+    "path": "tutorials/35-delivery-audit.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 36,
+    "slug": "36-3d-delivery",
+    "title": "图片生成 3D 资产后，怎样检查与导出",
+    "category": "后处理与交付",
+    "path": "tutorials/36-3d-delivery.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 37,
+    "slug": "37-python-cli",
+    "title": "用 Python 调用 CLI，持久保存每次任务回执",
+    "category": "自动化与集成",
+    "path": "tutorials/37-python-cli.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 38,
+    "slug": "38-node-api",
+    "title": "把媒体生成功能接进 Node.js 项目",
+    "category": "自动化与集成",
+    "path": "tutorials/38-node-api.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 39,
+    "slug": "39-github-actions",
+    "title": "在 GitHub Actions 中生成发布素材",
+    "category": "自动化与集成",
+    "path": "tutorials/39-github-actions.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 40,
+    "slug": "40-n8n",
+    "title": "把 n8n 接成内容生产流程",
+    "category": "自动化与集成",
+    "path": "tutorials/40-n8n.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 41,
+    "slug": "41-comfyui",
+    "title": "把 Atlas 生成素材接入 ComfyUI",
+    "category": "自动化与集成",
+    "path": "tutorials/41-comfyui.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 42,
+    "slug": "42-polling-webhook",
+    "title": "轮询与 webhook：怎样可靠等待生成结果",
+    "category": "自动化与集成",
+    "path": "tutorials/42-polling-webhook.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 43,
+    "slug": "43-recover-job",
+    "title": "等待超时或下载失败后，继续原任务",
+    "category": "恢复、质量与贡献",
+    "path": "tutorials/43-recover-job.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 44,
+    "slug": "44-missing-file",
+    "title": "API 显示成功，为什么本地还是没有文件",
+    "category": "恢复、质量与贡献",
+    "path": "tutorials/44-missing-file.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 45,
+    "slug": "45-unknown-submission",
+    "title": "提交超时且没有任务 ID，怎样核对而不重扣费",
+    "category": "恢复、质量与贡献",
+    "path": "tutorials/45-unknown-submission.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 46,
+    "slug": "46-model-evaluation",
+    "title": "给同一任务比较多个模型：预算、盲评与重复样本",
+    "category": "恢复、质量与贡献",
+    "path": "tutorials/46-model-evaluation.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 47,
+    "slug": "47-budget-approval",
+    "title": "给自动化任务建立预算与审批边界",
+    "category": "恢复、质量与贡献",
+    "path": "tutorials/47-budget-approval.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  },
+  {
+    "id": 48,
+    "slug": "48-author-skill",
+    "title": "把自己的工作流写成 Skill，并提交复现测试",
+    "category": "恢复、质量与贡献",
+    "path": "tutorials/48-author-skill.md",
+    "content_status": "complete",
+    "live_generation_verified": false
+  }
+]

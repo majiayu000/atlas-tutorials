@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: REST body is flattened and the selected model stays fixed
+ok 1 - REST body is flattened and the selected model stays fixed
+  ---
+  duration_ms: 1.692019
+  type: 'test'
+  ...
+# Subtest: placeholders and reserved params rejected
+ok 2 - placeholders and reserved params rejected
+  ---
+  duration_ms: 0.436938
+  type: 'test'
+  ...
+# Subtest: pure preview does not need API credentials
+ok 3 - pure preview does not need API credentials
+  ---
+  duration_ms: 11.675474
+  type: 'test'
+  ...
+# Subtest: submit requires approval before network or marker
+ok 4 - submit requires approval before network or marker
+  ---
+  duration_ms: 3.202498
+  type: 'test'
+  ...
+# Subtest: one POST stores ID and never follows redirect; repeat is blocked
+ok 5 - one POST stores ID and never follows redirect; repeat is blocked
+  ---
+  duration_ms: 20.33138
+  type: 'test'
+  ...
+# Subtest: network POST error remains unknown and is not retried
+ok 6 - network POST error remains unknown and is not retried
+  ---
+  duration_ms: 4.469591
+  type: 'test'
+  ...
+# Subtest: HTTP 500 with a terminal failed task stays terminal
+ok 7 - HTTP 500 with a terminal failed task stays terminal
+  ---
+  duration_ms: 6.617175
+  type: 'test'
+  ...
+# Subtest: successful GET for the wrong task is not accepted
+ok 8 - successful GET for the wrong task is not accepted
+  ---
+  duration_ms: 7.461218
+  type: 'test'
+  ...
+# Subtest: missing ID blocks GET before fake fetch is called
+ok 9 - missing ID blocks GET before fake fetch is called
+  ---
+  duration_ms: 5.23571
+  type: 'test'
+  ...
+# Subtest: receipt HTTP success is not generation success
+ok 10 - receipt HTTP success is not generation success
+  ---
+  duration_ms: 0.373021
+  type: 'test'
+  ...
+# Subtest: tampered plan blocked
+ok 11 - tampered plan blocked
+  ---
+  duration_ms: 3.947384
+  type: 'test'
+  ...
+# Subtest: non-JSON receipt preserves unknown outcome
+ok 12 - non-JSON receipt preserves unknown outcome
+  ---
+  duration_ms: 8.933655
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 158.322618

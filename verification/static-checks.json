@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "counts": {
+    "tutorials": 48,
+    "markdown_files": 68,
+    "local_links": 245,
+    "bash_blocks": 93,
+    "python_files": 15,
+    "json_files": 14,
+    "node_files": 2,
+    "yaml_files": 1
+  },
+  "problems": [],
+  "scope": "syntax, document paths and presence only; shell blocks NOT executed; no live generation"
+}

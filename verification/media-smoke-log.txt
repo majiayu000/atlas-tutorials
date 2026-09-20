@@ -1,0 +1,317 @@
+Media smoke run: local synthetic fixtures only. No Atlas requests.
+
+## fixtures
+{"name": "fixtures", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 2.699}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/fixtures
+
+
+## audit-original
+{"name": "audit-original", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 1.368}
+stdout:
+{
+  "file": "/mnt/data/atlas-tutorials-complete/verification/media-smoke/fixtures/clip-a.mp4",
+  "bytes": 155861,
+  "metadata": {
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration_seconds": 4.0,
+    "video": [
+      {
+        "codec": "h264",
+        "width": 320,
+        "height": 180,
+        "avg_fps": 24.0,
+        "r_fps": 24.0,
+        "sample_aspect_ratio": "1:1",
+        "pixel_format": "yuv420p",
+        "color_space": null,
+        "color_transfer": null,
+        "rotation": []
+      }
+    ],
+    "audio": [
+      {
+        "codec": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    ]
+  },
+  "checks": {
+    "width": true,
+    "height": true,
+    "duration": true,
+    "audio_present": true,
+    "decode": true
+  },
+  "issues": [],
+  "passed_requested_checks": true,
+  "content_review": "not_performed",
+  "note": "Metadata fps does not establish constant frame rate; decode is not visual/audio quality review."
+}
+
+
+## audit-wrong-spec-rejected
+{"name": "audit-wrong-spec-rejected", "exit_code": 1, "expected_exit_code": 1, "passed": true, "seconds": 1.076}
+stdout:
+{
+  "file": "/mnt/data/atlas-tutorials-complete/verification/media-smoke/fixtures/clip-a.mp4",
+  "bytes": 155861,
+  "metadata": {
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration_seconds": 4.0,
+    "video": [
+      {
+        "codec": "h264",
+        "width": 320,
+        "height": 180,
+        "avg_fps": 24.0,
+        "r_fps": 24.0,
+        "sample_aspect_ratio": "1:1",
+        "pixel_format": "yuv420p",
+        "color_space": null,
+        "color_transfer": null,
+        "rotation": []
+      }
+    ],
+    "audio": [
+      {
+        "codec": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    ]
+  },
+  "checks": {
+    "width": false,
+    "decode": null
+  },
+  "issues": [
+    "width: expected 999, got 320"
+  ],
+  "passed_requested_checks": false,
+  "content_review": "not_performed",
+  "note": "Metadata fps does not establish constant frame rate; decode is not visual/audio quality review."
+}
+
+
+## fit-contain
+{"name": "fit-contain", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 1.156}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/contain.png
+
+
+## fit-cover
+{"name": "fit-cover", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 1.029}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/cover.png
+
+
+## overlay
+{"name": "overlay", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 1.361}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/overlay.png
+
+
+## normalize
+{"name": "normalize", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 1.4}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/normalized.mp4
+
+
+## concat
+{"name": "concat", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 1.829}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/concat.mp4
+
+
+## concat-audit
+{"name": "concat-audit", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.808}
+stdout:
+{
+  "file": "/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/concat.mp4",
+  "bytes": 209440,
+  "metadata": {
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration_seconds": 6.0,
+    "video": [
+      {
+        "codec": "h264",
+        "width": 320,
+        "height": 180,
+        "avg_fps": 24.0,
+        "r_fps": 24.0,
+        "sample_aspect_ratio": "1:1",
+        "pixel_format": "yuv420p",
+        "color_space": null,
+        "color_transfer": null,
+        "rotation": []
+      }
+    ],
+    "audio": []
+  },
+  "checks": {
+    "width": true,
+    "height": true,
+    "duration": true,
+    "decode": true
+  },
+  "issues": [],
+  "passed_requested_checks": true,
+  "content_review": "not_performed",
+  "note": "Metadata fps does not establish constant frame rate; decode is not visual/audio quality review."
+}
+
+
+## subtitle-conversion
+{"name": "subtitle-conversion", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.659}
+stdout:
+{"cues": 2, "timeline_valid": true, "content_review": "not_performed", "overlap_allowed": false}
+
+
+## subtitle-lint
+{"name": "subtitle-lint", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.566}
+stdout:
+{"cues": 2, "timeline_valid": true, "content_review": "not_performed", "overlap_allowed": false}
+
+
+## subtitle-burn
+{"name": "subtitle-burn", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.978}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/subtitled.mp4
+
+
+## voice-mix
+{"name": "voice-mix", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.85}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/voice.mp4
+
+
+## music-mix
+{"name": "music-mix", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.799}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/mixed.mp4
+
+
+## mixed-audit
+{"name": "mixed-audit", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.769}
+stdout:
+{
+  "file": "/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/mixed.mp4",
+  "bytes": 155822,
+  "metadata": {
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration_seconds": 4.0,
+    "video": [
+      {
+        "codec": "h264",
+        "width": 320,
+        "height": 180,
+        "avg_fps": 24.0,
+        "r_fps": 24.0,
+        "sample_aspect_ratio": "1:1",
+        "pixel_format": "yuv420p",
+        "color_space": null,
+        "color_transfer": null,
+        "rotation": []
+      }
+    ],
+    "audio": [
+      {
+        "codec": "aac",
+        "sample_rate": "48000",
+        "channels": 1
+      }
+    ]
+  },
+  "checks": {
+    "duration": true,
+    "audio_present": true,
+    "decode": true
+  },
+  "issues": [],
+  "passed_requested_checks": true,
+  "content_review": "not_performed",
+  "note": "Metadata fps does not establish constant frame rate; decode is not visual/audio quality review."
+}
+
+
+## side-by-side
+{"name": "side-by-side", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 1.081}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/comparison.mp4
+
+
+## comparison-audit
+{"name": "comparison-audit", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.726}
+stdout:
+{
+  "file": "/mnt/data/atlas-tutorials-complete/verification/media-smoke/outputs/comparison.mp4",
+  "bytes": 316793,
+  "metadata": {
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration_seconds": 3.958333,
+    "video": [
+      {
+        "codec": "h264",
+        "width": 640,
+        "height": 180,
+        "avg_fps": 24.25263157894737,
+        "r_fps": 24.0,
+        "sample_aspect_ratio": "1:1",
+        "pixel_format": "yuv420p",
+        "color_space": null,
+        "color_transfer": null,
+        "rotation": []
+      }
+    ],
+    "audio": []
+  },
+  "checks": {
+    "width": true,
+    "height": true,
+    "duration": true,
+    "decode": true
+  },
+  "issues": [],
+  "passed_requested_checks": true,
+  "content_review": "not_performed",
+  "note": "Metadata fps does not establish constant frame rate; decode is not visual/audio quality review."
+}
+
+
+## audio-chunks
+{"name": "audio-chunks", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.999}
+stdout:
+3 chunks written; no ASR requests made.
+
+
+## blind-pack
+{"name": "blind-pack", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.569}
+stdout:
+/mnt/data/atlas-tutorials-complete/verification/media-smoke/blind/review
+
+
+## file-manifest
+{"name": "file-manifest", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.566}
+stdout:
+11 files recorded
+
+
+## overwrite-rejected
+{"name": "overwrite-rejected", "exit_code": 2, "expected_exit_code": 2, "passed": true, "seconds": 0.541}
+stderr:
+Error: output already exists; choose a new filename. A partial output may exist; inspect it before retrying with a new path.
+
+
+## missing-media-rejected
+{"name": "missing-media-rejected", "exit_code": 2, "expected_exit_code": 2, "passed": true, "seconds": 0.567}
+stderr:
+Error: [Errno 2] No such file or directory: '/mnt/data/atlas-tutorials-complete/verification/media-smoke/absent.mp4'
+
+
+## batch-plan-local
+{"name": "batch-plan-local", "exit_code": 0, "expected_exit_code": 0, "passed": true, "seconds": 0.545}
+stdout:
+Prepared 2 local plans. No requests sent. Inspect and approve each job separately.
+

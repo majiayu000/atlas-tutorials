@@ -1,0 +1,163 @@
+[
+  {
+    "name": "fixtures",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 2.699
+  },
+  {
+    "name": "audit-original",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 1.368
+  },
+  {
+    "name": "audit-wrong-spec-rejected",
+    "exit_code": 1,
+    "expected_exit_code": 1,
+    "passed": true,
+    "seconds": 1.076
+  },
+  {
+    "name": "fit-contain",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 1.156
+  },
+  {
+    "name": "fit-cover",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 1.029
+  },
+  {
+    "name": "overlay",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 1.361
+  },
+  {
+    "name": "normalize",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 1.4
+  },
+  {
+    "name": "concat",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 1.829
+  },
+  {
+    "name": "concat-audit",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.808
+  },
+  {
+    "name": "subtitle-conversion",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.659
+  },
+  {
+    "name": "subtitle-lint",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.566
+  },
+  {
+    "name": "subtitle-burn",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.978
+  },
+  {
+    "name": "voice-mix",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.85
+  },
+  {
+    "name": "music-mix",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.799
+  },
+  {
+    "name": "mixed-audit",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.769
+  },
+  {
+    "name": "side-by-side",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 1.081
+  },
+  {
+    "name": "comparison-audit",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.726
+  },
+  {
+    "name": "audio-chunks",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.999
+  },
+  {
+    "name": "blind-pack",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.569
+  },
+  {
+    "name": "file-manifest",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.566
+  },
+  {
+    "name": "overwrite-rejected",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true,
+    "seconds": 0.541
+  },
+  {
+    "name": "missing-media-rejected",
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "passed": true,
+    "seconds": 0.567
+  },
+  {
+    "name": "batch-plan-local",
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "passed": true,
+    "seconds": 0.545
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "example_only": true,
+  "status": "not_approved",
+  "account_reference": "FILL_WITH_SELECTED_ACCOUNT_REFERENCE",
+  "request_sha256": "FILL_FROM_REVIEWED_PLAN",
+  "currency": "USD",
+  "max_estimated_total": null,
+  "max_submissions": 1,
+  "expires_at": null,
+  "allow_upload": false,
+  "allow_model_change": false,
+  "allow_extra_variants": false,
+  "backend_enforced_limit": false,
+  "note": "Review record only. This file grants no server authority or actual budget guarantee."
+}

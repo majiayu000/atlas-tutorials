@@ -1,0 +1,17 @@
+{
+  "example_only": true,
+  "job_id": null,
+  "technical_checks": {
+    "file_exists": null,
+    "decode_ok": null,
+    "dimensions_ok": null
+  },
+  "content_checks": {
+    "reference_preserved": null,
+    "text_verified": null,
+    "audio_reviewed": null
+  },
+  "decision": "not_reviewed",
+  "reviewer": null,
+  "notes": ""
+}

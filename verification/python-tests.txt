@@ -1,0 +1,54 @@
+test_bad_image_dimensions (test_core.BatchAndMediaTests.test_bad_image_dimensions) ... ok
+test_batch_no_submit (test_core.BatchAndMediaTests.test_batch_no_submit) ... ok
+test_case_insensitive_duplicate (test_core.BatchAndMediaTests.test_case_insensitive_duplicate) ... ok
+test_fps (test_core.BatchAndMediaTests.test_fps) ... ok
+test_hash_file (test_core.BatchAndMediaTests.test_hash_file) ... ok
+test_limit (test_core.BatchAndMediaTests.test_limit) ... ok
+test_path_sku (test_core.BatchAndMediaTests.test_path_sku) ... ok
+test_reference_requires_field (test_core.BatchAndMediaTests.test_reference_requires_field) ... ok
+test_summary_retains_rotation_and_sar (test_core.BatchAndMediaTests.test_summary_retains_rotation_and_sar) ... ok
+test_unknown_fps (test_core.BatchAndMediaTests.test_unknown_fps) ... ok
+test_atfile (test_core.ConfigTests.test_atfile) ... ok
+test_duplicate_keys (test_core.ConfigTests.test_duplicate_keys) ... ok
+test_nan (test_core.ConfigTests.test_nan) ... ok
+test_placeholder (test_core.ConfigTests.test_placeholder) ... ok
+test_reserved (test_core.ConfigTests.test_reserved) ... ok
+test_rest_not_cli (test_core.ConfigTests.test_rest_not_cli) ... ok
+test_unknown_status (test_core.ConfigTests.test_unknown_status) ... ok
+test_approval_required_before_marker (test_core.JobTests.test_approval_required_before_marker) ... ok
+test_args_are_a_list_with_absolute_config (test_core.JobTests.test_args_are_a_list_with_absolute_config) ... ok
+test_conflicting_ids_unknown (test_core.JobTests.test_conflicting_ids_unknown) ... ok
+test_duplicate_never_invokes_again (test_core.JobTests.test_duplicate_never_invokes_again) ... ok
+test_malformed_receipt_unknown (test_core.JobTests.test_malformed_receipt_unknown) ... ok
+test_observe_failed_despite_exit_zero (test_core.JobTests.test_observe_failed_despite_exit_zero) ... ok
+test_observe_needs_reliable_id (test_core.JobTests.test_observe_needs_reliable_id) ... ok
+test_observe_wrong_id_unknown (test_core.JobTests.test_observe_wrong_id_unknown) ... ok
+test_params_tamper_blocked (test_core.JobTests.test_params_tamper_blocked) ... ok
+test_plan_tamper_blocked (test_core.JobTests.test_plan_tamper_blocked) ... ok
+test_prepare_plan_matches (test_core.JobTests.test_prepare_plan_matches) ... ok
+test_prepare_refuses_existing (test_core.JobTests.test_prepare_refuses_existing) ... ok
+test_submit_retains_id_even_nonzero (test_core.JobTests.test_submit_retains_id_even_nonzero) ... ok
+test_timeout_is_unknown_and_marker_survives (test_core.JobTests.test_timeout_is_unknown_and_marker_survives) ... ok
+test_bad_stamp (test_core.SubtitleTests.test_bad_stamp) ... ok
+test_blank_cue (test_core.SubtitleTests.test_blank_cue) ... ok
+test_boolean_time (test_core.SubtitleTests.test_boolean_time) ... ok
+test_duration_overrun (test_core.SubtitleTests.test_duration_overrun) ... ok
+test_millisecond_rounding_zero (test_core.SubtitleTests.test_millisecond_rounding_zero) ... ok
+test_negative_time (test_core.SubtitleTests.test_negative_time) ... ok
+test_offset_merge (test_core.SubtitleTests.test_offset_merge) ... ok
+test_overlap_requires_review (test_core.SubtitleTests.test_overlap_requires_review) ... ok
+test_path_escape (test_core.SubtitleTests.test_path_escape) ... ok
+test_roundtrip (test_core.SubtitleTests.test_roundtrip) ... ok
+test_agreeing_fields (test_receipt_id.ReceiptTests.test_agreeing_fields) ... ok
+test_cli_malformed_and_empty (test_receipt_id.ReceiptTests.test_cli_malformed_and_empty) ... ok
+test_cli_missing_file (test_receipt_id.ReceiptTests.test_cli_missing_file) ... ok
+test_cli_success (test_receipt_id.ReceiptTests.test_cli_success) ... ok
+test_conflicting_fields (test_receipt_id.ReceiptTests.test_conflicting_fields) ... ok
+test_invalid_payloads (test_receipt_id.ReceiptTests.test_invalid_payloads) ... ok
+test_submission (test_receipt_id.ReceiptTests.test_submission) ... ok
+test_wait_response (test_receipt_id.ReceiptTests.test_wait_response) ... ok
+
+----------------------------------------------------------------------
+Ran 49 tests in 2.397s
+
+OK

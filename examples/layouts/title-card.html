@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>本地标题卡 · Atlas 教程示例</title>
+<style>
+*{box-sizing:border-box}body{margin:24px;font-family:system-ui,sans-serif;background:#edf1f0;color:#172326}h1{font-size:24px}
+.controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:20px 0}input[type=text]{width:360px;padding:12px}label{font-size:14px}
+#card{position:relative;width:1200px;height:630px;overflow:hidden;background:#183e36;color:#fff}#bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.4}
+.text{position:absolute;inset:76px;display:flex;flex-direction:column;justify-content:center;gap:28px}.eyebrow{font-size:22px;letter-spacing:3px}
+#headline{font-size:70px;line-height:1.22;font-weight:750;max-width:940px;overflow-wrap:anywhere}.foot{font-size:22px;opacity:.8}
+small{display:block;max-width:900px;line-height:1.8;margin:16px 0}button{padding:10px}
+</style><h1>标题排版样例（本地处理）</h1>
+<p>画布 1200 × 630。文字保持可编辑；尺寸是教程示例，不是所有渠道要求。</p>
+<div class="controls"><label>本地背景图 <input type="file" id="file" accept="image/png,image/jpeg,image/webp"></label><label>标题 <input id="title" type="text" value="让 Agent 交付完整作品" maxlength="60"></label></div>
+<div id="card"><img id="bg" alt="" hidden><div class="text"><div class="eyebrow">ATLAS · TUTORIAL SAMPLE</div><div id="headline">让 Agent 交付完整作品</div><div class="foot">示例排版 · 非真实生成结果</div></div></div>
+<small>不上传素材、不调用模型、不加载外部字体。浏览器缩放 100%，用开发者工具截取 #card 节点即可导出 PNG；截图前检查全部文字是否溢出。字体由你的系统提供，本包没有字体文件。长标题应人工分行或减小字号，不把不可见文字当作已交付。</small>
+<script>let last;document.getElementById('title').addEventListener('input',e=>document.getElementById('headline').textContent=e.target.value);document.getElementById('file').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;if(!['image/png','image/jpeg','image/webp'].includes(f.type)){alert('仅接受 PNG/JPEG/WebP');return;}if(f.size>20*1024*1024){alert('请使用不超过20 MiB的图片');return;}if(last)URL.revokeObjectURL(last);last=URL.createObjectURL(f);const img=document.getElementById('bg');img.src=last;img.hidden=false;});</script></html>

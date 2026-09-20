@@ -1,0 +1,3 @@
+# Optional documentation authoring dependencies, matching the build environment.
+markdown-it-py==4.2.0
+PyYAML==6.0.3

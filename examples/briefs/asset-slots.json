@@ -1,0 +1,25 @@
+{
+  "example_only": true,
+  "slots": [
+    {
+      "name": "hero-desktop",
+      "width": 1600,
+      "height": 900,
+      "safe_text_area": "left 35%",
+      "format": "webp"
+    },
+    {
+      "name": "hero-mobile",
+      "width": 900,
+      "height": 1200,
+      "safe_text_area": "top 25%",
+      "format": "webp"
+    },
+    {
+      "name": "feature-a",
+      "width": 640,
+      "height": 480,
+      "format": "png"
+    }
+  ]
+}

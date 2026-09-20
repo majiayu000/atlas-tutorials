@@ -1,0 +1,29 @@
+{
+  "date": "2026-09-20",
+  "tutorials": 48,
+  "tutorial_characters": 79255,
+  "python_tests": 49,
+  "node_tests": 12,
+  "media_smoke_cases": 23,
+  "static_checks": {
+    "tutorials": 48,
+    "markdown_files": 68,
+    "local_links": 245,
+    "bash_blocks": 93,
+    "python_files": 15,
+    "json_files": 14,
+    "node_files": 2,
+    "yaml_files": 1
+  },
+  "reader_passed": true,
+  "environment": {
+    "python": "3.13.5",
+    "node": "v22.16.0",
+    "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers",
+    "platform": "Linux x86_64"
+  },
+  "paid_generation_performed": false,
+  "atlas_credentials_used": false,
+  "host_integrations_live_tested": false,
+  "repository_modified": false
+}
