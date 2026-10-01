@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>处理长录音：分段、合并与专有名词校正</title><meta name="theme-color" content="#112d26"><meta name="description" content="处理长录音：分段、合并与专有名词校正"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/30-long-recording.html"><meta property="og:type" content="website"><meta property="og:title" content="处理长录音：分段、合并与专有名词校正"><meta property="og:description" content="处理长录音：分段、合并与专有名词校正"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/30-long-recording.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="处理长录音：分段、合并与专有名词校正"><meta name="twitter:description" content="处理长录音：分段、合并与专有名词校正"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>30｜处理长录音：分段、合并与专有名词校正</h1>
+<p>长录音要先分段，再转写和合并。难点在于模型输入限制、分段边界与时间轴；把每段的文字直接拼接，很容易重复一句话或丢掉片段交界处的词。本包脚本只做本地切分与时间偏移，不替你调用 ASR。</p>
+<h2>了解原始文件</h2>
+<p>先保留母版，记录采样率、声道、时长和授权范围。若说话人分别位于不同声道，直接合成单声道会失去分离线索；本篇的分段脚本为了教学统一输出单声道 16kHz PCM，使用前应确认这符合本次识别要求，否则在可信音频工具中保留声道后单独处理。</p>
+<blockquote>
+<p>处理这段获授权的长录音，先查模型的语言、时长和体积限制，再提出分段计划，暂不上传。每段保留在原文件里的起止时间、请求 ID 和转写状态；不要自动重提未知受理的片段。合并时核对重叠语句，不能把每段时间戳都当成从整段录音起算。</p>
+</blockquote>
+<h2>本地切分并保存偏移</h2>
+<p>下面的 120 秒片长、2 秒重叠是教学选择，要根据实际模型限制调整。PCM 体积也必须检查，不能只看时长。</p>
+<pre><code class="language-bash">python3 scripts/audio_chunks.py --input ./assets/meeting.wav \
+  --out tutorial-output/meeting-chunks --seconds 120 --overlap 2
+</code></pre>
+<p>输出 <code>chunk-0000.wav</code> 等文件与 <code>chunks.json</code>。manifest 中的 <code>offset_seconds</code> 是这段在原录音中的位置；<code>segments_file</code> 表示后续应保存的 ASR 中间结果，此时文件还不存在，<code>transcribed</code> 为 false。脚本没有发网络请求。</p>
+<p>每段音频分别使用已验证的 ASR 请求并独立保存回执。先跑一段确认能力、识别效果和费用，再批准余下片段；不要把整个目录一把上传而不设数量和并发边界。重试只针对已确认可重新执行的片段。</p>
+<h2>保存片段内时间戳</h2>
+<p>把每段实际返回结果转换为 <a href="26-transcript-subtitles.html">26</a> 的 <code>start/end/text</code> 数组。先确认这些时间相对于片段起点；若上游返回全局时间，不能再加一次 offset。将中间文件保存为清单中指定的名字，再编辑供合并使用的清单，去除失败或未识别项，不能填空数组冒充已经转写。</p>
+<pre><code class="language-bash">python3 scripts/subtitles.py merge \
+  --input tutorial-output/meeting-chunks/chunks.json \
+  --output tutorial-output/meeting-merged.srt
+</code></pre>
+<p>脚本会加偏移、排序并检查结构。默认拒绝重叠字幕；存在切片重叠时，先人工听取边界，决定保留哪段文本与时间范围，再合并。不要仅按相同字符串去重：讲话者可能真的连续重复同一句话。</p>
+<h2>专名、说话人与缺失段</h2>
+<p>用事先整理的词表核对姓名、项目名和缩写，记录不确定词而不是猜。没有可靠说话人分离时，不能为了美观替每句话编造说话者。某一段持续失败时，交付应显示该段时间范围缺失，而不是把前后字幕无缝拼上造成已全部完成的印象。</p>
+<p>最终交付合并文本、字幕、片段状态表和必要的缺失/歧义说明。原始音频和全部分段可能包含敏感信息，采用受控保存周期；对外复现只使用自备公开示例。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="29-background-music.html">上一篇：为产品演示制作背景音乐与声音层次</a><a href="31-video-upscale.html">下一篇：把视频做超分，并保存前后对照和质量记录</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/30-long-recording.md">Markdown 原文</a></p></footer></main></body></html>

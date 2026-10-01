@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>交付前检查容器、分辨率、帧率、时长和音轨</title><meta name="theme-color" content="#112d26"><meta name="description" content="交付前检查容器、分辨率、帧率、时长和音轨"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/35-delivery-audit.html"><meta property="og:type" content="website"><meta property="og:title" content="交付前检查容器、分辨率、帧率、时长和音轨"><meta property="og:description" content="交付前检查容器、分辨率、帧率、时长和音轨"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/35-delivery-audit.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="交付前检查容器、分辨率、帧率、时长和音轨"><meta name="twitter:description" content="交付前检查容器、分辨率、帧率、时长和音轨"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>35｜交付前检查容器、分辨率、帧率、时长和音轨</h1>
+<p>本篇建立交付前的技术检查。它回答文件是否存在、媒体流是什么、是否满足指定规格、能否完整解码；不会回答创意是否优秀、字幕是否准确或产品是否变形。把两类检查分开，才能避免“FFmpeg 没报错”被当成最终作品合格。</p>
+<h2>写明期望规格</h2>
+<p>从需求中取出容器、分辨率、时长、是否必须有声音，以及可接受的误差。不要看到文件是 MP4 就假定它是 H.264，也不要仅看编码头把可变帧率认定为恒定帧率。旋转标记、像素长宽比、色彩空间与 HDR 信息都可能影响实际显示。</p>
+<blockquote>
+<p>检查交付目录里的视频，只做本地读取与解码，不上传、不重生成。先核对实际宽高、时长、音轨和容器，再检查整片能否解码；对帧率、旋转和色彩的未知情况明确说明。把技术检查和人工视觉/声音检查分开记录。</p>
+</blockquote>
+<h2>基础命令与严格检查</h2>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/final.mp4
+python3 scripts/media_audit.py ./assets/final.mp4 \
+  --width 1080 --height 1920 --duration 15 --tolerance 0.2 \
+  --require-audio --decode --output tutorial-output/final-audit.json
+</code></pre>
+<p>这里的 15 秒±0.2 秒是示例验收，不是所有平台规范。脚本返回 0 表示本次指定的检查通过，1 表示发现规格或解码问题，2 表示无法完成检查。没有传某个规格就不会检查该项；<code>content_review</code> 始终为 <code>not_performed</code>。</p>
+<p>默认全片解码上限为 180 秒，需要更长检查时显式使用 <code>--decode-timeout</code>。达到本地上限应报告未完成解码，不能将其解释为视频坏了或解码已通过。只读元数据时没有遍历每一帧。</p>
+<h2>看报告里容易被忽略的字段</h2>
+<p>检查 <code>video</code> 和 <code>audio</code> 数组，而不是只看第一个数值。<code>avg_fps</code> 和 <code>r_fps</code> 不一致时记录原因待查；二者相同也不能单独证明 CFR。<code>sample_aspect_ratio</code> 非 1:1 或包含 rotation 时，编码宽高与显示宽高可能不同。缺失 duration 不可自动当作零秒内容。</p>
+<p>如果需要固定编码、音频采样率或码率，先读报告，再在可信转换流程中明确设置并复检；本包脚本不会替你悄悄修复所有问题。两次转换造成的损失也应纳入结果说明。</p>
+<h2>将验收产物与运行日志分开</h2>
+<p>把最终文件与必要的人工审核记录放进专用交付目录，先确认没有 API key、客户未授权资料或内部 URL，再建立文件清单：</p>
+<pre><code class="language-bash">python3 scripts/manifest.py --root ./delivery --output ./delivery/manifest.json
+</code></pre>
+<p><code>manifest.py</code> 记录字节数和 SHA-256，拒绝符号链接；它不做敏感信息识别，也不能证明版权或内容准确。发送前后比对摘要，可以检查传输是否改变了文件。</p>
+<h2>不通过时从相应阶段修复</h2>
+<p>下载中断先重取原任务结果，码流损坏检查源文件或重新下载；规格不符再考虑本地转码；运动形变属于内容问题，可能涉及重新生成。每一类应保存不同原因，避免一个笼统失败码让自动化系统把整条链重跑并重复付费。</p>
+<p>最终报告应同时显示技术检查结果、人工审核结果和未验证事项。客户只要最终成片时，不必把所有内部日志一起打包。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="34-subtitles-logo-outro.html">上一篇：给生成视频加字幕、logo 与片尾</a><a href="36-3d-delivery.html">下一篇：图片生成 3D 资产后，怎样检查与导出</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/35-delivery-audit.md">Markdown 原文</a></p></footer></main></body></html>

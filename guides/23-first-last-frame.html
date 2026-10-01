@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>用首尾帧控制镜头，识别模型的能力边界</title><meta name="theme-color" content="#112d26"><meta name="description" content="用首尾帧控制镜头，识别模型的能力边界"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/23-first-last-frame.html"><meta property="og:type" content="website"><meta property="og:title" content="用首尾帧控制镜头，识别模型的能力边界"><meta property="og:description" content="用首尾帧控制镜头，识别模型的能力边界"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/23-first-last-frame.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="用首尾帧控制镜头，识别模型的能力边界"><meta name="twitter:description" content="用首尾帧控制镜头，识别模型的能力边界"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>23｜用首尾帧控制镜头，识别模型的能力边界</h1>
+<p>首尾帧控制的目标是让一个镜头从给定画面开始，在给定画面附近结束。中间运动是否自然仍需要检查。本篇制作一个产品从正面转到轻微侧面的短镜头，不把两个完全不同的物体强行当成连续状态。</p>
+<h2>先确认存在这项能力</h2>
+<p>查询当前模型 schema，确认有两个不同的图像输入或其他正式支持的首尾帧机制。CLI 存在 <code>--end-image</code> 这个选项不代表所有模型都接受它。没有对应能力就停在选型，或经用户同意改为两段镜头剪辑；不能把第二张图塞进 prompt 假装执行了控制。</p>
+<h2>准备两张相容的图</h2>
+<p>保持产品、光照和画幅一致，末帧只改变合理的角度或位置。先按教程16调整两图尺寸，检查输入图本身有没有标签变化。两张参考相矛盾时，模型可能扭曲中间帧；先修输入比长提示词更可控。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>使用这两张获批准的图片作为开始与结束状态。先查 Atlas 当前模型是否真的支持首尾帧；支持后展示两个输入字段及费用认知，不上传或生成。批准后提交一次，完整检查起点、终点和中间运动；没有该能力就明确停止，不退化成普通文生视频。</p>
+</blockquote>
+<h2>CLI 预览示例</h2>
+<p>只有当前模型与 CLI 的映射都已确认时才执行：</p>
+<pre><code class="language-bash">MODEL='替换为支持首尾帧的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas generate video &quot;$MODEL&quot; \
+  -p 'A continuous gentle orbit from the first reference to the final reference. Preserve product geometry and markings.' \
+  --image @assets/start.png --end-image @assets/end.png --explain --json
+</code></pre>
+<p>在预览里确认两个文件都映射到实际输入，不要忽略未知字段警告。根据 schema 补时长和画幅，再按教程19的授权、提交、续查流程执行。上传和价格限制与其他参考图任务相同。</p>
+<h2>验收：不能只看两头</h2>
+<p>保存实际视频，分别比较首帧、末帧与输入，再慢放中间运动。检查是否出现交叉溶解式变形、物体翻转、文字漂移或突然切换。第一帧压缩/色彩差异不必要求字节完全相同，但内容偏差应有明确容忍标准。</p>
+<h2>失败与交付</h2>
+<p>中间动作复杂时先缩小角度、延长允许时长或改变镜头设计，任何新的生成都计入授权。结果只能完成起点却无法符合终点时，报告部分完成，不说“首尾帧锁定成功”。交付参考对照、真实视频、模型与任务记录。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S1、S2</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="22-native-audio-voiceover.html">上一篇：原生音频与后期配音，怎样选择和对齐</a><a href="24-video-extension.html">下一篇：延长已有视频：接缝、动作和声音怎样检查</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/23-first-last-frame.md">Markdown 原文</a></p></footer></main></body></html>

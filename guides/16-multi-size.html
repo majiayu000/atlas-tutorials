@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>一套素材输出不同渠道尺寸，不拉伸原图</title><meta name="theme-color" content="#112d26"><meta name="description" content="一套素材输出不同渠道尺寸，不拉伸原图"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/16-multi-size.html"><meta property="og:type" content="website"><meta property="og:title" content="一套素材输出不同渠道尺寸，不拉伸原图"><meta property="og:description" content="一套素材输出不同渠道尺寸，不拉伸原图"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/16-multi-size.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="一套素材输出不同渠道尺寸，不拉伸原图"><meta name="twitter:description" content="一套素材输出不同渠道尺寸，不拉伸原图"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>16｜一套素材输出不同渠道尺寸，不拉伸原图</h1>
+<p>本次把一张获批素材输出为横版、方形和竖版。目标是在不同槽位保留主体与文字，不把原图拉伸成任意尺寸。三个尺寸是教学规格，不代表平台当前要求。</p>
+<h2>先区分三种操作</h2>
+<p>contain 等比缩小到框内，再补边，适合不允许丢信息的截图和产品图；cover 等比填满后裁掉边缘，适合背景；重新构图需要回到生成或设计步骤，适合原主体与目标画幅明显不兼容的情况。补边不是生成式扩图，扩图也不能保证新区域真实。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>把获批素材导出横版1600×900、方形1080×1080、竖版1080×1920三种版本。先分析主体和文字所在区域。能安全裁切就裁切，不能裁切就补边或给重新构图方案，不拉伸。不调用新的模型，除非我明确批准重构图。</p>
+</blockquote>
+<h2>执行两种确定性导出</h2>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/approved.png \
+  --output tutorial-output/sizes/landscape.png --width 1600 --height 900 --mode cover
+python3 scripts/media_ops.py fit-image --inputs assets/approved.png \
+  --output tutorial-output/sizes/square.png --width 1080 --height 1080 --mode contain
+python3 scripts/media_ops.py fit-image --inputs assets/approved.png \
+  --output tutorial-output/sizes/portrait.png --width 1080 --height 1920 --mode contain
+</code></pre>
+<p>脚本按中心裁切，不能自动找到人脸或产品。主体偏左或边缘有文字时先检查，不要把命令成功等同于构图正确。补白版本适合做排版底稿；透明素材需要单独保留 alpha 的处理链，本包的白色补边会改变背景。</p>
+<h2>文字后加</h2>
+<p>带标题的宣传图最好保存无字底图和可编辑标题层。先确定画幅再排文字，避免小图中标题太小或被裁掉。真实截图需要像素可读性，不能为了填满画幅把文字放到看不清。遇到密集信息，应减少图内信息或单独制作竖版布局。</p>
+<h2>质量检查</h2>
+<p>逐张读取宽高，打开最终文件，检查主体、logo、字幕区、安全留白与边缘。不同图像格式的透明和压缩特性不同，转换后再查看；扩展名不是格式证明。上传到实际渠道后检查平台二次裁切与压缩，必要时保留针对该渠道的派生版本。</p>
+<h2>交付与恢复</h2>
+<p>为三张文件写明用途与处理方法。某一张失败只重做对应派生图，母版保持不变。原分辨率不足时说明放大只是改变采样数量，不能声称新增的像素恢复了真实细节；需要超分或重生成再取得批准。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="15-product-detail.html">上一篇：把产品卖点做成一套详情页图片</a><a href="17-blind-ad-selection.html">下一篇：生成三张候选广告图，做人工盲选</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/16-multi-size.md">Markdown 原文</a></p></footer></main></body></html>

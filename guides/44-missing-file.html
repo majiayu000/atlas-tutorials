@@ -1,0 +1,47 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>API 显示成功，为什么本地还是没有文件</title><meta name="theme-color" content="#112d26"><meta name="description" content="API 显示成功，为什么本地还是没有文件"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/44-missing-file.html"><meta property="og:type" content="website"><meta property="og:title" content="API 显示成功，为什么本地还是没有文件"><meta property="og:description" content="API 显示成功，为什么本地还是没有文件"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/44-missing-file.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="API 显示成功，为什么本地还是没有文件"><meta name="twitter:description" content="API 显示成功，为什么本地还是没有文件"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>44｜API 显示成功，为什么本地还是没有文件</h1>
+<p>服务端显示 succeeded，电脑上却找不到文件，通常说明生成和交付处在不同阶段。本篇从回执、远程产物、下载和本地路径逐层检查，目标是找回已经生成的结果，不再花钱生成一次。</p>
+<h2>先取得原任务的完整事实</h2>
+<p>保留任务 ID 和原账户，读取实际结果：</p>
+<pre><code class="language-bash">PREDICTION_ID='替换为原任务ID'
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>检查状态是否真为完成，以及任务类型是否应该产生媒体文件。ASR 可能主要返回文本，3D 可能返回多个网格和预览，不能对所有任务套用“一个 MP4”的交付规则。MCP text 内容或 REST data 包装也不能直接喂给只识别 CLI 根字段的脚本。</p>
+<blockquote>
+<p>这个任务已经远程完成但我没找到本地文件。请只检查原任务的 outputs、saved_files 与实际路径，保留账户，不提交新生成。区分没有产物、链接不能取、下载失败和文件保存到别处；给出明确已确认与未确认事项。</p>
+</blockquote>
+<h2>对照三个位置</h2>
+<p><code>outputs</code> 是服务端返回的产物引用；<code>saved_files</code> 是客户端宣称保存的文件；文件系统里的真实非空文件才证明落盘。缺少 saved_files 可能意味着使用了不下载模式、宿主没有文件工具或下载失败，不代表服务端未生成。</p>
+<p>从真实路径核对文件，不根据 URL basename 猜测。使用 Python 包装器时，CLI 工作目录是对应的 run 目录；相对路径应以那个工作目录解析，不一定是你启动终端时的目录。跨设备访问也不能把远端机器路径当本地路径。</p>
+<h2>只恢复下载</h2>
+<p>先核实输出类型，再让 CLI 取回原任务结果。没有硬性命名要求时使用默认扩展名：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>若确知输出是 MP4，再指定新的安全路径：</p>
+<pre><code class="language-bash">mkdir -p tutorial-output/recovered
+atlas generate wait &quot;$PREDICTION_ID&quot; \
+  --output tutorial-output/recovered/video.mp4 --json
+</code></pre>
+<p>不要覆盖不明旧文件；单任务多产物时检查全部输出，并确认 CLI 对自定义路径的处理。扩展名只用于命名，不会把 WebM 转成 MP4。</p>
+<h2>链接失败时检查原因</h2>
+<p>临时链接可能过期，代理或网络策略也可能阻止访问。先重新查询原任务取得当前可用引用，再通过平台支持的取回方式处理；不能保证每次查询都会刷新链接或恢复被清理的文件。浏览器能够访问而服务器不能访问时，排查各自网络和认证环境。</p>
+<p>不要为了下载向 CDN 发送 Atlas API key，也不要关闭 TLS 校验。受控下载器应限制协议、来源、大小和保存路径；返回 HTML 错误页也可能产生一个非空 <code>.mp4</code> 文件，因此还要用 <code>media_audit.py --decode</code> 核对真实内容。</p>
+<h2>正确的结束报告</h2>
+<p>可以交付“生成已完成，文件已恢复并通过解码，内容未人工审查”；也可以明确“服务端完成，但产物链接不可用，尚未保存本地”。远程完成却没有任何可用输出时，应保留未解决状态并核对平台，不杜撰路径或产物。</p>
+<p>下载修复与模型重新生成是两件事。只有内容本身未达要求且用户批准新尝试，才进入新的生成操作。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S1、S2、S3、S5</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="43-recover-job.html">上一篇：等待超时或下载失败后，继续原任务</a><a href="45-unknown-submission.html">下一篇：提交超时且没有任务 ID，怎样核对而不重扣费</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/44-missing-file.md">Markdown 原文</a></p></footer></main></body></html>

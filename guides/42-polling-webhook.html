@@ -1,0 +1,43 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>轮询与 webhook：怎样可靠等待生成结果</title><meta name="theme-color" content="#112d26"><meta name="description" content="轮询与 webhook：怎样可靠等待生成结果"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/42-polling-webhook.html"><meta property="og:type" content="website"><meta property="og:title" content="轮询与 webhook：怎样可靠等待生成结果"><meta property="og:description" content="轮询与 webhook：怎样可靠等待生成结果"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/42-polling-webhook.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="轮询与 webhook：怎样可靠等待生成结果"><meta name="twitter:description" content="轮询与 webhook：怎样可靠等待生成结果"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>42｜轮询与 webhook：怎样可靠等待生成结果</h1>
+<p>媒体生成通常比一次工具调用持续更久。可靠的等待方式要保存任务 ID，让等待进程可恢复，并把本地超时与服务端终态分开。本篇先提供能执行的轮询，再说明 webhook 在系统里的正确边界。</p>
+<h2>最小可执行等待</h2>
+<p>已有 Node 示例 run 目录与 ID 时，直接查询，不重新提交：</p>
+<pre><code class="language-bash">node examples/node/atlas-media.mjs get --run-dir tutorial-output/node-001
+node examples/node/atlas-media.mjs wait --run-dir tutorial-output/node-001 --seconds 120
+</code></pre>
+<p>或者使用 CLI 的原 ID：</p>
+<pre><code class="language-bash">PREDICTION_ID='替换为真实已受理任务ID'
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json
+</code></pre>
+<p>等待上限只限制本地进程。结束时仍在 processing，就记录“仍处理中”；不要转成生成失败，也不要新发一个请求当作延长等待。任务只有实际返回终态时才更新终态。</p>
+<blockquote>
+<p>对已受理的 Atlas 任务实现可恢复等待。只查询原 ID，保留账户与任务关系，按有限间隔轮询并设置本地截止时间；401/403 或 ID 不一致时停止，不更换账号。超时记录 pending/unknown，不再次提交。</p>
+</blockquote>
+<h2>应用里的持久状态</h2>
+<p>至少保存业务任务 ID、Atlas ID、账户引用、请求摘要、上次检查时间、下一次检查时间和终态。工作进程从队列领取待查询项；同一任务的状态更新使用乐观锁或数据库事务，防止多个 worker 互相覆盖。</p>
+<p>对 429、可恢复网络错误和非终态 5xx 使用有上限的退避与适当抖动；收到服务端重试提示时按契约处理。HTTP 5xx 内部可能已经返回 failed 的任务体，不应无限重查该终态。具体限流配额需要实际接口说明，本篇不给一个虚构的“安全 QPS”。</p>
+<h2>未核实 Atlas 回调参数，先不要编造</h2>
+<p>本次查阅的契约不足以确认可通用使用的 Atlas webhook 注册字段、签名算法与事件投递保证。因此本包没有 <code>callback_url</code> 或 <code>webhook_secret</code> 的假执行示例，也不把 n8n 的 Wait URL 写成 Atlas 原生回调功能。</p>
+<p>如果需要对你的应用发通知，可以由<strong>你自己的查询服务</strong>在确认终态后，将一个内部事件写入数据库/outbox，再投递到你控制的队列或回调接口。事件包含业务任务 ID、已核实状态、事件 ID 和版本，不含 API key。接收方验证你定义的身份与签名，并按事件 ID 去重。这是你的应用协议，不是 Atlas 标准。</p>
+<h2>真有官方 webhook 后仍需核对</h2>
+<p>上线前必须确认注册入口、签名覆盖字节、时间窗、重投机制、重复与乱序语义。验证事件后仍核对账户/任务归属，必要时读回服务端任务。不要允许某个伪造回调直接把另一个用户任务标成完成，或触发对任意 URL 的带凭据请求。</p>
+<p>通知投递采用至少一次时，接收方应幂等处理；“事件发出”“用户收到通知”“生成已完成”“文件保存完毕”仍是不同状态。通知失败重发通知，不重生成媒体。</p>
+<p>交付本教程时保留一次从 pending 到终态的实际状态记录，以及超时/重复查询测试。随包测试为模拟接口，不声称已经验证 Atlas 云端 webhook。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S3、S6、S9、S10</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="41-comfyui.html">上一篇：把 Atlas 生成素材接入 ComfyUI</a><a href="43-recover-job.html">下一篇：等待超时或下载失败后，继续原任务</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/42-polling-webhook.md">Markdown 原文</a></p></footer></main></body></html>

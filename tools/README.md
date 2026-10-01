@@ -8,6 +8,6 @@ python3 tools/build_reader.py
 python3 tests/validate_package.py --output verification/static-checks-local.json
 ```
 
-请在独立虚拟环境安装依赖。`build_reader.py` 将 Markdown 编译为自包含的离线阅读器，并从同一原文生成 `guides/` 中的首张图片、图生视频与任务恢复三个独立 HTML 入口；同时更新 sitemap。不下载字体、模型或客户素材。修改 Markdown 后需重建 HTML。
+请在独立虚拟环境安装依赖。`build_reader.py` 将 Markdown 编译为自包含的离线阅读器，并从同一原文生成 `guides/` 中的48 篇教程的独立 HTML 入口与分类目录；同时更新 sitemap。不下载字体、模型或客户素材。修改 Markdown 后需重建 HTML。
 
 静态检查不执行正文里的生成命令，只检查 Shell 语法、JSON/YAML、Python/Node 语法和相对路径；即使全部通过也不能替代真实模型联调。

@@ -1,0 +1,46 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>看懂 schema、--explain、dry_run 与费用估算</title><meta name="theme-color" content="#112d26"><meta name="description" content="看懂 schema、--explain、dry_run 与费用估算"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/05-schema-preview-cost.html"><meta property="og:type" content="website"><meta property="og:title" content="看懂 schema、--explain、dry_run 与费用估算"><meta property="og:description" content="看懂 schema、--explain、dry_run 与费用估算"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/05-schema-preview-cost.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="看懂 schema、--explain、dry_run 与费用估算"><meta name="twitter:description" content="看懂 schema、--explain、dry_run 与费用估算"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>05｜看懂 schema、--explain、dry_run 与费用估算</h1>
+<p>“这个请求长什么样”“参数是否符合模型”“大概要花多少钱”是三个问题。本篇用同一组文本生图输入，把它们分别查清。最终交付三份记录：schema、请求预览、费用信息；不提交生成。</p>
+<h2>读取模型参数</h2>
+<pre><code class="language-bash">mkdir -p tutorial-output/schema-lab
+MODEL='替换为已经发现的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json &gt; tutorial-output/schema-lab/model.json
+</code></pre>
+<p>查看 required、字段类型、枚举、上下界和默认值。<code>&quot;false&quot;</code> 与 <code>false</code> 不同，图片数组与单一 URL 不同，视频的时长单位也必须确认。不要仅凭字段名字猜测取值。将已确认的模型输入保存为自己的 <code>params.json</code>；本包 <code>examples/config/image.json</code> 的 params 只是教学起点。</p>
+<h2>用同一输入做预览和估价</h2>
+<pre><code class="language-bash">PARAMS='./tutorial-output/schema-lab/params.json'
+test -s &quot;$PARAMS&quot;
+atlas generate image &quot;$MODEL&quot; --params-json &quot;@$PARAMS&quot; --explain --json \
+  &gt; tutorial-output/schema-lab/preview.json
+atlas generate cost image &quot;$MODEL&quot; --params-json &quot;@$PARAMS&quot; --json \
+  &gt; tutorial-output/schema-lab/cost.json
+</code></pre>
+<p><code>params.json</code> 内只放模型参数，不放 <code>model</code>、凭据或整份 MCP 工具调用。预览后检查 CLI 是否进行了字段映射、采用了哪些默认值。估价和后续执行必须使用同样的模型、尺寸、数量和时长；修改其中任一项后重新估价。</p>
+<h2>MCP 的对应做法</h2>
+<p>发现当前生成工具的 schema，确认存在 <code>dry_run</code>，然后用 <code>model</code>、<code>params</code>、<code>dry_run: true</code> 调用。工具返回“预览成功”不代表锁价。本次读取的独立 MCP 实现还允许在取不到模型 schema 时跳过部分验证；遇到这种情况，应停止并补齐 schema，不能把工具返回成功当成必填项全部通过。</p>
+<h2>本地参考素材的特殊情况</h2>
+<p>CLI 的预览不上传文件，费用命令也不会为了估价先上传。报价必须要已有 URL 时，先得到用户对上传的授权，再使用该 URL；或者明确指出报价不完整。省略必需参考图得到的文本生图报价，不是原编辑任务的准确报价。</p>
+<h2>刻意制造一个无费用错误</h2>
+<p>从真实枚举里选一个不合法值，或把已知数字字段改成对象，只运行预览，观察是否在提交前得到错误。然后恢复原参数。不要为了测试错误使用真实付费提交，也不要把完整 schema 复制进模型输入。完成后保存错误样例，以后升级时复测。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>检查这份 Atlas 请求。先读取实际模型 schema，对 required、类型、枚举、数量和参考图字段逐项核对。只做 explain 或 dry_run，并单独解释估价；缺少 schema 或价格就报告未知，不上传、不生成、不自动改模型。</p>
+</blockquote>
+<h2>验收与排错</h2>
+<p>能够指出一个参数错误发生在哪一层，并明确“本次未提交”。JSON 语法错误先修语法；模型不接受字段先查 schema；报价服务不可用不代表免费。如果计划改变，把旧预览保留为历史记录，不悄悄覆盖已批准的请求。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S1、S2、S3、S6</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="04-model-selection.html">上一篇：面对一大串模型，怎样按输入和用途选择</a><a href="06-upgrade-check.html">下一篇：升级 Atlas 后，怎样检查旧教程还能不能用</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/05-schema-preview-cost.md">Markdown 原文</a></p></footer></main></body></html>

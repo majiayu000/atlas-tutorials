@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>把脚本生成配音，检查数字、专有名词与停顿</title><meta name="theme-color" content="#112d26"><meta name="description" content="把脚本生成配音，检查数字、专有名词与停顿"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/25-voiceover.html"><meta property="og:type" content="website"><meta property="og:title" content="把脚本生成配音，检查数字、专有名词与停顿"><meta property="og:description" content="把脚本生成配音，检查数字、专有名词与停顿"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/25-voiceover.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="把脚本生成配音，检查数字、专有名词与停顿"><meta name="twitter:description" content="把脚本生成配音，检查数字、专有名词与停顿"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>25｜把脚本生成配音，检查数字、专有名词与停顿</h1>
+<p>本篇交付一段可听的配音、最终口播稿，以及数字和专有名词检查记录。先把内容审定，再合成声音；否则每次改一个产品名称，都可能需要重新付费。示例文本使用虚构品牌，不克隆任何人的声音。</p>
+<h2>准备文稿与声音要求</h2>
+<p>将口播稿保存为 UTF-8 文本，写清语言、情绪、目标时长和使用场景。把“3.5”“2026”“API”“DeskLight”等读法另记在 <a href="../examples/briefs/pronunciation.md">发音表</a>。界面显示文案与实际发音文本可以不同，但不要擅自改动事实、金额、单位或人名。</p>
+<p>目标时长是验收条件，不是所有 TTS 模型都有的参数。先用实际稿件读一遍，再决定删字、拆段或调整停顿；不要为了塞进十秒把声音加速到无法听懂。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 为我的已审定文稿制作普通合成配音，使用当前可用且适合中文的标准声音，不克隆真人。先查询 TTS 模型、语言、voice 和输入字段，预览完整请求与费用认知。等我确认后生成一次，保留任务 ID。交付音频、实际时长、数字和专有名词的逐项听检结果；未听检的部分明确标注。</p>
+</blockquote>
+<h2>选择 TTS，而非音乐或转写模型</h2>
+<p>CLI 支持音频命令的安装版本可以先执行：</p>
+<pre><code class="language-bash">atlas version --json
+atlas models list --type audio --json
+MODEL='替换为目录中的TTS模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas skills read atlas/references/audio-3d.md --raw
+</code></pre>
+<p>同属 audio 不代表用途相同。核实模型用途是文本转语音，查看文本字段究竟叫 <code>text</code> 还是其他名称，voice 是枚举、ID 还是可选默认值。不把音乐模型当作配音模型。如果当前 CLI 没有该命令，转到已连接 MCP 的 <code>atlas_list_models</code>、<code>atlas_get_model_info</code> 与 <code>atlas_generate_audio</code> 路线，不猜命令别名。</p>
+<p>复制 <a href="../examples/config/image.json">图片配置</a> 为你自己的 <code>voice.json</code>，将 <code>kind</code> 改成 <code>audio</code>，填入真实模型与已核对的参数，删除不适用的 prompt。该配置是本包脚本输入，不是服务端原生请求体：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py prepare --config voice.json --run-dir tutorial-output/voice-01
+python3 scripts/run_job.py preview --run-dir tutorial-output/voice-01
+</code></pre>
+<p>只有确认本次费用与上传范围后，执行付费步骤：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py submit --run-dir tutorial-output/voice-01 --approve
+python3 scripts/run_job.py wait --run-dir tutorial-output/voice-01
+</code></pre>
+<h2>对照文稿逐句听</h2>
+<p>先用 <code>media_audit.py</code> 读取时长和音轨，再完整播放。数字、单位、缩写、品牌、人名各听一遍；注意句末是否被截断、词间是否出现不自然停顿、情绪是否偏离使用场景。机器转写回听可以辅助发现漏词，但不是正确发音的证明，额外转写同样可能计费。</p>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/voice.wav --require-audio --decode
+</code></pre>
+<p>路径需要替换成实际文件。若只发现一句读音错误，先修改对应短段并获得必要授权，重新生成该段后再合成。不要让 Agent 为比较几十个声音自动连续下单。提交过且正在处理的音频仍应续查原 ID。</p>
+<p>交付采用真实输出格式，不把 MP3 改名为 WAV。保存原始音频、最终稿、模型/voice 选择和听检结论；客户稿件不要混入公共示例。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S1、S2、S3、S5</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="24-video-extension.html">上一篇：延长已有视频：接缝、动作和声音怎样检查</a><a href="26-transcript-subtitles.html">下一篇：从录音得到转写和字幕，检查时间轴</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/25-voiceover.md">Markdown 原文</a></p></footer></main></body></html>

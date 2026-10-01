@@ -1,0 +1,40 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>给应用制作一套 onboarding 插图</title><meta name="theme-color" content="#112d26"><meta name="description" content="给应用制作一套 onboarding 插图"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/10-onboarding.html"><meta property="og:type" content="website"><meta property="og:title" content="给应用制作一套 onboarding 插图"><meta property="og:description" content="给应用制作一套 onboarding 插图"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/10-onboarding.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="给应用制作一套 onboarding 插图"><meta name="twitter:description" content="给应用制作一套 onboarding 插图"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>10｜给应用制作一套 onboarding 插图</h1>
+<p>本次为应用做三张引导插图，分别表达“创建项目”“添加素材”“导出结果”。这三张图要像同一套，而不是三个模型各画各的。交付含原图、统一尺寸文件和一张并排审核记录。</p>
+<h2>先固定视觉规则</h2>
+<p>确定背景、线条或材质、视角、主角、阴影方向、构图密度与留白区。每个页面只有一个主动作。不要用图像模型画真实按钮文字或完整交互截图，引导标题应由应用组件渲染。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>用 Atlas 为应用做三张 onboarding 插图：创建项目、添加素材、导出结果。使用同一风格、同一角色和统一留白，不绘制真实按钮或文字。先制作第一张作为母版，等我认可后用它指导另外两张。逐张检查角色外形、视角、配色和内容，不因其中一张失败重做整套。</p>
+</blockquote>
+<h2>从母版走到系列</h2>
+<p>第一张只做风格决定，不急于批量。批准后保存母版和提示词的固定部分。后两张仅改变主动作。模型支持参考图时按实际 schema 附母版；不支持时明确采用文本风格约束，承认一致性需要更严格的人工检查。不同画面使用同一个 seed 并不自动获得同一角色。</p>
+<h2>导出统一尺寸</h2>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/onboarding-01.png \
+  --output tutorial-output/onboarding/01.png --width 900 --height 900 --mode contain
+python3 scripts/media_ops.py fit-image --inputs assets/onboarding-02.png \
+  --output tutorial-output/onboarding/02.png --width 900 --height 900 --mode contain
+python3 scripts/media_ops.py fit-image --inputs assets/onboarding-03.png \
+  --output tutorial-output/onboarding/03.png --width 900 --height 900 --mode contain
+</code></pre>
+<p>这组尺寸仅用于练习。图片若需要透明背景，先确认真实 alpha，不能把白底看成透明；本包 contain 会补白，不适合假装输出透明图。需要 alpha 的项目选择支持透明的来源或单独抠图工作流。</p>
+<h2>在真实页面验收</h2>
+<p>并排看三张图的主体大小与视觉重量，再逐页检查小屏幕、动态字体和不同语言。插图不能承担唯一的操作说明，页面标题应独立清楚。用不认识应用的同事测试其是否能解释每张图表达的动作。</p>
+<h2>故障与交付</h2>
+<p>某张角色换了衣服或材质跑偏，只重做该张并继续引用母版。留白不够可调整页面或图像构图，不能缩小标题到无法阅读。交付文件与固定风格规则一起保存，以后新增第四张时有可复用依据。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S1、S2、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="09-github-launch.html">上一篇：给 GitHub 项目制作 README 横幅和发布配图</a><a href="11-real-screenshot.html">下一篇：把真实产品截图装进宣传场景，不重画界面</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/10-onboarding.md">Markdown 原文</a></p></footer></main></body></html>

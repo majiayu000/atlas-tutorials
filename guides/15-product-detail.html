@@ -1,0 +1,37 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>把产品卖点做成一套详情页图片</title><meta name="theme-color" content="#112d26"><meta name="description" content="把产品卖点做成一套详情页图片"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/15-product-detail.html"><meta property="og:type" content="website"><meta property="og:title" content="把产品卖点做成一套详情页图片"><meta property="og:description" content="把产品卖点做成一套详情页图片"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/15-product-detail.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="把产品卖点做成一套详情页图片"><meta name="twitter:description" content="把产品卖点做成一套详情页图片"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>15｜把产品卖点做成一套详情页图片</h1>
+<p>详情页通常需要主视觉、细节、使用场景和规格说明。本篇围绕一个虚构灯具做四张图，重点是将事实文案与生成画面分开。你要自己提供获授权产品照片和经确认的规格；包内不提供真实商品卖点。</p>
+<h2>先写事实清单</h2>
+<p>把可证实的尺寸、材料、颜色、接口和功能登记成表，并记录来源。没有来源的“提升效率”“护眼认证”“节能百分比”不能让 Agent 自动补写。图像模型只负责场景与视觉表达；价格、认证、参数和购买承诺由事实层控制。</p>
+<h2>页面分工</h2>
+<p>第一张说明产品是什么，第二张展示真实细节，第三张说明使用环境，第四张放规格。每页尽量只回答一个问题。细节页使用真实局部照片优先，生成的微观纹理不能当成工艺证明。尺寸标线和数字用排版工具添加，避免模型把 30 cm 改成 80 cm。</p>
+<h2>复制给 Agent</h2>
+<blockquote>
+<p>根据我提供的事实表和产品照片，做四张详情页素材。只使用有来源的卖点，不新增认证、价格或客户评价。先列出每页表达的事实、需要生成的背景和必须使用的真实产品区域。按我批准的数量调用 Atlas；文字与规格由本地排版添加，逐页验收。</p>
+</blockquote>
+<h2>生成与合成</h2>
+<p>先为主视觉制作一个符合品牌规则的背景，按教程 13 保持产品，或使用教程 11 的合成方式保证原包装不被重画。批准这页后再做使用场景。规格页可以完全采用原图与排版，不需要为了使用模型而额外生成一次。</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py fit-image --inputs assets/detail-background.png \
+  --output tutorial-output/detail/background-1200.png --width 1200 --height 1600 --mode cover
+</code></pre>
+<p>1200×1600 是教学目标，应改成实际页面槽位。每页文字少而准确，长参数留给 HTML 或可访问文本；不要把所有信息只嵌在图片里。</p>
+<h2>逐层验收</h2>
+<p>产品负责人逐项核对事实；设计者检查布局、对比度与多页一致性；执行者检查文件、尺寸和引用路径。生成式使用场景不要暗示未经验证的耐高温、防水或承重能力。显示人像时也要有相应来源与使用许可。</p>
+<h2>失败与交付</h2>
+<p>错误数字改文字层，包装失真改合成路线，背景不符合再讨论生成。交付四张最终图、无字底图、事实来源清单和排版源文件；原始客户资料放私有存储，公开样例采用单独可公开素材。一次任务返回了四个 URL，不代表这四页已通过事实审核。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S1、S2、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="14-controlled-variants.html">上一篇：同一件产品生成三种背景，做受控变体</a><a href="16-multi-size.html">下一篇：一套素材输出不同渠道尺寸，不拉伸原图</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/15-product-detail.md">Markdown 原文</a></p></footer></main></body></html>
