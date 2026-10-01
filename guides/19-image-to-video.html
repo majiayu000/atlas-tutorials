@@ -1,0 +1,71 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Atlas 图生视频：提交、续查与视频验收</title><meta name="theme-color" content="#112d26"><meta name="description" content="Atlas 图生视频：提交、续查与视频验收"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/19-image-to-video.html"><meta property="og:type" content="website"><meta property="og:title" content="Atlas 图生视频：提交、续查与视频验收"><meta property="og:description" content="Atlas 图生视频：提交、续查与视频验收"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/19-image-to-video.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Atlas 图生视频：提交、续查与视频验收"><meta name="twitter:description" content="Atlas 图生视频：提交、续查与视频验收"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="../index.html">← 全部 48 篇与离线阅读器</a><a href="https://github.com/majiayu000/atlas-tutorials">项目与反馈</a></header><article><h1>19｜让一张图片动起来：生成、续查与视频验收</h1>
+<p>本教程从一张可用参考图生成一个短镜头。先做单镜头，可以把问题限制在主体保持、运动和实际视频规格上，不必同时调试分镜、配音与拼接。</p>
+<p>示例目标是 5 秒竖屏镜头。选择模型时必须确认它确实支持相应参考输入、时长和画幅；不支持时应换成经过用户同意的目标或模型，而不是无声丢掉要求。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="../index.html#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="../index.html#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>给 Agent 的任务说明</h2>
+<blockquote>
+<p>使用 Atlas，把这张参考图做成一个 5 秒竖屏镜头。镜头缓慢推进，主体保持稳定，不改变产品外形和文字。先查图生视频模型与 schema，说明音频支持情况、实际参数和费用认知；不先上传或提交。等我确认后生成一次，保存任务 ID，最后检查真实视频的时长、画幅、运动和声音。超时后继续原任务。</p>
+</blockquote>
+<h2>手动路径：先确认模型和素材</h2>
+<pre><code class="language-bash">set -euo pipefail
+REFERENCE='./assets/reference.png'
+test -s &quot;$REFERENCE&quot;
+atlas models list --type video --json
+MODEL='替换为支持本次图生视频要求的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas skills read atlas/references/video.md --raw
+</code></pre>
+<p>找不到与要求相符的模型时应停在这一步。不要拿文本生视频模型假装已经使用了参考图。</p>
+<p>在确认 <code>--image</code>、5 秒、9:16 可由当前 CLI 与模型接受后，构建输入：</p>
+<pre><code class="language-bash">PROMPT='A single continuous shot based on the reference image. Slow camera push-in. Keep the main subject stable and preserve the product geometry and visible markings. Subtle natural motion, no scene cut.'
+INPUT=(-p &quot;$PROMPT&quot; --image &quot;@$REFERENCE&quot; --duration 5 --aspect-ratio 9:16)
+atlas generate video &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --explain --json
+</code></pre>
+<p>分辨率和音频参数应按真实 schema 加入同一 INPUT。不要假设视频一定有声音，也不要把“提示词要求没有声音”当成关闭音频生成参数的替代。费用估算复用同一输入；本地参考与 URL-only 报价的限制见教程 13。</p>
+<h2>授权后提交一次</h2>
+<p>下方是付费步骤，只用于首次提交：</p>
+<pre><code class="language-bash">mkdir -p tutorial-output
+RUN_DIR=$(mktemp -d './tutorial-output/video-XXXXXX')
+if ! atlas generate video &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --no-wait --json &gt; &quot;$RUN_DIR/submit.json&quot;; then
+  printf '%s\n' '提交结果需要核对；不要重新运行本生成块。' &gt;&amp;2
+  exit 1
+fi
+PREDICTION_ID=$(python3 scripts/receipt_id.py &quot;$RUN_DIR/submit.json&quot;)
+printf '%s\n' &quot;$PREDICTION_ID&quot; &gt; &quot;$RUN_DIR/prediction-id.txt&quot;
+printf '任务 ID：%s\n' &quot;$PREDICTION_ID&quot;
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>随后继续这个任务：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json &gt; &quot;$RUN_DIR/result.json&quot;
+</code></pre>
+<p>本地等待结束不等于服务端失败。<code>10m</code> 仅限制这一轮等待；无论超时还是终端中断，都不要靠重复生成来“再等一下”。</p>
+<h2>技术规格与内容分开检查</h2>
+<p>从 <code>saved_files</code> 找到实际保存的视频路径。已安装 ffprobe 时可检查容器和媒体流：</p>
+<pre><code class="language-bash">VIDEO='替换为 saved_files 中的真实视频路径'
+test -s &quot;$VIDEO&quot;
+ffprobe -v error \
+  -show_entries format=duration:stream=codec_type,codec_name,width,height,avg_frame_rate \
+  -of json &quot;$VIDEO&quot;
+</code></pre>
+<p>检查实际时长、宽高关系与是否有音频流。这个命令读取媒体信息，不能证明全片都能正常解码，更不能证明动作自然或口型同步。正式交付还应完整播放，必要时加全片解码检查。</p>
+<p>内容检查应回答：是否采用了参考主体，是否出现形变或标识漂移，运动是否符合要求，有没有意外切镜或不需要的声音。对未达标部分如实记录；不能只截一张好看的首帧当作视频通过验收。</p>
+<h2>交付清单</h2>
+<p>交付真实视频文件或远程链接、模型与任务 ID、实际规格、视觉与声音检查结果。下载失败只恢复下载；动作未达标才涉及新的生成决策。二者不要混在一起。</p>
+<p>运行路径、授权与状态约定见 <a href="../index.html#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><footer><nav><a href="02-first-image.html">Atlas CLI 生成第一张图片并保存任务回执</a> · <a href="19-image-to-video.html">Atlas 图生视频：提交、续查与视频验收</a> · <a href="43-recover-job.html">Atlas 生成超时或下载失败：继续原任务</a></nav><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/19-image-to-video.md">Markdown 原文</a></p></footer></main></body></html>

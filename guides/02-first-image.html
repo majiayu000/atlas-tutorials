@@ -1,0 +1,79 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Atlas CLI 生成第一张图片并保存任务回执</title><meta name="theme-color" content="#112d26"><meta name="description" content="Atlas CLI 生成第一张图片并保存任务回执"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/02-first-image.html"><meta property="og:type" content="website"><meta property="og:title" content="Atlas CLI 生成第一张图片并保存任务回执"><meta property="og:description" content="Atlas CLI 生成第一张图片并保存任务回执"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/02-first-image.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Atlas CLI 生成第一张图片并保存任务回执"><meta name="twitter:description" content="Atlas CLI 生成第一张图片并保存任务回执"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="../index.html">← 全部 48 篇与离线阅读器</a><a href="https://github.com/majiayu000/atlas-tutorials">项目与反馈</a></header><article><h1>02｜生成第一张图片，同时保存任务回执</h1>
+<p>本教程的目标是一张实际可打开的图片，以及能再次查询它的任务 ID。演示主题是网站的抽象配图，不使用参考文件，也不要求模型生成标题文字。</p>
+<p>准备好 Atlas CLI、可用账户和 Python 3.9+。从本教程包根目录执行 Bash 示例。所有模型 ID 必须从当前目录复制；本教程不预设某个旧 ID 永久可用。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="../index.html#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="../index.html#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>给 Agent 的任务说明</h2>
+<blockquote>
+<p>用 Atlas 为一个开发者工具网站生成一张抽象配图，画面有清楚的主体与留白，不包含文字和 logo。先查询支持文本生成图片的模型，给出一个选择及依据，核对参数并估价。只预览，不提交，等我确认后生成一张。保存原任务 ID，交付时给出真实文件；等待超时不要重新生成。</p>
+</blockquote>
+<h2>手动执行：先选模型</h2>
+<pre><code class="language-bash">set -euo pipefail
+atlas version --json
+atlas auth status --json
+atlas models list --type image --json
+</code></pre>
+<p>选择支持文本生成图片的模型，确认所需参数。不要选择必须带参考图的编辑模型：</p>
+<pre><code class="language-bash">MODEL='替换为当前可用的真实模型ID'
+atlas models get &quot;$MODEL&quot; --json
+atlas skills read atlas/references/image.md --raw
+</code></pre>
+<p>如果 schema 需要 prompt 以外的字段，应先补齐。例子里的主题没有尺寸硬约束，可以使用该模型的默认尺寸；需要具体画幅时，再按模型实际支持的字段和取值填写。</p>
+<h2>预览与估价使用同一组输入</h2>
+<pre><code class="language-bash">PROMPT='Abstract visual for a developer tool website. One clear sculptural subject, soft studio lighting, ample clean negative space. No text, no letters, no logos.'
+INPUT=(-p &quot;$PROMPT&quot;)
+
+# 有其他必填字段时，先按真实 schema 加入 INPUT，再执行下面两条。
+# 例如语法是 INPUT+=(--param &quot;字段名=实际值&quot;)，不要原样使用这个占位表达。
+atlas generate image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --explain --json
+atlas generate cost image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --json
+</code></pre>
+<p>检查预览里的模型、输入与默认值。估价失败或价格不明确时，不要拿零费用代替未知；先说明不确定性。本文把“确认后执行一张”作为示范授权边界，它不是服务端硬额度设置。</p>
+<h2>用户确认后，提交一次并保留回执</h2>
+<p>下方会产生真实模型调用费用。先确认数量与配置符合授权，再执行。目录只在第一次创建；出现异常后不要从创建新目录开始重新跑一遍。</p>
+<pre><code class="language-bash">mkdir -p tutorial-output
+RUN_DIR=$(mktemp -d './tutorial-output/image-XXXXXX')
+printf '%s\n' &quot;$MODEL&quot; &gt; &quot;$RUN_DIR/model.txt&quot;
+printf '%s\n' &quot;$PROMPT&quot; &gt; &quot;$RUN_DIR/prompt.txt&quot;
+printf '本次记录目录：%s\n' &quot;$RUN_DIR&quot;
+
+if [ -e &quot;$RUN_DIR/submit.json&quot; ]; then
+  printf '%s\n' '已有提交记录，请查询原任务，不要再次提交。' &gt;&amp;2
+  exit 1
+fi
+
+if ! atlas generate image &quot;$MODEL&quot; &quot;${INPUT[@]}&quot; --no-wait --json &gt; &quot;$RUN_DIR/submit.json&quot;; then
+  printf '%s\n' '提交返回异常。保留回执，先核对是否受理，不要自动重试生成。' &gt;&amp;2
+  exit 1
+fi
+
+PREDICTION_ID=$(python3 scripts/receipt_id.py &quot;$RUN_DIR/submit.json&quot;)
+printf '%s\n' &quot;$PREDICTION_ID&quot; &gt; &quot;$RUN_DIR/prediction-id.txt&quot;
+printf '任务 ID：%s\n' &quot;$PREDICTION_ID&quot;
+</code></pre>
+<p>辅助脚本只从已知 CLI 字段读取 ID；不把状态为 processing 的任务当成完成，也不会自行发网络请求。空回执、损坏 JSON 或缺少 ID 都需要核对，不能证明请求没有受理。上面的本地文件检查也不是跨进程幂等保证。</p>
+<h2>等待和交付</h2>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json &gt; &quot;$RUN_DIR/result.json&quot;
+</code></pre>
+<p><code>10m</code> 是这次本地等待的上限，不是视频或图片预计完成时间。等待返回后同时看命令退出状态和 JSON 中的 prediction 状态。结果处于处理中时，继续查询同一个 ID。</p>
+<p>完成后检查 <code>outputs</code> 与 <code>saved_files</code>。未指定输出路径时，让 CLI 使用实际媒体类型选择扩展名；不要看到 URL 末尾就猜本地文件名。打开 <code>saved_files</code> 中的真实路径，确认文件非空并检查画面。不具备图片查看能力时，应明确“只验证了文件，未做视觉检查”。</p>
+<p>最终交付说明至少写清：模型 ID、任务 ID、生成状态、真实文件路径、画面是否已经人工或视觉检查。远程完成但没有本地文件时，进入 <a href="43-recover-job.html">43 恢复教程</a>。</p>
+<h2>不要把日志与素材混进公开仓库</h2>
+<p>建议将生成目录加入项目已有的 <code>.gitignore</code>。不要覆盖整个文件，只追加所需规则。prompt、文件路径、输出 URL 和模型回执也可能包含业务信息，应与密钥一样谨慎审查后再分享。</p>
+<p>运行路径、授权与状态约定见 <a href="../index.html#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><footer><nav><a href="02-first-image.html">Atlas CLI 生成第一张图片并保存任务回执</a> · <a href="19-image-to-video.html">Atlas 图生视频：提交、续查与视频验收</a> · <a href="43-recover-job.html">Atlas 生成超时或下载失败：继续原任务</a></nav><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/02-first-image.md">Markdown 原文</a></p></footer></main></body></html>
