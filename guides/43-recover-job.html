@@ -1,0 +1,58 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Atlas 生成超时或下载失败：继续原任务</title><meta name="theme-color" content="#112d26"><meta name="description" content="Atlas 生成超时或下载失败：继续原任务"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/43-recover-job.html"><meta property="og:type" content="website"><meta property="og:title" content="Atlas 生成超时或下载失败：继续原任务"><meta property="og:description" content="Atlas 生成超时或下载失败：继续原任务"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/43-recover-job.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Atlas 生成超时或下载失败：继续原任务"><meta name="twitter:description" content="Atlas 生成超时或下载失败：继续原任务"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="../index.html">← 全部 48 篇与离线阅读器</a><a href="https://github.com/majiayu000/atlas-tutorials">项目与反馈</a></header><article><h1>43｜等待超时或下载失败后，继续原任务</h1>
+<p>你已经点过生成，现在终端超时、Agent 会话断开，或者 API 显示成功但找不到文件。先不要再次运行生成命令。要判断的是原请求现在处于哪个阶段。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="../index.html#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="../index.html#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>第一种：已经有任务 ID</h2>
+<p>把它当作原任务的唯一查询入口：</p>
+<pre><code class="language-bash">PREDICTION_ID='替换为已返回的真实任务ID'
+atlas generate get &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>如果还在处理，继续查询或等待原任务：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --timeout 10m --json
+</code></pre>
+<p>不要仅根据 Shell 退出码判断结果。终态为 failed 或服务端 timeout，与本地 wait 达到时间上限，是不同情况。终态失败也不自动授权换模型重试。</p>
+<p>给 Agent 的恢复指令可以这样写：</p>
+<blockquote>
+<p>这个 Atlas 任务的 ID 是【填入真实 ID】。只查询和继续等待该任务，不要重新生成、切换模型或账户。远程完成后尝试取回已有产物；如果保存本地失败，告诉我远程链接、具体阶段和未完成事项。</p>
+</blockquote>
+<h2>第二种：生成已完成，但文件没保存下来</h2>
+<p>比较远程 <code>outputs</code> 与本地 <code>saved_files</code>，再检查实际路径是否存在、文件是否非空。一次远程成功不证明下载成功。</p>
+<p>继续原任务的读取/下载路径即可，优先让 CLI 根据真实媒体类型决定文件后缀：</p>
+<pre><code class="language-bash">atlas generate wait &quot;$PREDICTION_ID&quot; --json
+</code></pre>
+<p>需要明确本地路径时，先核对真实格式，再使用：</p>
+<pre><code class="language-bash">OUTPUT='./recovered/result.mp4'
+mkdir -p './recovered'
+atlas generate wait &quot;$PREDICTION_ID&quot; --output &quot;$OUTPUT&quot; --json
+</code></pre>
+<p>上例仅用于已知输出确实为 MP4 的任务。图片、音频、3D 应使用真实后缀；不要通过改后缀冒充格式转换。再次失败时保留输出 URL 与错误阶段，不要调用生成来修复下载问题。</p>
+<h2>第三种：提交超时，连 ID 都没有拿到</h2>
+<p>这是“是否已受理未知”，不应写成“生成失败”。先保留原回执、发生时间、账户、所选模型与脱敏后的请求信息。检查有没有成功写到本地的 submit.json、终端输出或其他可靠记录。</p>
+<p>使用独立 MCP 且实际暴露 <code>atlas_list_predictions</code> 时，可以在同一账户查询历史，再用 <code>atlas_get_prediction</code> 核对候选任务。但相同模型和相近时间并不一定足以唯一匹配；证据不够时应继续保留未知状态，或通过平台支持渠道核对。不能猜一个 ID。</p>
+<p>本次核对的 CLI 指南没有提供可以在这里直接代替上述历史查询的统一命令，因此本教程不编造 <code>atlas jobs history</code> 之类的命令。</p>
+<p>新的一次生成调用可能被当作新任务计费。本地回执减少了丢失风险，但不能解决请求已到服务端、响应尚未保存时进程崩溃的所有情况。严谨的自动化还需要服务端幂等与请求核对能力。</p>
+<h2>第四种：登录或供应商访问错误</h2>
+<pre><code class="language-bash">atlas auth status --json
+atlas doctor --json
+</code></pre>
+<p>本地过期时由用户重新完成登录。本地仍为 logged_in，却收到供应商访问错误时，不要擅自更换 dev 环境、API 地址、账户或凭据。也不要把同一个原任务拿到另一个账户继续查询后，错误解释为任务不存在。</p>
+<h2>恢复结果应该怎么报告</h2>
+<p>可以按下面四句话交付：原任务 ID 是什么；目前确认的服务端状态是什么；产物已在哪里找到；本地保存或内容验收还有什么未完成。若始终没有得到 ID，就说受理结果仍未知，不宣称未扣费，也不宣称肯定扣费。</p>
+<p>这一篇的验收目标是减少错误重提交，不是保证所有任务最终成功。能准确停在未知状态，比自动再花一笔钱更可靠。</p>
+<p>运行路径、授权与状态约定见 <a href="../index.html#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><footer><nav><a href="02-first-image.html">Atlas CLI 生成第一张图片并保存任务回执</a> · <a href="19-image-to-video.html">Atlas 图生视频：提交、续查与视频验收</a> · <a href="43-recover-job.html">Atlas 生成超时或下载失败：继续原任务</a></nav><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/43-recover-job.md">Markdown 原文</a></p></footer></main></body></html>

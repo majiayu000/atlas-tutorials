@@ -21,6 +21,13 @@ pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding
 <p>本包完成了全部教程正文、配套教学脚本、配置/工作流示例、离线测试与打包。没有使用你的 API key、登录账户、执行付费模型生成、向客户素材发起上传，也没有修改 GitHub 仓库。n8n、ComfyUI、MCP 宿主和 GitHub Actions 的真实连接未代你联调。</p>
 <p>真实输出质量、模型权限、价格与宿主兼容性要在当前环境检查。目录里出现模型占位或 <code>assets/</code> 自备文件，是执行配置边界，不是省略教程正文。集成 JSON 可以编辑与导入检查，但不能宣传成已在线认证的现成服务。</p>
 <h2>建议的三条阅读路线</h2>
+<p>想先完成一个具体任务，可以直接打开现有正文的独立阅读页：</p>
+<ul>
+<li><a href="guides/02-first-image.html">用 Atlas CLI 生成第一张图片并保留回执</a>：发现模型、预览、估价、一次提交与真实文件验收。</li>
+<li><a href="guides/19-image-to-video.html">用参考图生成视频</a>：确认时长与画幅、查询原任务、检查视频规格与内容。</li>
+<li><a href="guides/43-recover-job.html">等待超时或下载失败后继续原任务</a>：分别处理已有 ID、缺少文件与受理结果未知的情况。</li>
+</ul>
+<p>这三页与 Markdown 原文由同一阅读器生成，仍保留未做付费生成的状态说明。完整目录和全文搜索继续在 <code>index.html</code> 中使用。</p>
 <table>
 <thead>
 <tr>
@@ -110,6 +117,7 @@ node --test tests/node-client.test.mjs
 </tbody>
 </table>
 <h2>接真实账户之前</h2>
+<p>这是独立中文教程包。安装与发行请查 <a href="https://github.com/AtlasCloudAI/cli">AtlasCloud CLI</a>及其<a href="https://github.com/AtlasCloudAI/cli/releases">发行记录</a>，技能安装查<a href="https://www.atlascloud.ai/docs/skills">官方 Agent Skills 文档</a>。教程核对版本见 <a href="#doc-SOURCES-md">SOURCES.md</a>，不能据教程日期推断当前账户能力。教程错误可在<a href="https://github.com/majiayu000/atlas-tutorials/issues">本仓库 Issues</a>反馈，附教程编号、CLI 版本与脱敏错误即可。</p>
 <p>先读 <a href="#doc-common--EXECUTION-md">执行约定</a>。保留现有账户，不把 key 粘贴到公开文档或 Agent 对话；上传与生成分别确认范围。复制配置后填入实时发现的模型与参数，执行只读预览并取得可靠的费用认知。</p>
 <p><code>run_job.py --approve</code> 表示调用者放行一次提交，不是服务端硬预算。原任务超时继续查询原 ID，提交结果不确定时保留 unknown，不自动重交。客户端只记录观察，文件还要解码和人工验收。</p>
 <h2>作为仓库或文档站发布</h2>

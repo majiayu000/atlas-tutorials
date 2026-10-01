@@ -11,8 +11,13 @@ CAT=json.loads((ROOT/'catalog.json').read_text())
 MD=MarkdownIt('commonmark',{'html':False}).enable('table')
 files=[ROOT/'README.md',*[ROOT/i['path'] for i in CAT],ROOT/'CATALOG.md',ROOT/'common/EXECUTION.md',ROOT/'common/DELIVERY.md',ROOT/'SOURCES.md',ROOT/'verification/REPORT.md',ROOT/'PUBLISHING.md',ROOT/'scripts/README.md',ROOT/'third-party/README.md']
 ids={f.resolve():('home' if f.name=='README.md' and f.parent==ROOT else 'doc-'+f.relative_to(ROOT).as_posix().replace('/','--').replace('.','-')) for f in files}
+guides={
+ (ROOT/'tutorials/02-first-image.md').resolve(): ('02-first-image.html', 'Atlas CLI 生成第一张图片并保存任务回执'),
+ (ROOT/'tutorials/19-image-to-video.md').resolve(): ('19-image-to-video.html', 'Atlas 图生视频：提交、续查与视频验收'),
+ (ROOT/'tutorials/43-recover-job.md').resolve(): ('43-recover-job.html', 'Atlas 生成超时或下载失败：继续原任务'),
+}
 
-def render(f):
+def render(f, standalone=False):
  tokens=MD.parse(f.read_text())
  for token in tokens:
   for c in token.children or []:
@@ -20,9 +25,12 @@ def render(f):
    attr='href' if c.type=='link_open' else 'src';v=c.attrGet(attr)
    if not v or urllib.parse.urlsplit(v).scheme or v.startswith('#'):continue
    target=(f.parent/urllib.parse.unquote(v.split('#')[0])).resolve()
-   if target in ids:c.attrSet(attr,'#'+ids[target])
+   if target in ids:
+    if standalone:
+     c.attrSet(attr, guides[target][0] if target in guides else '../index.html#'+ids[target])
+    else:c.attrSet(attr,'#'+ids[target])
    else:
-    try:c.attrSet(attr,target.relative_to(ROOT).as_posix())
+    try:c.attrSet(attr,('../' if standalone else '')+target.relative_to(ROOT).as_posix())
     except ValueError:pass
  return MD.renderer.render(tokens,MD.options,{})
 nav=['<a class="home-link" href="#home">使用说明与离线演练</a>']
@@ -62,4 +70,17 @@ document.querySelector('.mobile-toggle').addEventListener('click',()=>document.b
 '''
 page='<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Atlas 教程全集</title><meta name="theme-color" content="#112d26"><meta name="description" content="48 篇 Atlas 多模态 Agent 中文教程，覆盖 CLI / Skill / MCP / API 接入、图片、视频、声音、后处理、自动化与排错。"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/"><meta property="og:type" content="website"><meta property="og:title" content="Atlas 多模态 Agent 教程全集"><meta property="og:description" content="48 篇 Atlas 多模态 Agent 中文教程，覆盖 CLI / Skill / MCP / API 接入、图片、视频、声音、后处理、自动化与排错。"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Atlas 多模态 Agent 教程全集"><meta name="twitter:description" content="48 篇 Atlas 多模态 Agent 中文教程，覆盖 CLI / Skill / MCP / API 接入、图片、视频、声音、后处理、自动化与排错。"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>'+css+'</style></head><body><button class="mobile-toggle">目录</button><aside><div class="brand"><strong>ATLAS</strong><small>多模态 Agent · 教程全集</small></div><div class="search-box"><input id="search" aria-label="搜索教程全文" placeholder="搜索场景、命令、排错…"></div><div id="count">48 篇完整教程 · 支持全文检索</div><nav>'+''.join(nav)+'</nav></aside><main><header><span>从接入到成片，从脚本到生态</span><span class="badge">离线可读 · 2026.09.20</span></header>'+''.join(articles)+'<div class="page-nav"><a id="prev" hidden></a><a id="next" hidden></a></div><footer>文稿与离线验证已完成；真实账户、付费模型与宿主联调需另行确认。无外部字体、无追踪脚本。</footer></main><script>'+js+'</script></body></html>'
 (ROOT/'index.html').write_text(page,encoding='utf-8')
+guide_dir=ROOT/'guides'
+guide_dir.mkdir(exist_ok=True)
+base='https://majiayu000.github.io/atlas-tutorials/'
+guide_links=' · '.join(f'<a href="{filename}">{html.escape(title)}</a>' for filename,title in guides.values())
+for source,(filename,title) in guides.items():
+ head=page.split('<style>')[0]
+ head=re.sub(r'<title>.*?</title>', '<title>'+html.escape(title)+'</title>', head)
+ head=re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description|og:title|twitter:title)" content=")[^"]*', lambda m:m.group(1)+html.escape(title), head)
+ head=head.replace(base+'"',base+'guides/'+filename+'"')
+ body='<main><header><a href="../index.html">← 全部 48 篇与离线阅读器</a><a href="https://github.com/majiayu000/atlas-tutorials">项目与反馈</a></header><article>'+render(source,standalone=True)+'</article><footer><nav>'+guide_links+'</nav><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../'+source.relative_to(ROOT).as_posix()+'">Markdown 原文</a></p></footer></main>'
+ (guide_dir/filename).write_text(head+'<style>'+css+'main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body>'+body+'</body></html>',encoding='utf-8')
+urls=[base,*[base+'guides/'+filename for filename,_ in guides.values()]]
+(ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+u+'</loc></url>\n' for u in urls)+'</urlset>\n',encoding='utf-8')
 print(f'Built {len(CAT)} tutorials + supporting docs; {len(page.encode())} bytes')

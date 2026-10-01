@@ -16,6 +16,14 @@
 
 ## 建议的三条阅读路线
 
+想先完成一个具体任务，可以直接打开现有正文的独立阅读页：
+
+- [用 Atlas CLI 生成第一张图片并保留回执](guides/02-first-image.html)：发现模型、预览、估价、一次提交与真实文件验收。
+- [用参考图生成视频](guides/19-image-to-video.html)：确认时长与画幅、查询原任务、检查视频规格与内容。
+- [等待超时或下载失败后继续原任务](guides/43-recover-job.html)：分别处理已有 ID、缺少文件与受理结果未知的情况。
+
+这三页与 Markdown 原文由同一阅读器生成，仍保留未做付费生成的状态说明。完整目录和全文搜索继续在 `index.html` 中使用。
+
 | 使用目标 | 阅读顺序 |
 |---|---|
 | 第一次用 Agent 做图和视频 | 01 → 02 → 04 → 05 → 13 → 19 → 43 |
@@ -60,6 +68,8 @@ python3 tests/run_smoke.py --out tutorial-output/offline-smoke-01
 | `SHA256SUMS.txt` | 包内文件摘要；校验文件自身不列入 |
 
 ## 接真实账户之前
+
+这是独立中文教程包。安装与发行请查 [AtlasCloud CLI](https://github.com/AtlasCloudAI/cli)及其[发行记录](https://github.com/AtlasCloudAI/cli/releases)，技能安装查[官方 Agent Skills 文档](https://www.atlascloud.ai/docs/skills)。教程核对版本见 [SOURCES.md](SOURCES.md)，不能据教程日期推断当前账户能力。教程错误可在[本仓库 Issues](https://github.com/majiayu000/atlas-tutorials/issues)反馈，附教程编号、CLI 版本与脱敏错误即可。
 
 先读 [执行约定](common/EXECUTION.md)。保留现有账户，不把 key 粘贴到公开文档或 Agent 对话；上传与生成分别确认范围。复制配置后填入实时发现的模型与参数，执行只读预览并取得可靠的费用认知。
 
