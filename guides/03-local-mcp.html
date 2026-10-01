@@ -1,0 +1,67 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>本地 MCP 接入：先发现工具，再预览付费请求</title><meta name="theme-color" content="#112d26"><meta name="description" content="本地 MCP 接入：先发现工具，再预览付费请求"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/03-local-mcp.html"><meta property="og:type" content="website"><meta property="og:title" content="本地 MCP 接入：先发现工具，再预览付费请求"><meta property="og:description" content="本地 MCP 接入：先发现工具，再预览付费请求"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/03-local-mcp.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="本地 MCP 接入：先发现工具，再预览付费请求"><meta name="twitter:description" content="本地 MCP 接入：先发现工具，再预览付费请求"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>03｜本地 MCP 接入：先看工具和请求，再生成</h1>
+<p>本教程使用公开 <code>atlascloud-mcp</code> 包的本地 stdio 路线。它与 CLI 源码里的实验性 <code>atlas-mcp</code> 二进制、插件里的远程 OAuth 服务不是同一条安装路径。只需要本地 MCP 时，不必再为它编译 Go 源码。</p>
+<p>准备一个能启动本地 MCP 进程的宿主、该包所需 Node.js 环境，以及自己的 Atlas API key。包 README 当前写 Node.js &gt;=18；正式发布教程时仍要核对当前包 engines 和团队支持的 Node.js 版本，不要据此建议使用已停止维护的旧版本。</p>
+<blockquote>
+<p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="../index.html#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="../index.html#doc-verification--REPORT-md">验证报告</a>。</p>
+</blockquote>
+<h2>先决定密钥放在哪里</h2>
+<p>不要把真实 API key 写进教程、公共配置、截图或 Agent 对话。使用宿主提供的密钥配置，或让从终端启动的宿主继承环境变量。下面是在 Bash 中输入环境变量的一种方式，不会把密钥正文写进这条 Shell 命令：</p>
+<pre><code class="language-bash">read -r -s -p 'Atlas API key: ' ATLASCLOUD_API_KEY
+printf '\n'
+export ATLASCLOUD_API_KEY
+</code></pre>
+<p>这不是系统密钥链，环境变量仍可能被有权限的进程访问。GUI 中启动的宿主也未必继承你刚刚设置的终端环境；连接失败时应核对进程实际获取密钥的方式，不要不停创建新 key。</p>
+<h2>配置服务进程</h2>
+<p>对于使用 <code>mcpServers</code> 配置结构、并能让子进程继承所需环境变量的宿主，服务声明的形态如下：</p>
+<pre><code class="language-json">{
+  &quot;mcpServers&quot;: {
+    &quot;atlascloud&quot;: {
+      &quot;command&quot;: &quot;npx&quot;,
+      &quot;args&quot;: [&quot;-y&quot;, &quot;atlascloud-mcp&quot;]
+    }
+  }
+}
+</code></pre>
+<p>将这段合并进宿主的配置，不要覆盖原有其他 MCP。它没有包含密钥：你必须通过宿主支持的安全方式提供 <code>ATLASCLOUD_API_KEY</code>。如果宿主使用不同结构，按它的实际格式填写同一进程命令，不能直接复制整段。</p>
+<p>团队部署应在联调通过后固定已验证的 npm 包版本，避免每次连接都依赖浮动版本；记录版本，但不要凭空填一个版本号。</p>
+<h2>第一条消息只做发现</h2>
+<blockquote>
+<p>检查已连接的 atlascloud MCP。先列出实际可用的工具，再查询文本生成图片的模型，并读取一个候选模型的参数 schema。不要调用聊天模型，不上传文件，不生成媒体，不更换我的账户或凭据。</p>
+</blockquote>
+<p>期望看到可调用的模型发现与详情工具，例如 <code>atlas_list_models</code> 和 <code>atlas_get_model_info</code>。必须以当前连接返回的工具 schema 为准，不能因为 README 出现过一个名字，就假定当前服务一定提供它。</p>
+<h2>第二条消息只预览</h2>
+<blockquote>
+<p>按刚才选定的文本生图模型，准备一张无文字的抽象网站配图。使用生成工具的 dry_run 预览完整请求，不提交。解释模型、必填参数和默认值；如果没有可靠价格信息，明确说估价仍未知。</p>
+</blockquote>
+<p>在实际工具 schema 确认存在这些字段后，图像生成请求形态可以是：</p>
+<pre><code class="language-json">{
+  &quot;model&quot;: &quot;替换为已查询的真实模型ID&quot;,
+  &quot;params&quot;: {
+    &quot;prompt&quot;: &quot;An abstract visual for a developer tool website, no text.&quot;
+  },
+  &quot;dry_run&quot;: true
+}
+</code></pre>
+<p>这只是调用结构示意，<code>params</code> 必须补上该模型当前必填项。<code>dry_run</code> 的作用是展示将提交的请求，不代表返回了可锁定的价格。公开实现存在 schema 无法取得时跳过验证的路径，因此还需确认该模型的完整 schema 确实取得，不能把 dry_run 当成无条件严格校验。已有参考文件的任务也不要在“只预览”的要求下偷偷调用上传工具。</p>
+<h2>用户授权后生成一张</h2>
+<p>再次确认模型、数量、费用认知与输入未变，随后提交一次。保存实际返回的 prediction ID，后续通过 <code>atlas_get_prediction</code> 查询它。不要假设 MCP 返回的字段与 CLI 一样，也不要因为一次工具调用等待结束就再提交。</p>
+<p>媒体结果通常包含远程链接。宿主能够下载时，保存并检查实际文件；不能下载时交付真实链接并说明未保存本地文件。这个 MCP 的上传工具在文档中用于临时素材，不是长期资产托管。</p>
+<h2>怎样算连接成功</h2>
+<p>成功启动服务只是第一步。应依次证明：工具可发现，模型 schema 可读取，dry_run 没有提交任务，经授权的生成能查回结果。不要以“配置文件没有报错”代替这四项检查。</p>
+<p>本地 stdio 服务不能直接靠粘贴一个 URL 接入网页宿主。需要远程 MCP 时应使用对应的公开接入文档，本篇不猜测服务地址或 OAuth 配置。</p>
+<p>运行路径、授权与状态约定见 <a href="../index.html#doc-common--EXECUTION-md">通用执行说明</a>。</p>
+</article><div class="page-nav"><a href="02-first-image.html">上一篇：从零生成第一张图片：保存任务回执和真实文件</a><a href="04-model-selection.html">下一篇：面对一大串模型，怎样按输入和用途选择</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/03-local-mcp.md">Markdown 原文</a></p></footer></main></body></html>

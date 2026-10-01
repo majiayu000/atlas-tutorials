@@ -1,0 +1,51 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>给生成视频加字幕、logo 与片尾</title><meta name="theme-color" content="#112d26"><meta name="description" content="给生成视频加字幕、logo 与片尾"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/34-subtitles-logo-outro.html"><meta property="og:type" content="website"><meta property="og:title" content="给生成视频加字幕、logo 与片尾"><meta property="og:description" content="给生成视频加字幕、logo 与片尾"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/34-subtitles-logo-outro.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="给生成视频加字幕、logo 与片尾"><meta name="twitter:description" content="给生成视频加字幕、logo 与片尾"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>34｜给生成视频加字幕、logo 与片尾</h1>
+<p>本教程把字幕、logo 和片尾作为确定性后期，叠到已经通过检查的视频上。文字由审定文案和排版工具生成，不要求生成模型逐字写出商标或字幕。准备母版 MP4、UTF-8 SRT、有使用权的透明 logo 和片尾画面。</p>
+<h2>固定交付规格</h2>
+<p>先确定分辨率、帧率、字幕字号、安全区、logo 显示位置与片尾时长。批准稿保存成文件，生成模型不应临时改写产品承诺。字幕、logo、片尾三步分别保存输出，这样可以只重做出错的阶段。</p>
+<blockquote>
+<p>给这个已完成视频加上我提供的字幕、logo 和两秒片尾。保留原始内容和声音，不调用付费生成。先核对字幕时间与母版时长，再给出排版预览；检查中文缺字、品牌比例和遮挡，最后交付实际 MP4、外挂字幕与后期说明。</p>
+</blockquote>
+<h2>第一步：检查并烧录字幕</h2>
+<pre><code class="language-bash">mkdir -p tutorial-output/post
+python3 scripts/subtitles.py lint --input ./assets/captions.srt
+python3 scripts/media_ops.py burn-subtitles --inputs ./assets/master.mp4 \
+  --subtitles ./assets/captions.srt --font-size 24 \
+  --output tutorial-output/post/captioned.mp4
+</code></pre>
+<p>FFmpeg 需要有 <code>subtitles</code> 滤镜/libass，系统还需可用的中文字形。本包不附带字体文件。执行成功也要看屏幕上是否出现方框；换用有授权且覆盖所需语言的本地字体，再确认画面。需要复杂样式时可用 ASS，并在自己的后期工具中验证，而非把 SRT 当成任意排版容器。</p>
+<h2>第二步：叠加 logo</h2>
+<p>下面以宽 160 像素、右下角留 40 像素为教学示例。先确认母版尺寸足够，logo 不压住字幕。输入须为你准备的图片，文件后缀不能代替真实透明通道。</p>
+<pre><code class="language-bash">ffmpeg -nostdin -n -i tutorial-output/post/captioned.mp4 -i ./assets/logo.png \
+  -filter_complex '[1:v]scale=160:-1[logo];[0:v][logo]overlay=W-w-40:H-h-40[out]' \
+  -map '[out]' -map '0:a?' -c:v libx264 -pix_fmt yuv420p -c:a aac \
+  tutorial-output/post/branded.mp4
+</code></pre>
+<p>logo 是静态输入，overlay 默认重复其末帧。完整看一遍开头和结尾，确认不会消失、拉伸或挡住画面。上述位置不是平台强制安全区。</p>
+<h2>第三步：片尾与音轨</h2>
+<p>先按母版尺寸准备片尾图，再将它生成两秒静态视频；示例采用 1080×1920 和 30fps：</p>
+<pre><code class="language-bash">ffmpeg -nostdin -n -loop 1 -i ./assets/outro.png -t 2 \
+  -vf 'scale=1080:1920:force_original_aspect_ratio=decrease,pad=1080:1920:(ow-iw)/2:(oh-ih)/2,setsar=1' \
+  -r 30 -an -c:v libx264 -pix_fmt yuv420p tutorial-output/post/outro.mp4
+python3 scripts/media_ops.py concat \
+  --inputs tutorial-output/post/branded.mp4 tutorial-output/post/outro.mp4 \
+  --output tutorial-output/post/with-outro-silent.mp4 --width 1080 --height 1920 --fps 30
+</code></pre>
+<p>注意：本包 concat 为降低轨道不一致问题，明确输出无声母版。**不能把这个文件直接当有声成片交付。**从原母版提取获授权的声音后，使用 <a href="29-background-music.html">29</a> 的混音步骤恢复，并设计片尾两秒如何收音；也可以在可信编辑器里统一编排音频。字幕总时长必须适配新的片长，片尾不能被误认为漏字幕。</p>
+<p>最终完整检查声音、字幕、logo、片尾和实际时长。分别交付原字幕与最终有声成片；单个阶段失败从上一文件继续，不重新生成画面。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="33-vertical-reframe.html">上一篇：把横版视频重构为竖版，保留主体与字幕</a><a href="35-delivery-audit.html">下一篇：交付前检查容器、分辨率、帧率、时长和音轨</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/34-subtitles-logo-outro.md">Markdown 原文</a></p></footer></main></body></html>

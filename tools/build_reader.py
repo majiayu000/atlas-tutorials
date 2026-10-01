@@ -11,11 +11,7 @@ CAT=json.loads((ROOT/'catalog.json').read_text())
 MD=MarkdownIt('commonmark',{'html':False}).enable('table')
 files=[ROOT/'README.md',*[ROOT/i['path'] for i in CAT],ROOT/'CATALOG.md',ROOT/'common/EXECUTION.md',ROOT/'common/DELIVERY.md',ROOT/'SOURCES.md',ROOT/'verification/REPORT.md',ROOT/'PUBLISHING.md',ROOT/'scripts/README.md',ROOT/'third-party/README.md']
 ids={f.resolve():('home' if f.name=='README.md' and f.parent==ROOT else 'doc-'+f.relative_to(ROOT).as_posix().replace('/','--').replace('.','-')) for f in files}
-guides={
- (ROOT/'tutorials/02-first-image.md').resolve(): ('02-first-image.html', 'Atlas CLI 生成第一张图片并保存任务回执'),
- (ROOT/'tutorials/19-image-to-video.md').resolve(): ('19-image-to-video.html', 'Atlas 图生视频：提交、续查与视频验收'),
- (ROOT/'tutorials/43-recover-job.md').resolve(): ('43-recover-job.html', 'Atlas 生成超时或下载失败：继续原任务'),
-}
+guides={(ROOT/item['path']).resolve(): (item['slug']+'.html', item['title']) for item in CAT}
 
 def render(f, standalone=False):
  tokens=MD.parse(f.read_text())
@@ -44,7 +40,8 @@ for category in dict.fromkeys(i['category'] for i in CAT):
 articles=[]
 for f in files:
  key=ids[f.resolve()];rel=f.relative_to(ROOT).as_posix()
- articles.append(f'<article id="{key}" {"" if key=="home" else "hidden"}><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="{html.escape(rel)}">Markdown 源文件 ↗</a></div>'+render(f)+'</article>')
+ independent=f'<a href="guides/{guides[f.resolve()][0]}">独立阅读页 ↗</a>' if f.resolve() in guides else ''
+ articles.append(f'<article id="{key}" {"" if key=="home" else "hidden"}><div class="doc-meta">ATLAS TUTORIALS · 中文全集 {independent}<a href="{html.escape(rel)}">Markdown 源文件 ↗</a></div>'+render(f)+'</article>')
 css=r'''
 :root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
@@ -73,14 +70,30 @@ page='<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="
 guide_dir=ROOT/'guides'
 guide_dir.mkdir(exist_ok=True)
 base='https://majiayu000.github.io/atlas-tutorials/'
-guide_links=' · '.join(f'<a href="{filename}">{html.escape(title)}</a>' for filename,title in guides.values())
-for source,(filename,title) in guides.items():
+guide_list=list(guides.items())
+for position,(source,(filename,title)) in enumerate(guide_list):
  head=page.split('<style>')[0]
  head=re.sub(r'<title>.*?</title>', '<title>'+html.escape(title)+'</title>', head)
  head=re.sub(r'(<meta (?:name|property)="(?:description|og:description|twitter:description|og:title|twitter:title)" content=")[^"]*', lambda m:m.group(1)+html.escape(title), head)
  head=head.replace(base+'"',base+'guides/'+filename+'"')
- body='<main><header><a href="../index.html">← 全部 48 篇与离线阅读器</a><a href="https://github.com/majiayu000/atlas-tutorials">项目与反馈</a></header><article>'+render(source,standalone=True)+'</article><footer><nav>'+guide_links+'</nav><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../'+source.relative_to(ROOT).as_posix()+'">Markdown 原文</a></p></footer></main>'
+ neighbors=[]
+ for offset,label in [(-1,'上一篇'),(1,'下一篇')]:
+  adjacent=position+offset
+  if 0<=adjacent<len(guide_list):
+   _,(other,other_title)=guide_list[adjacent]
+   neighbors.append(f'<a href="{other}">{label}：{html.escape(other_title)}</a>')
+ first_file=guide_list[0][1][0]
+ body='<main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article>'+render(source,standalone=True)+'</article><div class="page-nav">'+''.join(neighbors)+'</div><footer><p><a href="'+first_file+'">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../'+source.relative_to(ROOT).as_posix()+'">Markdown 原文</a></p></footer></main>'
  (guide_dir/filename).write_text(head+'<style>'+css+'main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body>'+body+'</body></html>',encoding='utf-8')
-urls=[base,*[base+'guides/'+filename for filename,_ in guides.values()]]
+directory='<h1>Atlas 多模态 Agent · 48 篇教程目录</h1><p>从 CLI / Skill / MCP 接入到图片、视频、声音、后处理、自动化与恢复。各页由现有 Markdown 原文生成；正文与离线验证完成，不等于真实账户联调或付费生成已完成。</p>'
+for category in dict.fromkeys(item['category'] for item in CAT):
+ directory+='<section><h2>'+html.escape(category)+'</h2><ul>'
+ for item in CAT:
+  if item['category']==category:directory+='<li><a href="'+item['slug']+'.html">'+f'{item["id"]:02d} · '+html.escape(item['title'])+'</a></li>'
+ directory+='</ul></section>'
+head=page.split('<style>')[0].replace(base+'"',base+'guides/"')
+head=head.replace('<title>Atlas 教程全集</title>','<title>Atlas 多模态 Agent · 48 篇教程目录</title>')
+(guide_dir/'index.html').write_text(head+'<style>'+css+'main{margin:0 auto}</style></head><body><main><header><a href="../index.html">← 离线阅读器与全文搜索</a><a href="../SOURCES.md">来源与版本</a></header><article>'+directory+'</article></main></body></html>',encoding='utf-8')
+urls=[base,base+'guides/',*[base+'guides/'+filename for filename,_ in guides.values()]]
 (ROOT/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join('<url><loc>'+u+'</loc></url>\n' for u in urls)+'</urlset>\n',encoding='utf-8')
 print(f'Built {len(CAT)} tutorials + supporting docs; {len(page.encode())} bytes')

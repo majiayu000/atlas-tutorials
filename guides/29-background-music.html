@@ -1,0 +1,42 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>为产品演示制作背景音乐与声音层次</title><meta name="theme-color" content="#112d26"><meta name="description" content="为产品演示制作背景音乐与声音层次"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/29-background-music.html"><meta property="og:type" content="website"><meta property="og:title" content="为产品演示制作背景音乐与声音层次"><meta property="og:description" content="为产品演示制作背景音乐与声音层次"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/29-background-music.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="为产品演示制作背景音乐与声音层次"><meta name="twitter:description" content="为产品演示制作背景音乐与声音层次"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>29｜为产品演示制作背景音乐与声音层次</h1>
+<p>目标是在产品演示中增加音乐，同时保证口播清楚、不遮住操作声。音乐创作、授权确认与混音是独立环节。本篇不假设生成音轨天然拥有你需要的所有商业使用权。</p>
+<h2>写清音乐 brief</h2>
+<p>描述时长、节奏、情绪、乐器、是否无歌词，以及视频哪里需要起伏。使用“轻电子、克制、弱鼓点、为旁白留空间”这样的声音特征，不要求冒充某位在世音乐人或已有歌曲。确认当前服务的使用条件和项目的发布许可，由实际许可决定能否使用。</p>
+<blockquote>
+<p>用 Atlas 为这个产品演示准备一段无歌词背景音乐。先查音乐模型的输入、时长和输出能力，说明费用与使用条件中仍需确认的部分。授权后只生成一个候选；配音单独保存，音乐不能盖过人声。交付原始音乐、混音预览和完整听检意见，不把示例增益当成平台响度标准。</p>
+</blockquote>
+<p>音频目录中区分 TTS、音乐和 ASR。读取模型 schema 后准备请求，通过 <code>atlas_generate_audio</code> 或当前 CLI 音频入口提交。遇到模型只支持固定时长时，先确认是否可接受；不要伪造 <code>duration</code> 参数。</p>
+<h2>保留干净的声音分层</h2>
+<p>至少有画面母版、旁白干声、音乐三个文件。模型原生声音里已经混有音乐时，不能简单再叠一层并假定不会冲突。先决定保留、替换还是重新剪辑；本包混音脚本会替换原视频音轨，不自动分离人声和音乐。</p>
+<p>完整播放候选音乐，核对有没有意外人声、突兀的开头、收尾截断、过强的瞬时峰值，以及与品牌不符的情绪。涉及修改音乐段落时保留原稿，不把短片段反复循环当成唯一处理方法。</p>
+<h2>先看三条素材时长</h2>
+<pre><code class="language-bash">python3 scripts/media_audit.py ./assets/demo.mp4
+python3 scripts/media_audit.py ./assets/voice.wav --require-audio
+python3 scripts/media_audit.py ./assets/music.wav --require-audio
+</code></pre>
+<p>确保口播完整落在画面长度内；本包脚本会按画面时长补静音或裁切，不会重新编排音乐或自动完成句间对齐。确定后生成本地预览：</p>
+<pre><code class="language-bash">python3 scripts/media_ops.py mix-audio \
+  --inputs ./assets/demo.mp4 ./assets/voice.wav ./assets/music.wav \
+  --music-volume 0.12 --output tutorial-output/demo-mix.mp4
+</code></pre>
+<p><code>0.12</code> 是示范线性增益，不是实测最佳值或响度标准。脚本使用限幅保护，但不能替代完整的响度、真峰值与主观听检。需要自动压低音乐的项目可以采用经过验证的 ducking 混音方案；本脚本没有实现这一功能。</p>
+<h2>交付前用不同环境试听</h2>
+<p>分别检查开头、每句口播、转场和结尾，至少用耳机与常用播放设备检查。目标是人声清晰、没有明显削波、音乐收尾自然；符合技术参数也可能听起来疲劳。最终按发布渠道的当前规范做响度交付，保留测量配置和结果，不能把教程样例称为所有平台通用标准。</p>
+<p>交付干声、音乐原文件、混音成片、音轨来源与使用条件记录。只混音失败时重新运行本地步骤，音乐生成无需重做。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S3、S5、S7</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="28-authorized-avatar.html">上一篇：用获授权肖像与声音制作讲解视频</a><a href="30-long-recording.html">下一篇：处理长录音：分段、合并与专有名词校正</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/29-background-music.md">Markdown 原文</a></p></footer></main></body></html>

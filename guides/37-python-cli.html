@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>用 Python 调用 CLI，持久保存每次任务回执</title><meta name="theme-color" content="#112d26"><meta name="description" content="用 Python 调用 CLI，持久保存每次任务回执"><link rel="canonical" href="https://majiayu000.github.io/atlas-tutorials/guides/37-python-cli.html"><meta property="og:type" content="website"><meta property="og:title" content="用 Python 调用 CLI，持久保存每次任务回执"><meta property="og:description" content="用 Python 调用 CLI，持久保存每次任务回执"><meta property="og:url" content="https://majiayu000.github.io/atlas-tutorials/guides/37-python-cli.html"><meta property="og:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Atlas 多模态 Agent 教程全集 · 公开页面预览"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="用 Python 调用 CLI，持久保存每次任务回执"><meta name="twitter:description" content="用 Python 调用 CLI，持久保存每次任务回执"><meta name="twitter:image" content="https://majiayu000.github.io/atlas-tutorials/social-card.png"><style>
+:root{--ink:#19302c;--muted:#5d716b;--accent:#177052;--line:#dce5df;--paper:#fff;--bg:#f3f6f2;--sidebar:#112d26}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC",sans-serif;font-size:16px;line-height:1.85}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}[hidden]{display:none!important}
+aside{position:fixed;inset:0 auto 0 0;width:330px;background:var(--sidebar);color:#d6e8df;display:flex;flex-direction:column;padding:25px 18px;z-index:5}
+.brand{padding:0 10px}.brand strong{display:block;font-size:25px;letter-spacing:2px;color:#fff}.brand small{color:#a9c9ba}.search-box{margin:20px 5px 12px}input{width:100%;padding:12px 14px;border:1px solid #628575;border-radius:8px;background:#244438;color:#fff;font-size:14px}input::placeholder{color:#bbd1c6}input:focus{outline:2px solid #92d5ae}
+#count{font-size:12px;color:#b4c9bd;padding:0 8px 8px}nav{overflow:auto;padding:0 3px 20px}nav a{display:flex;gap:11px;padding:8px 9px;color:#d6e8df;line-height:1.6;font-size:13px;border-radius:6px;margin:2px 0}nav a.active{background:#35634c;color:#fff}nav a:hover{background:#284e3d;text-decoration:none}nav a span{color:#9fbbaa;font-size:12px;min-width:22px;padding-top:2px}nav h3{font-size:11px;letter-spacing:2px;color:#93b29f;margin:21px 9px 6px}.home-link{font-size:14px}
+main{margin-left:330px;padding:34px 5vw 70px;max-width:1510px}header{display:flex;justify-content:space-between;align-items:center;margin:0 auto 22px;max-width:920px;color:var(--muted);font-size:12px}.badge{padding:4px 12px;border:1px solid #c8d8cc;border-radius:20px;background:#e9f1e8}
+article{max-width:920px;margin:0 auto;background:var(--paper);padding:45px 54px 60px;border:1px solid var(--line);border-radius:12px;box-shadow:0 8px 35px #19302c05}.doc-meta{font-size:10px;letter-spacing:1.2px;color:#6b8377;display:flex;gap:18px;justify-content:space-between;margin-bottom:25px}.doc-meta a{letter-spacing:0;font-size:11px}
+h1{font-size:31px;line-height:1.5;letter-spacing:-.5px;margin:0 0 24px}h2{font-size:21px;line-height:1.5;margin:35px 0 13px;border-top:1px solid #eef2ed;padding-top:24px}h3{font-size:18px}p{margin:15px 0}strong{font-weight:650}blockquote{margin:20px 0;padding:5px 19px;background:#eff7ef;border-left:3px solid #4e9875;border-radius:0 7px 7px 0}blockquote p{margin:10px 0}
+pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding:42px 20px 20px;overflow:auto;font-size:12.5px;line-height:1.75}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}p code,td code,li code{background:#f0f5ef;padding:2px 5px;border-radius:4px;font-size:.85em;overflow-wrap:anywhere}pre code{background:none}.copy{position:absolute;right:10px;top:9px;color:#dcf5e4;background:#2c5140;border:1px solid #587d67;padding:3px 12px;border-radius:5px;cursor:pointer;font-size:11px}table{border-collapse:collapse;width:100%;font-size:13px;margin:20px 0;display:block;overflow-x:auto}th,td{padding:12px 13px;border:1px solid var(--line);text-align:left;min-width:120px;vertical-align:top}th{background:#eef4ed}td:last-child{width:100%}ul,ol{padding-left:23px}.page-nav{display:flex;max-width:920px;margin:24px auto;justify-content:space-between;gap:20px}.page-nav a{font-size:12px;max-width:45%}.mobile-toggle{display:none}footer{max-width:920px;margin:32px auto;font-size:11px;color:var(--muted)}
+@media(max-width:1000px){aside{width:280px}main{margin-left:280px;padding:26px 25px}article{padding:30px}h1{font-size:26px}}
+@media(max-width:730px){aside{display:none;width:min(90vw,350px)}body.menu-open aside{display:flex}main{margin:0;padding:65px 14px 30px}article{padding:24px 20px;border-radius:8px}h1{font-size:23px}.doc-meta{font-size:9px;gap:8px}.mobile-toggle{display:block;position:fixed;top:14px;right:14px;z-index:8;background:#173d2c;color:white;border:0;padding:10px 16px;border-radius:7px}header{gap:10px;font-size:10px}pre{font-size:11px;padding-left:14px}}
+@media print{aside,header,.copy,.page-nav,footer,.mobile-toggle{display:none!important}main{margin:0;padding:0}article{border:0;box-shadow:none;padding:10px}pre{white-space:pre-wrap;background:#f5f5f5;color:#111}}
+main{margin:0 auto}footer nav a{display:inline;color:var(--accent);font-size:inherit}</style></head><body><main><header><a href="index.html">← 完整教程目录</a><a href="../index.html">离线阅读器与全文搜索</a></header><article><h1>37｜用 Python 调用 CLI，持久保存每次任务回执</h1>
+<p>本篇用 Python 调用 Atlas CLI，并把一项业务操作对应到一个稳定目录。目的在于保留请求、受理状态和产物位置，尤其避免脚本在等待超时后从头重新生成。随包的 <code>run_job.py</code> 是教学包装器，不是 Atlas 官方持久工作流服务。</p>
+<h2>配置与目录</h2>
+<p>准备 Python 3.10+ 和已登录的 Atlas CLI。先从当前目录选模型，检查必填参数与价格，再把实际参数写入配置。样例 <a href="../examples/config/image.json">image.json</a> 的模型 ID 是故意设置的不可用占位，不改就会被拒绝。</p>
+<pre><code class="language-bash">atlas version --json
+atlas auth status --json
+atlas models list --type image --json
+</code></pre>
+<p>本包配置只有 <code>kind</code>、<code>model</code>、<code>params</code>。<code>params</code> 是已经核对的模型参数，不能包含凭据或覆盖 model。包装器不映射本地 <code>@file</code> 媒体，只接受获授权的 URL；需要上传本地参考时先按 <a href="13-product-reference-edit.html">13</a> 处理，不把本地路径当成远程 URL。</p>
+<blockquote>
+<p>将这个已核对请求作为一项稳定操作执行，使用固定 run 目录。先准备与预览，不提交；授权后只提交一次，保存任何返回的 ID，即使进程退出非零。等待失败只查原任务，受理未知时停止重提，不删除 attempt 标记来绕过保护。</p>
+</blockquote>
+<h2>分开运行，分开观察</h2>
+<pre><code class="language-bash">python3 scripts/run_job.py prepare --config my-image.json --run-dir tutorial-output/job-001
+python3 scripts/run_job.py preview --run-dir tutorial-output/job-001
+</code></pre>
+<p>prepare 只写本地文件，preview 调用 CLI 的 <code>--explain</code>，可能读取当前目录但不提交生成。价格需要另用正式估价入口，不能把 preview 当成报价。审查 <code>plan.json</code> 和预览后才进入付费步骤：</p>
+<pre><code class="language-bash">python3 scripts/run_job.py submit --run-dir tutorial-output/job-001 --approve
+python3 scripts/run_job.py get --run-dir tutorial-output/job-001
+python3 scripts/run_job.py wait --run-dir tutorial-output/job-001 --wait-seconds 600
+python3 scripts/run_job.py inspect --run-dir tutorial-output/job-001
+</code></pre>
+<p>这些是独立阶段，不要在有 <code>set -e</code> 的一条 Shell 链里盲目串联。包装器退出 3 代表已知处理中，4 代表已知远程失败，2 代表错误或未知，0 才是本次阶段满足成功条件。被接受的异步提交通常就是处理中，所以 3 不代表需要再提交。</p>
+<h2>标记能保护什么，不能保护什么</h2>
+<p>提交前，脚本通过独占创建 <code>attempt.json</code> 记录一次尝试；同目录第二次提交会被阻止，崩溃也不自动移除。请求与参数有摘要校验，修改原计划会被拒绝。命令通过参数数组执行，不用 Shell 拼接，因此 prompt 不会直接成为 Shell 命令。</p>
+<p>这些措施只约束这个目录和包装器。新建另一个目录、另一台机器或直接调用 API 仍可能产生新任务；客户端文件不能保证服务端 exactly-once、跨设备额度或账号级幂等。共享不可信目录也不是安全边界。</p>
+<h2>测试与接入应用</h2>
+<p>先运行离线测试：</p>
+<pre><code class="language-bash">python3 -m unittest discover -s tests -v
+</code></pre>
+<p>测试用模拟调用覆盖超时、非零退出仍有 ID、未知状态、计划变化与重复提交，不实际调用 Atlas。将其接入应用时，可导入模块或使用 subprocess 参数数组启动；不要让外部请求指定任意 <code>--atlas</code> 可执行路径。</p>
+<p>日志包含 prompt、素材 URL 和路径等业务信息，应保存在受控位置；不要把完整 run 目录当成默认公开 artifact。成片验收另用 <a href="35-delivery-audit.html">35</a>，不要把 wrapper 成功当成画面质量通过。</p>
+<h2>依据与复现范围</h2>
+<p>依据：<a href="../index.html#doc-SOURCES-md">S1、S2、S6、S14</a>。本文使用本包约定的教学文件；模型能力与价格以执行时实际目录为准。线上付费步骤未代用户执行，离线验证结果见 <a href="../index.html#doc-verification--REPORT-md">测试报告</a>。通用路径、授权和状态约定见 <a href="../index.html#doc-common--EXECUTION-md">执行约定</a>。</p>
+</article><div class="page-nav"><a href="36-3d-delivery.html">上一篇：图片生成 3D 资产后，怎样检查与导出</a><a href="38-node-api.html">下一篇：把媒体生成功能接进 Node.js 项目</a></div><footer><p><a href="01-agent-setup.html">首次接入：从第 01 篇开始</a> · <a href="https://github.com/majiayu000/atlas-tutorials/issues">教程反馈</a></p><p>原文与版本依据：<a href="../SOURCES.md">资料来源</a> · <a href="../verification/REPORT.md">离线验证记录</a> · <a href="../tutorials/37-python-cli.md">Markdown 原文</a></p></footer></main></body></html>
