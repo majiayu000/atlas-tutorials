@@ -18,7 +18,7 @@ pre{position:relative;background:#152c26;color:#e3f4e9;border-radius:9px;padding
 <p>这是上一版“48 个选题＋6 篇正文”的完整扩展：原六篇已统一修订，其余 42 篇全部写成正文。内容从首次接入、网站与产品素材，一直覆盖声音、本地化、后处理、自动化、恢复、评测与 Skill 贡献。模型相关操作先核实当前能力，不以虚构命令填补功能缺口。</p>
 <p><strong>直接阅读：</strong> 双击解压目录中的 <a href="index.html">index.html</a>，可按类别和全文搜索，点击代码块旁按钮复制。无需启动服务器、联网或安装文档站。也可以从 <a href="#doc-CATALOG-md">完整目录</a> 阅读 Markdown。</p>
 <h2>先分清完成范围</h2>
-<p>本包完成了全部教程正文、配套教学脚本、配置/工作流示例、离线测试与打包。没有使用你的 API key、登录账户、执行付费模型生成、向客户素材发起上传，也没有修改 GitHub 仓库。n8n、ComfyUI、MCP 宿主和 GitHub Actions 的真实连接未代你联调。</p>
+<p>本包完成了全部教程正文、配套教学脚本、配置/工作流示例、离线测试与打包，教程源码和在线阅读站点已公开。没有使用你的 API key、登录账户、执行付费模型生成或向客户素材发起上传。n8n、ComfyUI、MCP 宿主和教程示例 GitHub Actions 的真实连接未代你联调。</p>
 <p>真实输出质量、模型权限、价格与宿主兼容性要在当前环境检查。目录里出现模型占位或 <code>assets/</code> 自备文件，是执行配置边界，不是省略教程正文。集成 JSON 可以编辑与导入检查，但不能宣传成已在线认证的现成服务。</p>
 <h2>建议的三条阅读路线</h2>
 <p>全部 48 篇正文都有独立 HTML 地址，按分类浏览<a href="guides/index.html">完整独立目录</a>。想先完成一个具体任务，可以直接打开：</p>
@@ -122,7 +122,7 @@ node --test tests/node-client.test.mjs
 <p><code>run_job.py --approve</code> 表示调用者放行一次提交，不是服务端硬预算。原任务超时继续查询原 ID，提交结果不确定时保留 unknown，不自动重交。客户端只记录观察，文件还要解码和人工验收。</p>
 <h2>作为仓库或文档站发布</h2>
 <p>教程 Markdown 可以按目录直接加入你的文档仓库，保持相对路径。不要把本地 <code>assets/</code>、<code>tutorial-output/</code>、真实回执、凭据或客户图片一并公开。集成到现有站点后按 <a href="#doc-PUBLISHING-md">发布清单</a> 检查导航、复制代码、能力版本和真实样例。</p>
-<p>本包没有代你创建 GitHub commit 或发布线上网站。教程及原创代码为本次交付内容；上游工作流结构的许可证和归属见 <a href="#doc-third-party--README-md">第三方说明</a>，生成素材的使用范围仍需按实际来源与授权确认。</p>
+<p>本仓库的在线阅读站点由既有 GitHub Pages 工作流发布；将教程集成到你自己的仓库或文档站仍需自行部署。上游工作流结构的许可证和归属见 <a href="#doc-third-party--README-md">第三方说明</a>，生成素材的使用范围仍需按实际来源与授权确认。</p>
 </article><article id="doc-tutorials--01-agent-setup-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="guides/01-agent-setup.html">独立阅读页 ↗</a><a href="tutorials/01-agent-setup.md">Markdown 源文件 ↗</a></div><h1>01｜把 Atlas 接入你的 Agent，先不花钱生成</h1>
 <p>你已经有自己的 Agent，希望它能调用 Atlas。第一步只验证三件事：终端能找到 CLI，当前登录状态清楚，Agent 能读到 Atlas 的操作指南。完成配置不需要先生成一张测试图片。</p>
 <p>本文适合本地有终端能力的 Agent。没有终端访问能力的网页宿主，不能照搬这条路径。MCP 用户参见 <a href="#doc-tutorials--03-local-mcp-md">03</a>，不必同时安装两条执行路线。</p>
@@ -173,7 +173,7 @@ atlas version --json
 <p>运行路径、授权与状态约定见 <a href="#doc-common--EXECUTION-md">通用执行说明</a>。</p>
 </article><article id="doc-tutorials--02-first-image-md" hidden><div class="doc-meta">ATLAS TUTORIALS · 中文全集 <a href="guides/02-first-image.html">独立阅读页 ↗</a><a href="tutorials/02-first-image.md">Markdown 源文件 ↗</a></div><h1>02｜生成第一张图片，同时保存任务回执</h1>
 <p>本教程的目标是一张实际可打开的图片，以及能再次查询它的任务 ID。演示主题是网站的抽象配图，不使用参考文件，也不要求模型生成标题文字。</p>
-<p>准备好 Atlas CLI、可用账户和 Python 3.9+。从本教程包根目录执行 Bash 示例。所有模型 ID 必须从当前目录复制；本教程不预设某个旧 ID 永久可用。</p>
+<p>准备好 Atlas CLI、可用账户和 Python 3.10+。从本教程包根目录执行 Bash 示例。所有模型 ID 必须从当前目录复制；本教程不预设某个旧 ID 永久可用。</p>
 <blockquote>
 <p>状态：正文已完成；未执行线上付费生成或宿主实连。依据：<a href="#doc-SOURCES-md">S1 / S2 / S3</a>。本地测试范围见 <a href="#doc-verification--REPORT-md">验证报告</a>。</p>
 </blockquote>
